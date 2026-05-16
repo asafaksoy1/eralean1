@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Analytics } from "@vercel/analytics/react";
 import HomePage from "./pages/HomePage";
 import WebsitePage from "./pages/WebsitePage";
 import AdsPage from "./pages/AdsPage";
@@ -20,6 +21,7 @@ export default function App() {
         <Route path="/services/social-media" element={<SocialMediaPage />} />
         <Route path="*" element={<HomePage />} />
       </Routes>
+      <Analytics />
     </BrowserRouter>
   );
 }
