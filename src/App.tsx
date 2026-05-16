@@ -4,6 +4,8 @@ import WebsitePage from "./pages/WebsitePage";
 import AdsPage from "./pages/AdsPage";
 import AIPage from "./pages/AIPage";
 import AcquisitionSystemsPage from "./pages/AcquisitionSystemsPage";
+import EmailMarketingPage from "./pages/EmailMarketingPage";
+import SocialMediaPage from "./pages/SocialMediaPage";
 
 export default function App() {
   return (
@@ -14,6 +16,8 @@ export default function App() {
         <Route path="/services/ads" element={<AdsPage />} />
         <Route path="/services/ai" element={<AIPage />} />
         <Route path="/services/acquisition-systems" element={<AcquisitionSystemsPage />} />
+        <Route path="/services/email-marketing" element={<EmailMarketingPage />} />
+        <Route path="/services/social-media" element={<SocialMediaPage />} />
         <Route path="*" element={<HomePage />} />
       </Routes>
     </BrowserRouter>
