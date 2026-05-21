@@ -19,9 +19,9 @@ export default function EmailMarketingPage() {
         }
         description="Full Klaviyo and Mailchimp email marketing managed for your business. Flows, campaigns, segmentation, and reporting — all done for you. Turn your list into your highest-ROI channel."
         stats={[
-          { value: "32%", label: "Avg open rate" },
-          { value: "4.8×", label: "Email ROI" },
-          { value: "30%+", label: "Of revenue from email" },
+          { value: "20.4%", label: "Of total revenue from email" },
+          { value: "£128K", label: "Email revenue in 60 days" },
+          { value: "+55%", label: "Revenue vs prev. period" },
           { value: "£0", label: "Setup fee" },
         ]}
       />
@@ -70,22 +70,22 @@ export default function EmailMarketingPage() {
 function Results() {
   const [ref, inView] = useInView();
   const cases = [
-    { tag: "Welcome flow", industry: "Fashion & apparel", spent: "£0", primary: "£14,832", primaryLabel: "Revenue (90d)", roas: "32% open", reach: "8.2% CTR" },
-    { tag: "Abandoned cart flow", industry: "Beauty brand", spent: "£0", primary: "£9,217", primaryLabel: "Revenue (90d)", roas: "44% open", reach: "12% CTR" },
-    { tag: "Campaign sends", industry: "Health supplements", spent: "£0", primary: "£28,403", primaryLabel: "Revenue (90d)", roas: "28% open", reach: "5.7% CTR" },
-    { tag: "Post-purchase flow", industry: "Home & lifestyle", spent: "£0", primary: "+42%", primaryLabel: "Repeat orders", roas: "38% open", reach: "9.4% CTR" },
-    { tag: "Win-back flow", industry: "Subscription box", spent: "£0", primary: "£6,891", primaryLabel: "Revenue (90d)", roas: "21% open", reach: "4.8% CTR" },
-    { tag: "List growth", industry: "Skincare brand", spent: "£0", primary: "+8,940", primaryLabel: "New subscribers", roas: "2.4% conv", reach: "320K visitors" },
+    { tag: "Welcome flow", industry: "Added to list", spent: "23,039", primary: "£50,733", primaryLabel: "Revenue", roas: "£2.20", reach: "+23%" },
+    { tag: "Abandoned checkout", industry: "Checkout started", spent: "3,445", primary: "£17,434", primaryLabel: "Revenue", roas: "£5.06", reach: "+48%" },
+    { tag: "Abandoned cart", industry: "Added to cart", spent: "2,758", primary: "£14,697", primaryLabel: "Revenue", roas: "£5.33", reach: "+23%" },
+    { tag: "Browse abandonment", industry: "Viewed product", spent: "18,097", primary: "£11,336", primaryLabel: "Revenue", roas: "£0.63", reach: "Live" },
+    { tag: "Collection flow", industry: "Viewed collection", spent: "3,360", primary: "£3,170", primaryLabel: "Revenue", roas: "£0.94", reach: "+117%" },
+    { tag: "All flows combined", industry: "Nov–Dec 2025", spent: "—", primary: "£97,372", primaryLabel: "Flow revenue", roas: "75.5%", reach: "of email" },
   ];
   return (
     <section ref={ref} className="bg-white text-[#0a0a0a] py-24 md:py-32 px-6 md:px-10">
       <div className="max-w-6xl mx-auto">
-        <div className={`${inView ? "fade-up" : "opacity-0"} text-xs uppercase tracking-[0.2em] text-neutral-500 mb-6`}>Real results</div>
+        <div className={`${inView ? "fade-up" : "opacity-0"} text-xs uppercase tracking-[0.2em] text-neutral-500 mb-6`}>Real results · live account</div>
         <h2 className={`${inView ? "fade-up" : "opacity-0"} text-[8vw] md:text-[4vw] font-medium leading-[0.95] tracking-tight mb-3`} style={{ animationDelay: "0.1s" }}>
-          Real numbers. <span className="serif italic">Real campaigns.</span>
+          £128,979 from email. <span className="serif italic">In 60 days.</span>
         </h2>
         <p className={`${inView ? "fade-up" : "opacity-0"} text-neutral-600 max-w-xl mb-14`} style={{ animationDelay: "0.15s" }}>
-          A sample of email marketing accounts Asaf has managed across different industries — every figure is real, every flow built from scratch.
+          A real Klaviyo account managed by Asaf, Nov–Dec 2025: 20.4% of total revenue driven by email, with flows alone bringing in £97,372. Every flow below built and optimised from scratch. Real screenshots available on your call.
         </p>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
           {cases.map((c, i) => (
@@ -97,7 +97,7 @@ function Results() {
               <div className="text-sm text-neutral-600 mb-5">{c.industry}</div>
               <div className="grid grid-cols-2 gap-3">
                 <div className="bg-white rounded-2xl p-4">
-                  <div className="text-[10px] uppercase tracking-widest text-neutral-500 mb-1">Ad spend</div>
+                  <div className="text-[10px] uppercase tracking-widest text-neutral-500 mb-1">Deliveries</div>
                   <div className="text-lg font-medium">{c.spent}</div>
                 </div>
                 <div className="bg-white rounded-2xl p-4">
@@ -105,11 +105,11 @@ function Results() {
                   <div className="text-lg font-medium text-emerald-700">{c.primary}</div>
                 </div>
                 <div className="bg-white rounded-2xl p-4">
-                  <div className="text-[10px] uppercase tracking-widest text-neutral-500 mb-1">Open rate</div>
+                  <div className="text-[10px] uppercase tracking-widest text-neutral-500 mb-1">Per recipient</div>
                   <div className="text-lg font-medium">{c.roas}</div>
                 </div>
                 <div className="bg-white rounded-2xl p-4">
-                  <div className="text-[10px] uppercase tracking-widest text-neutral-500 mb-1">Click rate</div>
+                  <div className="text-[10px] uppercase tracking-widest text-neutral-500 mb-1">Change</div>
                   <div className="text-lg font-medium">{c.reach}</div>
                 </div>
               </div>
@@ -231,6 +231,7 @@ function Pricing() {
               <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-transform" />
             </a>
             <div className="mt-4 text-center text-xs text-white/40 uppercase tracking-widest">No contract · Cancel any time · Live in 7 days</div>
+            <div className="mt-2 text-center text-xs text-emerald-400/80">First month not happy? Cancel and pay nothing further — no lock-in, no risk.</div>
           </div>
         </div>
       </div>
