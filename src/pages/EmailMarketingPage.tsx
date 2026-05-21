@@ -17,7 +17,7 @@ export default function EmailMarketingPage() {
             <span className="serif italic">prints money.</span>
           </>
         }
-        description="Full Klaviyo and Mailchimp email marketing managed for your business. Flows, campaigns, segmentation, and reporting — all done for you. Turn your list into your highest-ROI channel."
+        description="Already on Klaviyo or Mailchimp but it's not pulling its weight? I rebuild your flows, campaigns, and segmentation from scratch and run the whole channel for you — so email becomes your highest-ROI revenue source, not an afterthought."
         stats={[
           { value: "20.4%", label: "Of total revenue from email" },
           { value: "£128K", label: "Email revenue in 60 days" },
@@ -50,6 +50,7 @@ export default function EmailMarketingPage() {
       />
 
       <Results />
+      <Showcase />
       <Pricing />
 
       <StrategyCallCTA
@@ -63,6 +64,14 @@ export default function EmailMarketingPage() {
         sub="30-minute strategy call. Asaf will audit your current email setup, your list, and tell you straight what's possible."
         benefits={["No contracts", "All flows included", "Live in days", "Cancel anytime"]}
       />
+
+      <section className="bg-[#0a0a0a] text-white/30 px-6 md:px-10 pb-12">
+        <div className="max-w-3xl mx-auto text-[11px] leading-relaxed">
+          <p>
+            Results disclaimer: Figures shown are from real client accounts managed by Eralean over the stated periods. These results are not typical or guaranteed. Email marketing performance depends on many factors unique to each business — including existing list size, product, pricing, traffic, and market. Eralean does not promise or guarantee specific revenue, ROI, or financial outcomes. Your results will vary.
+          </p>
+        </div>
+      </section>
     </Layout>
   );
 }
@@ -85,7 +94,7 @@ function Results() {
           £128,979 from email. <span className="serif italic">In 60 days.</span>
         </h2>
         <p className={`${inView ? "fade-up" : "opacity-0"} text-neutral-600 max-w-xl mb-14`} style={{ animationDelay: "0.15s" }}>
-          A real Klaviyo account managed by Asaf, Nov–Dec 2025: 20.4% of total revenue driven by email, with flows alone bringing in £97,372. Every flow below built and optimised from scratch. Real screenshots available on your call.
+          A real Klaviyo account managed by Asaf, Nov–Dec 2025: 20.4% of total revenue driven by email, with flows alone bringing in £97,372. Most stores think email is "handled" — then discover their flows were half-built and leaking revenue. Every flow below was rebuilt and optimised from scratch. Real screenshots shared on your call.
         </p>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
           {cases.map((c, i) => (
@@ -157,6 +166,112 @@ function Reviews() {
         ))}
       </div>
     </div>
+  );
+}
+
+function Showcase() {
+  const [ref, inView] = useInView();
+  return (
+    <section ref={ref} className="bg-[#0a0a0a] text-white py-24 md:py-32 px-6 md:px-10">
+      <div className="max-w-6xl mx-auto">
+        <div className={`${inView ? "fade-up" : "opacity-0"} text-xs uppercase tracking-[0.2em] text-white/40 mb-6`}>The work</div>
+        <h2 className={`${inView ? "fade-up" : "opacity-0"} text-[8vw] md:text-[4vw] font-medium leading-[0.95] tracking-tight mb-3`} style={{ animationDelay: "0.1s" }}>
+          What I build, <span className="serif italic text-white/70">end to end.</span>
+        </h2>
+        <p className={`${inView ? "fade-up" : "opacity-0"} text-white/50 max-w-xl mb-16`} style={{ animationDelay: "0.15s" }}>
+          The anatomy of a high-performing email channel — campaigns, automation flows, and list-growth forms. Every piece designed branded, mobile-first, and built to convert. Live examples from your own account shared on the call.
+        </p>
+
+        <div className="grid md:grid-cols-3 gap-6">
+          {/* CAMPAIGN MOCKUP */}
+          <div className={`${inView ? "fade-up" : "opacity-0"} bg-white/[0.03] border border-white/10 rounded-3xl p-6`} style={{ animationDelay: "0.2s" }}>
+            <div className="flex items-center justify-between mb-5">
+              <span className="text-xs uppercase tracking-widest text-emerald-400">Campaign</span>
+              <span className="text-[10px] text-white/30">Weekly send</span>
+            </div>
+            <div className="bg-white rounded-2xl overflow-hidden shadow-2xl">
+              <div className="h-9 bg-[#0a0a0a] flex items-center justify-center">
+                <div className="text-white text-[10px] tracking-[0.3em] uppercase">Your Brand</div>
+              </div>
+              <div className="h-28 bg-gradient-to-br from-[#e9e2d6] to-[#d8cdb8] flex items-center justify-center">
+                <div className="text-[#0a0a0a]/40 text-[10px] uppercase tracking-widest">Hero image</div>
+              </div>
+              <div className="p-4 space-y-2">
+                <div className="h-3 w-3/4 bg-[#0a0a0a] rounded-full" />
+                <div className="h-2 w-full bg-neutral-200 rounded-full" />
+                <div className="h-2 w-5/6 bg-neutral-200 rounded-full" />
+                <div className="mt-3 h-7 w-28 bg-emerald-600 rounded-full flex items-center justify-center">
+                  <div className="text-white text-[9px] uppercase tracking-widest">Shop now</div>
+                </div>
+              </div>
+            </div>
+            <p className="text-xs text-white/40 mt-5 leading-relaxed">Segmented, on-brand campaigns with one clear CTA — designed to drive revenue without fatiguing your list.</p>
+          </div>
+
+          {/* FLOW MOCKUP */}
+          <div className={`${inView ? "fade-up" : "opacity-0"} bg-white/[0.03] border border-white/10 rounded-3xl p-6`} style={{ animationDelay: "0.28s" }}>
+            <div className="flex items-center justify-between mb-5">
+              <span className="text-xs uppercase tracking-widest text-emerald-400">Automation flow</span>
+              <span className="text-[10px] text-white/30">Abandoned cart</span>
+            </div>
+            <div className="space-y-3">
+              {[
+                { t: "Trigger", d: "Cart abandoned", c: "bg-amber-500/20 border-amber-500/40 text-amber-300" },
+                { t: "Wait 1 hour", d: "Then send Email 1", c: "bg-white/5 border-white/15 text-white/50" },
+                { t: "Email 1", d: "Reminder + product", c: "bg-emerald-500/15 border-emerald-500/40 text-emerald-300" },
+                { t: "Wait 24 hours", d: "If no purchase", c: "bg-white/5 border-white/15 text-white/50" },
+                { t: "Email 2", d: "10% off nudge", c: "bg-emerald-500/15 border-emerald-500/40 text-emerald-300" },
+              ].map((s, i) => (
+                <div key={i}>
+                  <div className={`border rounded-xl px-4 py-3 ${s.c}`}>
+                    <div className="text-[11px] font-medium uppercase tracking-wide">{s.t}</div>
+                    <div className="text-[10px] opacity-70">{s.d}</div>
+                  </div>
+                  {i < 4 && <div className="w-px h-3 bg-white/15 mx-auto" />}
+                </div>
+              ))}
+            </div>
+            <p className="text-xs text-white/40 mt-5 leading-relaxed">Multi-step automations that recover lost sales and run 24/7 — built once, optimised continuously.</p>
+          </div>
+
+          {/* SIGN-UP FORM MOCKUP */}
+          <div className={`${inView ? "fade-up" : "opacity-0"} bg-white/[0.03] border border-white/10 rounded-3xl p-6`} style={{ animationDelay: "0.36s" }}>
+            <div className="flex items-center justify-between mb-5">
+              <span className="text-xs uppercase tracking-widest text-emerald-400">Sign-up form</span>
+              <span className="text-[10px] text-white/30">Pop-up</span>
+            </div>
+            <div className="bg-white rounded-2xl p-5 shadow-2xl">
+              <div className="text-center space-y-3">
+                <div className="text-[#0a0a0a] text-lg font-medium leading-tight">Get 10% off<br />your first order</div>
+                <div className="h-2 w-4/5 bg-neutral-200 rounded-full mx-auto" />
+                <div className="border border-neutral-300 rounded-lg h-8 flex items-center px-3">
+                  <span className="text-neutral-400 text-[10px]">you@email.com</span>
+                </div>
+                <div className="h-9 bg-[#0a0a0a] rounded-lg flex items-center justify-center">
+                  <span className="text-white text-[10px] uppercase tracking-widest">Unlock 10% off</span>
+                </div>
+                <div className="text-neutral-400 text-[8px]">No thanks, I'll pay full price</div>
+              </div>
+            </div>
+            <div className="grid grid-cols-3 gap-2 mt-4">
+              <div className="bg-white/5 rounded-lg py-2 text-center">
+                <div className="text-emerald-400 text-sm font-medium">+8%</div>
+                <div className="text-white/30 text-[8px] uppercase">Opt-in</div>
+              </div>
+              <div className="bg-white/5 rounded-lg py-2 text-center">
+                <div className="text-emerald-400 text-sm font-medium">2-step</div>
+                <div className="text-white/30 text-[8px] uppercase">Flow</div>
+              </div>
+              <div className="bg-white/5 rounded-lg py-2 text-center">
+                <div className="text-emerald-400 text-sm font-medium">Exit</div>
+                <div className="text-white/30 text-[8px] uppercase">Intent</div>
+              </div>
+            </div>
+            <p className="text-xs text-white/40 mt-5 leading-relaxed">High-converting pop-ups and exit-intent forms that grow your list with buyers, not browsers.</p>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
 
