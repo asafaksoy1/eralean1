@@ -4,7 +4,7 @@ import { FeatureGrid } from "../components/FeatureGrid";
 import { StrategyCallCTA } from "../components/StrategyCallCTA";
 import { useInView } from "../lib/useInView";
 import { CALENDLY } from "../lib/constants";
-import { ArrowUpRight, Calendar, Check, Quote, Star } from "lucide-react";
+import { ArrowUpRight, Calendar, Check, Quote, Sparkles, Star } from "lucide-react";
 
 export default function AdsPage() {
   return (
@@ -34,7 +34,7 @@ export default function AdsPage() {
             <span className="serif italic text-neutral-500">run profitable ads.</span>
           </>
         }
-        intro="Full campaign setup, creative, targeting, and optimisation — all managed by Asaf. One flat fee. No extras."
+        intro="Full campaign setup, creative, targeting, and optimisation — all managed by Asaf. One simple monthly fee. No extras."
         background="cream"
         features={[
           { title: "Campaign strategy & setup", description: "Full campaign architecture built for your business goals — awareness, traffic, leads, or purchases." },
@@ -162,75 +162,132 @@ function Reviews() {
 
 function Pricing() {
   const [ref, inView] = useInView();
-  const breakdown = [
-    { label: "Setup / onboarding fee", value: "Free", strike: "£500" },
-    { label: "Campaign strategy & setup", value: "Included" },
-    { label: "Ad creative & copywriting", value: "Included" },
-    { label: "Audience research & targeting", value: "Included" },
-    { label: "Daily monitoring & optimisation", value: "Included" },
-    { label: "Pixel & conversion tracking", value: "Included" },
-    { label: "Monthly performance report", value: "Included" },
-    { label: "Hidden fees / extra charges", value: "None. Ever." },
+
+  const tiers = [
+    {
+      name: "Google Ads",
+      tagline: "Search, Shopping & Performance Max",
+      price: "£199",
+      featured: false,
+      features: [
+        "Search + Performance Max campaigns",
+        "Keyword research & targeting",
+        "Ad copywriting included",
+        "Conversion & call tracking setup",
+        "Daily monitoring & optimisation",
+        "Monthly performance report",
+        "Direct WhatsApp support",
+      ],
+    },
+    {
+      name: "Both — Bundle",
+      tagline: "Meta + Google, fully managed",
+      price: "£299",
+      strike: "£398",
+      save: "Save £99 / month",
+      featured: true,
+      features: [
+        "Everything in Google + Meta",
+        "Cross-platform strategy & budget split",
+        "Full-funnel retargeting across channels",
+        "Unified monthly reporting dashboard",
+        "Priority WhatsApp support",
+        "Quarterly strategy review",
+      ],
+    },
+    {
+      name: "Meta Ads",
+      tagline: "Facebook & Instagram",
+      price: "£199",
+      featured: false,
+      features: [
+        "Facebook + Instagram campaigns",
+        "Ad creative & copywriting included",
+        "Lookalike & custom audiences",
+        "Retargeting & remarketing",
+        "Meta Pixel + Conversions API setup",
+        "Monthly performance report",
+        "Direct WhatsApp support",
+      ],
+    },
   ];
+
   return (
     <section ref={ref} className="bg-[#f5f3ee] text-[#0a0a0a] py-24 md:py-32 px-6 md:px-10">
-      <div className="max-w-3xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         <div className={`${inView ? "fade-up" : "opacity-0"} text-xs uppercase tracking-[0.2em] text-neutral-500 mb-6 text-center`}>Pricing</div>
         <h2 className={`${inView ? "fade-up" : "opacity-0"} text-[8vw] md:text-[4vw] font-medium leading-[0.95] tracking-tight text-center mb-3`} style={{ animationDelay: "0.1s" }}>
           Simple. Transparent. <span className="serif italic">No fluff.</span>
         </h2>
-        <p className={`${inView ? "fade-up" : "opacity-0"} text-center text-neutral-600 max-w-md mx-auto mb-14`} style={{ animationDelay: "0.15s" }}>
-          One flat management fee. You control your ad budget. We manage everything else.
+        <p className={`${inView ? "fade-up" : "opacity-0"} text-center text-neutral-600 max-w-lg mx-auto mb-14`} style={{ animationDelay: "0.15s" }}>
+          Run just one platform, or take both and save £99 a month. A flat monthly management fee — you set your own ad budget and pay the platforms directly.
         </p>
 
-        <div className={`${inView ? "fade-up" : "opacity-0"} bg-[#0a0a0a] text-white rounded-[32px] p-10 md:p-14 relative overflow-hidden`} style={{ animationDelay: "0.2s" }}>
-          <div className="absolute inset-0 grain pointer-events-none" />
-          <div className="relative">
-            <div className="text-xs uppercase tracking-widest text-emerald-400 mb-2">Meta + Google ads management</div>
-            <div className="flex items-end gap-2 mb-6">
-              <span className="text-7xl md:text-8xl font-medium tracking-tight">£299</span>
-              <span className="text-white/50 text-lg mb-3">/ month</span>
-            </div>
-            <p className="text-white/60 mb-8 max-w-md">Management fee only — you set your own ad budget and pay platforms directly.</p>
+        <div className="grid md:grid-cols-3 gap-5 items-stretch">
+          {tiers.map((tier, i) => (
+            <div
+              key={tier.name}
+              className={`${inView ? "fade-up" : "opacity-0"} relative flex flex-col rounded-[28px] p-8 md:p-9 ${
+                tier.featured
+                  ? "bg-[#0a0a0a] text-white overflow-hidden shadow-2xl shadow-black/20"
+                  : "bg-white text-[#0a0a0a] border border-black/5"
+              }`}
+              style={{ animationDelay: `${0.2 + i * 0.07}s` }}
+            >
+              {tier.featured && <div className="absolute inset-0 grain pointer-events-none" />}
+              <div className="relative flex flex-col h-full">
+                {tier.featured && (
+                  <div className="inline-flex self-start items-center gap-1.5 text-[10px] uppercase tracking-widest text-emerald-400 bg-emerald-400/10 border border-emerald-400/20 px-3 py-1 rounded-full mb-5">
+                    <Sparkles className="w-3 h-3" /> Best value
+                  </div>
+                )}
 
-            <div className="border-t border-white/10 pt-6 space-y-3 mb-8">
-              {breakdown.map((row) => (
-                <div key={row.label} className="flex items-center justify-between gap-4 text-sm">
-                  <span className="text-white/70">{row.label}</span>
-                  <span className="flex items-center gap-2">
-                    {row.strike && <span className="line-through text-white/30">{row.strike}</span>}
-                    <span className={row.value === "None. Ever." ? "text-emerald-400" : "text-white"}>{row.value}</span>
-                  </span>
+                <div className={`text-xs uppercase tracking-widest mb-1 ${tier.featured ? "text-white/50" : "text-neutral-500"}`}>
+                  {tier.name}
                 </div>
-              ))}
-            </div>
+                <div className={`text-sm mb-6 ${tier.featured ? "text-white/60" : "text-neutral-500"}`}>{tier.tagline}</div>
 
-            <div className="grid sm:grid-cols-2 gap-3 mb-8">
-              {[
-                "Facebook + Instagram + Google",
-                "Full campaign setup from scratch",
-                "Creative & copywriting included",
-                "Lookalike & custom audiences",
-                "Retargeting & remarketing",
-                "Conversion tracking setup",
-                "Monthly results report",
-                "Direct WhatsApp support",
-              ].map((f) => (
-                <div key={f} className="flex items-start gap-2 text-sm text-white/80">
-                  <Check className="w-4 h-4 text-emerald-400 mt-0.5 shrink-0" />
-                  {f}
+                <div className="flex items-end gap-2">
+                  {tier.strike && <span className="text-2xl line-through text-white/30 mb-1.5">{tier.strike}</span>}
+                  <span className="text-5xl md:text-6xl font-medium tracking-tight">{tier.price}</span>
+                  <span className={`text-base mb-2 ${tier.featured ? "text-white/50" : "text-neutral-400"}`}>/ mo</span>
                 </div>
-              ))}
-            </div>
+                {tier.save ? (
+                  <div className="text-xs text-emerald-400 mt-1 mb-6">{tier.save}</div>
+                ) : (
+                  <div className="text-xs text-neutral-400 mt-1 mb-6">Management fee — you set your own budget</div>
+                )}
 
-            <a href={CALENDLY} target="_blank" rel="noopener noreferrer"
-               className="bg-white text-black rounded-full px-6 py-4 text-base hover:bg-neutral-200 transition-colors inline-flex items-center gap-3 group w-full justify-center">
-              <Calendar className="w-5 h-5" />
-              Book your free strategy call
-              <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-transform" />
-            </a>
-            <div className="mt-4 text-center text-xs text-white/40 uppercase tracking-widest">No contract · Cancel any time · Start this week</div>
-          </div>
+                <div className={`border-t pt-6 space-y-3 mb-8 ${tier.featured ? "border-white/10" : "border-neutral-200"}`}>
+                  {tier.features.map((f) => (
+                    <div key={f} className={`flex items-start gap-2.5 text-sm ${tier.featured ? "text-white/80" : "text-neutral-700"}`}>
+                      <Check className={`w-4 h-4 mt-0.5 shrink-0 ${tier.featured ? "text-emerald-400" : "text-emerald-600"}`} />
+                      {f}
+                    </div>
+                  ))}
+                </div>
+
+                <a
+                  href={CALENDLY}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`mt-auto rounded-full px-6 py-4 text-base transition-colors inline-flex items-center justify-center gap-2 group w-full ${
+                    tier.featured
+                      ? "bg-white text-black hover:bg-neutral-200"
+                      : "bg-[#0a0a0a] text-white hover:bg-neutral-800"
+                  }`}
+                >
+                  <Calendar className="w-5 h-5" />
+                  Book a strategy call
+                  <ArrowUpRight className="w-4 h-4 group-hover:rotate-45 transition-transform" />
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className={`${inView ? "fade-up" : "opacity-0"} mt-10 text-center text-xs text-neutral-500 uppercase tracking-widest`} style={{ animationDelay: "0.5s" }}>
+          Every plan includes free setup (worth £500) · No contract · Cancel any time
         </div>
       </div>
     </section>
