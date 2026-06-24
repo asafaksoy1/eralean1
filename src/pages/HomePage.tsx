@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import { ArrowUpRight, Calendar, ChevronDown, Quote, Star, Plus } from "lucide-react";
 import { CALENDLY, SERVICES } from "../lib/constants";
+import { trackLead } from "../lib/analytics";
 import { useInView } from "../lib/useInView";
 import { GlobalStyles } from "../components/GlobalStyles";
 import { Nav } from "../components/Nav";
@@ -190,7 +191,7 @@ function How() {
           ))}
         </div>
         <div className={`${inView ? "fade-up" : "opacity-0"} mt-16 text-center`} style={{ animationDelay: "0.6s" }}>
-          <a href={CALENDLY} target="_blank" rel="noopener noreferrer"
+          <a href={CALENDLY} target="_blank" rel="noopener noreferrer" onClick={() => trackLead("general")}
              className="inline-flex items-center gap-3 bg-black text-white rounded-full px-8 py-4 text-base hover:bg-neutral-800 transition-colors group">
             <Calendar className="w-5 h-5" />
             Book your free strategy call

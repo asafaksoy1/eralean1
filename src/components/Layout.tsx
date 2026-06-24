@@ -4,13 +4,15 @@ import { GlobalStyles } from "./GlobalStyles";
 import { Nav } from "./Nav";
 import { Footer } from "./Footer";
 import { FloatingWhatsApp } from "./FloatingWhatsApp";
+import type { Offer } from "../lib/analytics";
 
 type LayoutProps = {
   children: ReactNode;
   navVariant?: "overlay" | "solid";
+  offer?: Offer;
 };
 
-export function Layout({ children, navVariant = "solid" }: LayoutProps) {
+export function Layout({ children, navVariant = "solid", offer = "general" }: LayoutProps) {
   const location = useLocation();
 
   useEffect(() => {
@@ -28,11 +30,11 @@ export function Layout({ children, navVariant = "solid" }: LayoutProps) {
   return (
     <div className="bg-black text-white min-h-screen" style={{ fontFamily: "'Readex Pro', system-ui, sans-serif" }}>
       <GlobalStyles />
-      {navVariant === "solid" && <Nav variant="solid" />}
-      {navVariant === "overlay" && <Nav variant="overlay" />}
+      {navVariant === "solid" && <Nav variant="solid" offer={offer} />}
+      {navVariant === "overlay" && <Nav variant="overlay" offer={offer} />}
       <main>{children}</main>
       <Footer />
-      <FloatingWhatsApp />
+      <FloatingWhatsApp offer={offer} />
     </div>
   );
 }

@@ -4,6 +4,7 @@ import { FeatureGrid } from "../components/FeatureGrid";
 import { StrategyCallCTA } from "../components/StrategyCallCTA";
 import { useInView } from "../lib/useInView";
 import { CALENDLY } from "../lib/constants";
+import { trackLead } from "../lib/analytics";
 import { ArrowUpRight, Calendar, Check, Quote, Sparkles, Star } from "lucide-react";
 
 export const meta = () => [
@@ -17,8 +18,9 @@ export const meta = () => [
 
 export default function AdsPage() {
   return (
-    <Layout navVariant="solid">
+    <Layout navVariant="solid" offer="ads">
       <ServiceHero
+        offer="ads"
         eyebrow="Service · Meta & Google Ads"
         title={
           <>
@@ -71,6 +73,7 @@ export default function AdsPage() {
         }
         sub="30-minute strategy call. Asaf will look at your current spend, your offer, and tell you straight what's possible."
         benefits={["No contracts", "Creative included", "Live in days", "Cancel anytime"]}
+        offer="ads"
       />
     </Layout>
   );
@@ -280,6 +283,7 @@ function Pricing() {
                   href={CALENDLY}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => trackLead("ads")}
                   className={`mt-auto rounded-full px-6 py-4 text-base transition-colors inline-flex items-center justify-center gap-2 group w-full ${
                     tier.featured
                       ? "bg-white text-black hover:bg-neutral-200"

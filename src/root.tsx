@@ -25,6 +25,55 @@ export const meta = () => [
   },
 ];
 
+// GA4 + Google Ads (shared gtag.js loader) and Meta Pixel base tags. Rendered
+// only in production builds (see the import.meta.env.PROD guard in <head>), so
+// dev never pollutes analytics. The inline scripts define window.gtag /
+// window.fbq, which src/lib/analytics.ts then calls from CTA handlers.
+function TrackingScripts() {
+  return (
+    <>
+      {/* GA4 + Google Ads — single gtag.js loader, two configs */}
+      <script
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=G-VM6DQTS5DG"
+      />
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-VM6DQTS5DG');
+            gtag('config', 'AW-18269973238');
+          `,
+        }}
+      />
+      {/* Meta Pixel */}
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
+            !function(f,b,e,v,n,t,s)
+            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window, document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '4391212171163117');
+            fbq('track', 'PageView');
+          `,
+        }}
+      />
+      <noscript
+        dangerouslySetInnerHTML={{
+          __html: `<img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=4391212171163117&ev=PageView&noscript=1" alt="" />`,
+        }}
+      />
+    </>
+  );
+}
+
 export function Layout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
@@ -34,6 +83,7 @@ export function Layout({ children }: { children: ReactNode }) {
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <Meta />
         <Links />
+        {import.meta.env.PROD && <TrackingScripts />}
       </head>
       <body>
         {children}

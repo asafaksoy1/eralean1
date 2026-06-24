@@ -4,6 +4,7 @@ import { FeatureGrid } from "../components/FeatureGrid";
 import { StrategyCallCTA } from "../components/StrategyCallCTA";
 import { useInView } from "../lib/useInView";
 import { CALENDLY } from "../lib/constants";
+import { trackLead } from "../lib/analytics";
 import { ArrowUpRight, Calendar, Check, Quote, Star } from "lucide-react";
 
 export const meta = () => [
@@ -17,8 +18,9 @@ export const meta = () => [
 
 export default function EmailMarketingPage() {
   return (
-    <Layout navVariant="solid">
+    <Layout navVariant="solid" offer="email">
       <ServiceHero
+        offer="email"
         eyebrow="Service · Email Marketing"
         title={
           <>
@@ -72,6 +74,7 @@ export default function EmailMarketingPage() {
         }
         sub="30-minute strategy call. Asaf will audit your current email setup, your list, and tell you straight what's possible."
         benefits={["No contracts", "All flows included", "Live in days", "Cancel anytime"]}
+        offer="email"
       />
 
       <section className="bg-[#0a0a0a] text-white/30 px-6 md:px-10 pb-12">
@@ -348,7 +351,7 @@ function Pricing() {
               ))}
             </div>
 
-            <a href={CALENDLY} target="_blank" rel="noopener noreferrer"
+            <a href={CALENDLY} target="_blank" rel="noopener noreferrer" onClick={() => trackLead("email")}
                className="bg-white text-black rounded-full px-6 py-4 text-base hover:bg-neutral-200 transition-colors inline-flex items-center gap-3 group w-full justify-center">
               <Calendar className="w-5 h-5" />
               Book your free strategy call

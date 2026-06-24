@@ -2,12 +2,14 @@ import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router";
 import { ArrowUpRight, ChevronDown, Menu, X } from "lucide-react";
 import { CALENDLY, SERVICES } from "../lib/constants";
+import { trackLead, type Offer } from "../lib/analytics";
 
 type NavProps = {
   variant?: "overlay" | "solid";
+  offer?: Offer;
 };
 
-export function Nav({ variant = "solid" }: NavProps) {
+export function Nav({ variant = "solid", offer = "general" }: NavProps) {
   const [scrolled, setScrolled] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -143,6 +145,7 @@ export function Nav({ variant = "solid" }: NavProps) {
           href={CALENDLY}
           target="_blank"
           rel="noopener noreferrer"
+          onClick={() => trackLead(offer)}
           className="hidden md:inline-flex bg-white text-black text-sm rounded-full px-6 py-3 hover:bg-neutral-200 transition-colors items-center gap-2 shrink-0"
         >
           Book free call <ArrowUpRight className="w-4 h-4" />
@@ -169,6 +172,7 @@ export function Nav({ variant = "solid" }: NavProps) {
             href={CALENDLY}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackLead(offer)}
             className="mt-2 bg-white text-black text-sm rounded-full px-5 py-3 inline-flex items-center gap-2"
           >
             Book free call <ArrowUpRight className="w-4 h-4" />

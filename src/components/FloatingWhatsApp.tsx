@@ -1,11 +1,13 @@
 import { WHATSAPP } from "../lib/constants";
+import { trackLead, type Offer } from "../lib/analytics";
 
-export function FloatingWhatsApp() {
+export function FloatingWhatsApp({ offer = "general" }: { offer?: Offer }) {
   return (
     <a
       href={WHATSAPP}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={() => trackLead(offer)}
       className="fixed bottom-6 right-6 z-50 bg-emerald-500 hover:bg-emerald-600 text-white rounded-full p-4 shadow-2xl transition-transform hover:scale-110"
       aria-label="Message on WhatsApp"
     >

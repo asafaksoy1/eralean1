@@ -4,6 +4,7 @@ import { FeatureGrid } from "../components/FeatureGrid";
 import { StrategyCallCTA } from "../components/StrategyCallCTA";
 import { useInView } from "../lib/useInView";
 import { CALENDLY } from "../lib/constants";
+import { trackLead } from "../lib/analytics";
 import { ArrowUpRight, Calendar, Check, Quote, Star } from "lucide-react";
 
 export const meta = () => [
@@ -17,8 +18,9 @@ export const meta = () => [
 
 export default function WebsitePage() {
   return (
-    <Layout navVariant="solid">
+    <Layout navVariant="solid" offer="website">
       <ServiceHero
+        offer="website"
         eyebrow="Service · Website"
         title={
           <>
@@ -72,6 +74,7 @@ export default function WebsitePage() {
         }
         sub="30-minute call. We'll map exactly what your site should do — and what it costs. No pitch, no pressure."
         benefits={["£0 setup", "£99/mo all-in", "Live in 7 days", "Cancel anytime"]}
+        offer="website"
       />
     </Layout>
   );
@@ -139,7 +142,7 @@ function Pricing() {
               ))}
             </div>
 
-            <a href={CALENDLY} target="_blank" rel="noopener noreferrer"
+            <a href={CALENDLY} target="_blank" rel="noopener noreferrer" onClick={() => trackLead("website")}
                className="bg-white text-black rounded-full px-6 py-4 text-base hover:bg-neutral-200 transition-colors inline-flex items-center gap-3 group w-full justify-center">
               <Calendar className="w-5 h-5" />
               Book your free strategy call
