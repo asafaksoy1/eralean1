@@ -1,7 +1,8 @@
 // Google Ads conversion label — fill this in from the Google Ads UI.
 // It's the part after the slash in the conversion's "send to" value:
 //   AW-18269973238/<CONVERSION_LABEL>
-export const CONVERSION_LABEL = "REPLACE_WITH_GOOGLE_ADS_CONVERSION_LABEL";
+// Left empty for now; while empty, the Google Ads conversion event is skipped.
+export const CONVERSION_LABEL = "";
 
 const GOOGLE_ADS_ID = "AW-18269973238";
 
@@ -14,21 +15,22 @@ declare global {
   }
 }
 
-// Fire a lead conversion across GA4, Google Ads, and Meta. Each call is
-// individually guarded: if its global isn't on the page (e.g. dev, ad-blocker,
-// or scripts not yet loaded) it silently no-ops. Safe to call during SSR — on
-// the server `window` is undefined, so all three resolve to undefined.
+// Fire a lead conversion across GA4, Google Ads, and Meta. Each call no-ops via
+// optional chaining if its global isn't on the page (dev, ad-blocker, or
+// scripts not yet loaded). Only invoked from browser click/submit handlers, so
+// `window` is always defined when this runs.
 export function trackLead(offer: Offer): void {
-  const gtag = typeof window !== "undefined" ? window.gtag : undefined;
-  const fbq = typeof window !== "undefined" ? window.fbq : undefined;
-
   // GA4
-  gtag?.("event", "generate_lead", { offer });
-  // Google Ads conversion
-  gtag?.("event", "conversion", {
-    send_to: `${GOOGLE_ADS_ID}/${CONVERSION_LABEL}`,
-    offer,
-  });
+  window.gtag?.("event", "generate_lead", { offer });
+
+  // Google Ads conversion — only once a real conversion label is set.
+  if (CONVERSION_LABEL) {
+    window.gtag?.("event", "conversion", {
+      send_to: `${GOOGLE_ADS_ID}/${CONVERSION_LABEL}`,
+      offer,
+    });
+  }
+
   // Meta Pixel
-  fbq?.("track", "Lead", { content_name: offer });
+  window.fbq?.("track", "Lead", { content_name: offer });
 }
