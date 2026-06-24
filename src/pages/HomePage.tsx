@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import { ArrowUpRight, Calendar, ChevronDown, Quote, Star, Plus } from "lucide-react";
 import { CALENDLY, SERVICES } from "../lib/constants";
 import { useInView } from "../lib/useInView";
@@ -9,6 +9,15 @@ import { Footer } from "../components/Footer";
 import { FloatingWhatsApp } from "../components/FloatingWhatsApp";
 import { StrategyCallCTA } from "../components/StrategyCallCTA";
 import { PHOTO } from "../lib/photo";
+
+export const meta = () => [
+  { title: "EraLean — Growth systems for modern brands" },
+  {
+    name: "description",
+    content:
+      "EraLean builds and runs done-for-you growth systems — website, ads, and email marketing — so modern brands win more customers while you focus on the business.",
+  },
+];
 
 export default function HomePage() {
   const [scrolled, setScrolled] = useState(false);

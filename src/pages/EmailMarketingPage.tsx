@@ -6,6 +6,15 @@ import { useInView } from "../lib/useInView";
 import { CALENDLY } from "../lib/constants";
 import { ArrowUpRight, Calendar, Check, Quote, Star } from "lucide-react";
 
+export const meta = () => [
+  { title: "Ecommerce Email Marketing — EraLean" },
+  {
+    name: "description",
+    content:
+      "Done-for-you ecommerce email marketing — Klaviyo flows and campaigns that turn subscribers into repeat customers and recover revenue on autopilot.",
+  },
+];
+
 export default function EmailMarketingPage() {
   return (
     <Layout navVariant="solid">

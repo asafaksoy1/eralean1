@@ -6,6 +6,15 @@ import { useInView } from "../lib/useInView";
 import { CALENDLY } from "../lib/constants";
 import { ArrowUpRight, Calendar, Check, Quote, Sparkles, Star } from "lucide-react";
 
+export const meta = () => [
+  { title: "Google & Meta Ads Management — EraLean" },
+  {
+    name: "description",
+    content:
+      "End-to-end Google and Meta ads management — creative, copy, audiences, and daily optimisation — engineered to bring you qualified leads at a profitable cost.",
+  },
+];
+
 export default function AdsPage() {
   return (
     <Layout navVariant="solid">

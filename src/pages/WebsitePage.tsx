@@ -6,6 +6,15 @@ import { useInView } from "../lib/useInView";
 import { CALENDLY } from "../lib/constants";
 import { ArrowUpRight, Calendar, Check, Quote, Star } from "lucide-react";
 
+export const meta = () => [
+  { title: "Website Design & Build — EraLean" },
+  {
+    name: "description",
+    content:
+      "High-converting websites designed and built around bookings, not vanity metrics — fast, mobile-first, and fully managed so every visitor turns into a lead.",
+  },
+];
+
 export default function WebsitePage() {
   return (
     <Layout navVariant="solid">
