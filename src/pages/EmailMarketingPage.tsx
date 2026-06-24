@@ -5,6 +5,7 @@ import { StrategyCallCTA } from "../components/StrategyCallCTA";
 import { useInView } from "../lib/useInView";
 import { CALENDLY } from "../lib/constants";
 import { trackLead } from "../lib/analytics";
+import { AuditForm } from "../components/AuditForm";
 import { ArrowUpRight, Calendar, Check, Quote, Star } from "lucide-react";
 
 export const meta = () => [
@@ -63,6 +64,8 @@ export default function EmailMarketingPage() {
       <Results />
       <Showcase />
       <Pricing />
+
+      <AuditForm variant="embed" offer="email" />
 
       <StrategyCallCTA
         eyebrow="Ready to make email your top channel"

@@ -5,6 +5,7 @@ import { StrategyCallCTA } from "../components/StrategyCallCTA";
 import { useInView } from "../lib/useInView";
 import { CALENDLY } from "../lib/constants";
 import { trackLead } from "../lib/analytics";
+import { AuditForm } from "../components/AuditForm";
 import { ArrowUpRight, Calendar, Check, Quote, Sparkles, Star } from "lucide-react";
 
 export const meta = () => [
@@ -62,6 +63,8 @@ export default function AdsPage() {
 
       <Results />
       <Pricing />
+
+      <AuditForm variant="embed" offer="ads" />
 
       <StrategyCallCTA
         eyebrow="Ready to get profitable ads"

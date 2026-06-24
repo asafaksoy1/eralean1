@@ -9,6 +9,7 @@ import {
   useRouteError,
 } from "react-router";
 import { SpeedInsights } from "@vercel/speed-insights/react";
+import { AuditPopup } from "./components/AuditPopup";
 import "./index.css";
 
 // In framework mode the app's HTML document lives here, not in index.html.
@@ -87,6 +88,7 @@ export function Layout({ children }: { children: ReactNode }) {
       </head>
       <body>
         {children}
+        <AuditPopup />
         <ScrollRestoration />
         <Scripts />
         <SpeedInsights />

@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import { ArrowUpRight, Calendar, ChevronDown, Quote, Star, Plus } from "lucide-react";
 import { CALENDLY, SERVICES } from "../lib/constants";
 import { trackLead } from "../lib/analytics";
+import { AuditForm } from "../components/AuditForm";
 import { useInView } from "../lib/useInView";
 import { GlobalStyles } from "../components/GlobalStyles";
 import { Nav } from "../components/Nav";
@@ -111,6 +112,7 @@ export default function HomePage() {
       <About />
       <Testimonials />
       <FAQ />
+      <AuditForm variant="embed" offer="general" />
       <StrategyCallCTA />
       <Footer />
       <FloatingWhatsApp />
