@@ -1,12 +1,15 @@
-import { Layout } from "../components/Layout";
-import { ServiceHero } from "../components/ServiceHero";
-import { FeatureGrid } from "../components/FeatureGrid";
-import { StrategyCallCTA } from "../components/StrategyCallCTA";
-import { useInView } from "../lib/useInView";
-import { CALENDLY } from "../lib/constants";
+import type { ReactNode } from "react";
+import { ArrowRight, ArrowUpRight, Check } from "lucide-react";
+import { CALENDLY, WHATSAPP } from "../lib/constants";
 import { trackLead } from "../lib/analytics";
 import { AuditForm } from "../components/AuditForm";
-import { ArrowUpRight, Calendar, Check, Quote, Star } from "lucide-react";
+import { Nav } from "../components/Nav";
+import { Footer } from "../components/Footer";
+import { FloatingWhatsApp } from "../components/FloatingWhatsApp";
+import { FadeIn } from "../components/motion/FadeIn";
+import { Dot } from "../components/brand/Dot";
+
+const OFFER = "email";
 
 export const meta = () => [
   { title: "Ecommerce Email Marketing — EraLean" },
@@ -17,82 +20,165 @@ export const meta = () => [
   },
 ];
 
-export default function EmailMarketingPage() {
+function Marker({ children }: { children: ReactNode }) {
   return (
-    <Layout navVariant="solid" offer="email">
-      <ServiceHero
-        offer="email"
-        eyebrow="Service · Email Marketing"
-        title={
-          <>
-            Email that actually<br />
-            <span className="serif italic">prints money.</span>
-          </>
-        }
-        description="Already on Klaviyo or Mailchimp but it's not pulling its weight? I rebuild your flows, campaigns, and segmentation from scratch and run the whole channel for you — so email becomes your highest-ROI revenue source, not an afterthought."
-        stats={[
-          { value: "20.4%", label: "Of total revenue from email" },
-          { value: "£128K", label: "Email revenue in 60 days" },
-          { value: "+55%", label: "Revenue vs prev. period" },
-          { value: "£0", label: "Setup fee" },
-        ]}
-      />
-
-      <FeatureGrid
-        eyebrow="What's included"
-        title={
-          <>
-            Everything you need to <br />
-            <span className="serif italic text-neutral-500">scale with email.</span>
-          </>
-        }
-        intro="Complete email marketing setup and management — flows, campaigns, segmentation, full account management. One flat fee. No extras."
-        background="cream"
-        features={[
-          { title: "Email automation flows", description: "Welcome series, abandoned cart, post-purchase, win-back, browse abandonment — every revenue-driving flow set up and optimised." },
-          { title: "Weekly campaigns", description: "Planned, designed, written, and sent. New campaign every week to keep your list engaged and buying." },
-          { title: "Smart segmentation", description: "Segment your list by behaviour, value, and engagement so the right message hits the right person at the right time." },
-          { title: "Beautiful email design", description: "Branded email templates designed to match your business — mobile-first, click-friendly, conversion-focused." },
-          { title: "List growth strategy", description: "Pop-ups, exit-intent forms, lead magnets, signup incentives — built and optimised to grow your list every month." },
-          { title: "A/B testing", description: "Subject lines, send times, copy variations, CTAs — continuously tested and improved to push open and click rates higher." },
-          { title: "Deliverability monitoring", description: "Domain authentication, list cleaning, sender reputation management — your emails land in inboxes, not spam." },
-          { title: "Monthly reporting", description: "Clear monthly reports showing revenue from email, open rates, click rates, list growth, and what's next." },
-          { title: "Direct WhatsApp support", description: "Message Asaf any time — no ticketing systems, no waiting." },
-        ]}
-      />
-
-      <Results />
-      <Showcase />
-      <Pricing />
-
-      <AuditForm variant="embed" offer="email" />
-
-      <StrategyCallCTA
-        eyebrow="Ready to make email your top channel"
-        title={
-          <>
-            Let's turn your list <br />
-            <span className="serif italic text-white/70">into revenue.</span>
-          </>
-        }
-        sub="30-minute strategy call. Asaf will audit your current email setup, your list, and tell you straight what's possible."
-        benefits={["No contracts", "All flows included", "Live in days", "Cancel anytime"]}
-        offer="email"
-      />
-
-      <section className="bg-[#0a0a0a] text-white/30 px-6 md:px-10 pb-12">
-        <div className="max-w-3xl mx-auto text-[11px] leading-relaxed">
-          <p>
-            Results disclaimer: Figures shown are from real client accounts managed by Eralean over the stated periods. These results are not typical or guaranteed. Email marketing performance depends on many factors unique to each business — including existing list size, product, pricing, traffic, and market. Eralean does not promise or guarantee specific revenue, ROI, or financial outcomes. Your results will vary.
-          </p>
-        </div>
-      </section>
-    </Layout>
+    <div className="flex items-center gap-2.5 text-[11px] font-medium uppercase tracking-[0.24em] text-white/45">
+      <Dot />
+      {children}
+    </div>
   );
 }
 
+export default function EmailMarketingPage() {
+  return (
+    <div className="bg-ink text-white">
+      <Nav variant="solid" offer={OFFER} />
+      <main>
+        <Hero />
+        <Included />
+        <Results />
+        <Showcase />
+        <Pricing />
+        <Reviews />
+        <AuditForm variant="embed" offer={OFFER} />
+        <ClosingCTA />
+        <Disclaimer />
+      </main>
+      <Footer />
+      <FloatingWhatsApp offer={OFFER} />
+    </div>
+  );
+}
+
+/* ── Hero ─────────────────────────────────────────────────────────────── */
+
+function Hero() {
+  const stats = [
+    { value: "20.4%", label: "Of total revenue from email" },
+    { value: "£128K", label: "Email revenue in 60 days" },
+    { value: "+55%", label: "Revenue vs prev. period" },
+    { value: "£0", label: "Setup fee" },
+  ];
+
+  return (
+    <section className="px-6 md:px-10 pt-28 md:pt-36 pb-24 md:pb-32">
+      <div className="mx-auto max-w-6xl">
+        <FadeIn>
+          <Marker>Service · Email Marketing</Marker>
+        </FadeIn>
+
+        <FadeIn delay={0.06}>
+          <h1 className="mt-7 max-w-4xl font-display tracking-display font-semibold text-white text-[12vw] leading-[0.95] sm:text-6xl md:text-[5rem]">
+            Email that actually prints money<span className="text-volt">.</span>
+          </h1>
+        </FadeIn>
+
+        <FadeIn delay={0.12}>
+          <p className="mt-7 max-w-2xl text-lg text-white/60">
+            Already on Klaviyo or Mailchimp but it's not pulling its weight? I
+            rebuild your flows, campaigns, and segmentation from scratch and run
+            the whole channel for you — so email becomes your highest-ROI revenue
+            source, not an afterthought.
+          </p>
+        </FadeIn>
+
+        <FadeIn delay={0.18}>
+          <div className="mt-9 flex flex-wrap items-center gap-4">
+            <a
+              href={CALENDLY}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackLead(OFFER)}
+              className="group inline-flex items-center gap-2 rounded-full bg-volt px-7 py-3.5 font-medium text-black transition-colors hover:bg-[#a8e600]"
+            >
+              Book a call
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+            </a>
+            <a
+              href={WHATSAPP}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackLead(OFFER)}
+              className="text-sm font-light text-white/60 transition-colors hover:text-white"
+            >
+              Message on WhatsApp
+            </a>
+          </div>
+        </FadeIn>
+
+        <FadeIn delay={0.24}>
+          <div className="mt-16 grid grid-cols-2 gap-px bg-white/10 md:grid-cols-4">
+            {stats.map((s) => (
+              <div key={s.label} className="bg-ink px-6 py-7">
+                <div className="font-display tracking-display text-3xl md:text-4xl text-white">
+                  {s.value}
+                </div>
+                <div className="mt-2 text-xs uppercase tracking-widest text-white/45">
+                  {s.label}
+                </div>
+              </div>
+            ))}
+          </div>
+        </FadeIn>
+      </div>
+    </section>
+  );
+}
+
+/* ── What's included ──────────────────────────────────────────────────── */
+
+function Included() {
+  const features = [
+    { title: "Email automation flows", description: "Welcome series, abandoned cart, post-purchase, win-back, browse abandonment — every revenue-driving flow set up and optimised." },
+    { title: "Weekly campaigns", description: "Planned, designed, written, and sent. New campaign every week to keep your list engaged and buying." },
+    { title: "Smart segmentation", description: "Segment your list by behaviour, value, and engagement so the right message hits the right person at the right time." },
+    { title: "Beautiful email design", description: "Branded email templates designed to match your business — mobile-first, click-friendly, conversion-focused." },
+    { title: "List growth strategy", description: "Pop-ups, exit-intent forms, lead magnets, signup incentives — built and optimised to grow your list every month." },
+    { title: "A/B testing", description: "Subject lines, send times, copy variations, CTAs — continuously tested and improved to push open and click rates higher." },
+    { title: "Deliverability monitoring", description: "Domain authentication, list cleaning, sender reputation management — your emails land in inboxes, not spam." },
+    { title: "Monthly reporting", description: "Clear monthly reports showing revenue from email, open rates, click rates, list growth, and what's next." },
+    { title: "Direct WhatsApp support", description: "Message Asaf any time — no ticketing systems, no waiting." },
+  ];
+
+  return (
+    <section className="border-t border-white/10 px-6 md:px-10 py-24 md:py-32">
+      <div className="mx-auto max-w-6xl">
+        <FadeIn>
+          <Marker>What's included</Marker>
+          <h2 className="mt-6 max-w-2xl font-display tracking-display text-4xl md:text-5xl text-white">
+            Everything you need to scale with email<span className="text-volt">.</span>
+          </h2>
+          <p className="mt-6 max-w-xl text-white/55">
+            Complete email marketing setup and management — flows, campaigns,
+            segmentation, full account management. One flat fee. No extras.
+          </p>
+        </FadeIn>
+
+        <div className="mt-14 grid gap-px bg-white/10 sm:grid-cols-2 lg:grid-cols-3">
+          {features.map((f, i) => (
+            <FadeIn key={f.title} delay={(i % 3) * 0.06} className="bg-ink">
+              <div className="h-full p-8">
+                <div className="flex items-center gap-2 text-sm text-white/45">
+                  <Dot /> {`0${i + 1}`}
+                </div>
+                <h3 className="mt-6 font-display tracking-display text-xl text-white">
+                  {f.title}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-white/55">
+                  {f.description}
+                </p>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ── Real results ─────────────────────────────────────────────────────── */
+
 function Results() {
-  const [ref, inView] = useInView();
   const cases = [
     { tag: "Welcome flow", industry: "Added to list", spent: "23,039", primary: "£50,733", primaryLabel: "Revenue", roas: "£2.20", reach: "+23%" },
     { tag: "Abandoned checkout", industry: "Checkout started", spent: "3,445", primary: "£17,434", primaryLabel: "Revenue", roas: "£5.06", reach: "+48%" },
@@ -101,197 +187,104 @@ function Results() {
     { tag: "Collection flow", industry: "Viewed collection", spent: "3,360", primary: "£3,170", primaryLabel: "Revenue", roas: "£0.94", reach: "+117%" },
     { tag: "All flows combined", industry: "Nov–Dec 2025", spent: "—", primary: "£97,372", primaryLabel: "Flow revenue", roas: "75.5%", reach: "of email" },
   ];
+
   return (
-    <section ref={ref} className="bg-white text-[#0a0a0a] py-24 md:py-32 px-6 md:px-10">
-      <div className="max-w-6xl mx-auto">
-        <div className={`${inView ? "fade-up" : "opacity-0"} text-xs uppercase tracking-[0.2em] text-neutral-500 mb-6`}>Real results · live account</div>
-        <h2 className={`${inView ? "fade-up" : "opacity-0"} text-[8vw] md:text-[4vw] font-medium leading-[0.95] tracking-tight mb-3`} style={{ animationDelay: "0.1s" }}>
-          £128,979 from email. <span className="serif italic">In 60 days.</span>
-        </h2>
-        <p className={`${inView ? "fade-up" : "opacity-0"} text-neutral-600 max-w-xl mb-14`} style={{ animationDelay: "0.15s" }}>
-          A real Klaviyo account managed by Asaf, Nov–Dec 2025: 20.4% of total revenue driven by email, with flows alone bringing in £97,372. Most stores think email is "handled" — then discover their flows were half-built and leaking revenue. Every flow below was rebuilt and optimised from scratch. Real screenshots shared on your call.
-        </p>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+    <section className="border-t border-white/10 px-6 md:px-10 py-24 md:py-32">
+      <div className="mx-auto max-w-6xl">
+        <FadeIn>
+          <Marker>Real results · live account</Marker>
+          <h2 className="mt-6 max-w-2xl font-display tracking-display text-4xl md:text-5xl text-white">
+            £128,979 from email. In 60 days<span className="text-volt">.</span>
+          </h2>
+          <p className="mt-6 max-w-xl text-white/55">
+            A real Klaviyo account managed by Asaf, Nov–Dec 2025: 20.4% of total
+            revenue driven by email, with flows alone bringing in £97,372. Every
+            flow below was rebuilt and optimised from scratch. Real screenshots
+            shared on your call.
+          </p>
+        </FadeIn>
+
+        <div className="mt-14 grid gap-px bg-white/10 md:grid-cols-2 lg:grid-cols-3">
           {cases.map((c, i) => (
-            <div key={c.tag + i} className={`${inView ? "fade-up" : "opacity-0"} bg-[#f5f3ee] rounded-3xl p-7`} style={{ animationDelay: `${0.2 + i * 0.05}s` }}>
-              <div className="flex items-center justify-between mb-5">
-                <div className="text-xs uppercase tracking-widest text-neutral-500">{c.tag}</div>
-                <div className="text-[10px] uppercase tracking-widest text-emerald-600 bg-emerald-100 px-2 py-1 rounded-full">Top tier</div>
-              </div>
-              <div className="text-sm text-neutral-600 mb-5">{c.industry}</div>
-              <div className="grid grid-cols-2 gap-3">
-                <div className="bg-white rounded-2xl p-4">
-                  <div className="text-[10px] uppercase tracking-widest text-neutral-500 mb-1">Deliveries</div>
-                  <div className="text-lg font-medium">{c.spent}</div>
+            <FadeIn key={c.tag + i} delay={(i % 3) * 0.06} className="bg-ink">
+              <div className="h-full p-8">
+                <div className="flex items-center gap-2 text-sm text-white/45">
+                  <Dot /> {c.tag}
                 </div>
-                <div className="bg-white rounded-2xl p-4">
-                  <div className="text-[10px] uppercase tracking-widest text-neutral-500 mb-1">{c.primaryLabel}</div>
-                  <div className="text-lg font-medium text-emerald-700">{c.primary}</div>
-                </div>
-                <div className="bg-white rounded-2xl p-4">
-                  <div className="text-[10px] uppercase tracking-widest text-neutral-500 mb-1">Per recipient</div>
-                  <div className="text-lg font-medium">{c.roas}</div>
-                </div>
-                <div className="bg-white rounded-2xl p-4">
-                  <div className="text-[10px] uppercase tracking-widest text-neutral-500 mb-1">Change</div>
-                  <div className="text-lg font-medium">{c.reach}</div>
+                <div className="mt-1 text-sm text-white/55">{c.industry}</div>
+                <div className="mt-6 grid grid-cols-2 gap-x-6 gap-y-5 border-t border-white/10 pt-6">
+                  <Metric label="Deliveries" value={c.spent} />
+                  <Metric label={c.primaryLabel} value={c.primary} accent />
+                  <Metric label="Per recipient" value={c.roas} />
+                  <Metric label="Change" value={c.reach} />
                 </div>
               </div>
-            </div>
+            </FadeIn>
           ))}
         </div>
-        <Reviews />
       </div>
     </section>
   );
 }
 
-function Reviews() {
-  const t = [
-    { q: "Our email list went from a dead afterthought to 30% of our monthly revenue. Asaf rebuilt every flow from scratch and the difference is night and day.", a: "Emma R.", r: "Skincare brand owner, London" },
-    { q: "We finally have a proper welcome flow, abandoned cart, and weekly campaigns running. Email now does the work of an extra salesperson — without the salary.", a: "Marcus T.", r: "E-commerce founder, Manchester" },
-    { q: "I was paying another agency £2k a month for email and getting nothing. Asaf charges less and we 3x'd email revenue in two months. Real, transparent, fast.", a: "Olivia W.", r: "Fashion brand owner, Bristol" },
-  ];
+function Metric({ label, value, accent = false }: { label: string; value: string; accent?: boolean }) {
   return (
-    <div className="mt-20">
-      <div className="flex items-end justify-between flex-wrap gap-6 mb-10">
-        <h3 className="text-3xl md:text-4xl font-medium tracking-tight">
-          What email clients <span className="serif italic">say.</span>
-        </h3>
-        <div className="flex items-center gap-2">
-          {[1, 2, 3, 4, 5].map((i) => <Star key={i} className="w-4 h-4 fill-black text-black" />)}
-          <span className="text-sm text-neutral-600 ml-2">5.0 average</span>
-        </div>
-      </div>
-      <div className="grid md:grid-cols-3 gap-5">
-        {t.map((x, i) => (
-          <div key={i} className="bg-[#f5f3ee] rounded-3xl p-7">
-            <Quote className="w-5 h-5 text-neutral-300 mb-4" />
-            <p className="text-base leading-snug mb-6">{x.q}</p>
-            <div className="flex items-center gap-3 pt-5 border-t border-neutral-200">
-              <div className="w-9 h-9 rounded-full bg-gradient-to-br from-neutral-300 to-neutral-500 flex items-center justify-center text-white text-xs">
-                {x.a.charAt(0)}
-              </div>
-              <div>
-                <div className="text-sm">{x.a}</div>
-                <div className="text-xs text-neutral-500">{x.r}</div>
-              </div>
-            </div>
-          </div>
-        ))}
+    <div>
+      <div className="text-[10px] uppercase tracking-widest text-white/40">{label}</div>
+      <div className={`mt-1 font-display tracking-display text-xl ${accent ? "text-white" : "text-white/75"}`}>
+        {value}
       </div>
     </div>
   );
 }
 
+/* ── Showcase ─────────────────────────────────────────────────────────── */
+
 function Showcase() {
-  const [ref, inView] = useInView();
+  const pieces = [
+    { tag: "Campaign", meta: "Weekly send", body: "Segmented, on-brand campaigns with one clear CTA — designed to drive revenue without fatiguing your list." },
+    { tag: "Automation flow", meta: "Abandoned cart", body: "Multi-step automations that recover lost sales and run 24/7 — built once, optimised continuously." },
+    { tag: "Sign-up form", meta: "Pop-up", body: "High-converting pop-ups and exit-intent forms that grow your list with buyers, not browsers." },
+  ];
+
   return (
-    <section ref={ref} className="bg-[#0a0a0a] text-white py-24 md:py-32 px-6 md:px-10">
-      <div className="max-w-6xl mx-auto">
-        <div className={`${inView ? "fade-up" : "opacity-0"} text-xs uppercase tracking-[0.2em] text-white/40 mb-6`}>The work</div>
-        <h2 className={`${inView ? "fade-up" : "opacity-0"} text-[8vw] md:text-[4vw] font-medium leading-[0.95] tracking-tight mb-3`} style={{ animationDelay: "0.1s" }}>
-          What I build, <span className="serif italic text-white/70">end to end.</span>
-        </h2>
-        <p className={`${inView ? "fade-up" : "opacity-0"} text-white/50 max-w-xl mb-16`} style={{ animationDelay: "0.15s" }}>
-          The anatomy of a high-performing email channel — campaigns, automation flows, and list-growth forms. Every piece designed branded, mobile-first, and built to convert. Live examples from your own account shared on the call.
-        </p>
+    <section className="border-t border-white/10 px-6 md:px-10 py-24 md:py-32">
+      <div className="mx-auto max-w-6xl">
+        <FadeIn>
+          <Marker>The work</Marker>
+          <h2 className="mt-6 max-w-2xl font-display tracking-display text-4xl md:text-5xl text-white">
+            What I build, end to end<span className="text-volt">.</span>
+          </h2>
+          <p className="mt-6 max-w-xl text-white/55">
+            The anatomy of a high-performing email channel — campaigns, automation
+            flows, and list-growth forms. Every piece branded, mobile-first, and
+            built to convert. Live examples from your own account shared on the call.
+          </p>
+        </FadeIn>
 
-        <div className="grid md:grid-cols-3 gap-6">
-          {/* CAMPAIGN MOCKUP */}
-          <div className={`${inView ? "fade-up" : "opacity-0"} bg-white/[0.03] border border-white/10 rounded-3xl p-6`} style={{ animationDelay: "0.2s" }}>
-            <div className="flex items-center justify-between mb-5">
-              <span className="text-xs uppercase tracking-widest text-emerald-400">Campaign</span>
-              <span className="text-[10px] text-white/30">Weekly send</span>
-            </div>
-            <div className="bg-white rounded-2xl overflow-hidden shadow-2xl">
-              <div className="h-9 bg-[#0a0a0a] flex items-center justify-center">
-                <div className="text-white text-[10px] tracking-[0.3em] uppercase">Your Brand</div>
-              </div>
-              <div className="h-28 bg-gradient-to-br from-[#e9e2d6] to-[#d8cdb8] flex items-center justify-center">
-                <div className="text-[#0a0a0a]/40 text-[10px] uppercase tracking-widest">Hero image</div>
-              </div>
-              <div className="p-4 space-y-2">
-                <div className="h-3 w-3/4 bg-[#0a0a0a] rounded-full" />
-                <div className="h-2 w-full bg-neutral-200 rounded-full" />
-                <div className="h-2 w-5/6 bg-neutral-200 rounded-full" />
-                <div className="mt-3 h-7 w-28 bg-emerald-600 rounded-full flex items-center justify-center">
-                  <div className="text-white text-[9px] uppercase tracking-widest">Shop now</div>
-                </div>
-              </div>
-            </div>
-            <p className="text-xs text-white/40 mt-5 leading-relaxed">Segmented, on-brand campaigns with one clear CTA — designed to drive revenue without fatiguing your list.</p>
-          </div>
-
-          {/* FLOW MOCKUP */}
-          <div className={`${inView ? "fade-up" : "opacity-0"} bg-white/[0.03] border border-white/10 rounded-3xl p-6`} style={{ animationDelay: "0.28s" }}>
-            <div className="flex items-center justify-between mb-5">
-              <span className="text-xs uppercase tracking-widest text-emerald-400">Automation flow</span>
-              <span className="text-[10px] text-white/30">Abandoned cart</span>
-            </div>
-            <div className="space-y-3">
-              {[
-                { t: "Trigger", d: "Cart abandoned", c: "bg-amber-500/20 border-amber-500/40 text-amber-300" },
-                { t: "Wait 1 hour", d: "Then send Email 1", c: "bg-white/5 border-white/15 text-white/50" },
-                { t: "Email 1", d: "Reminder + product", c: "bg-emerald-500/15 border-emerald-500/40 text-emerald-300" },
-                { t: "Wait 24 hours", d: "If no purchase", c: "bg-white/5 border-white/15 text-white/50" },
-                { t: "Email 2", d: "10% off nudge", c: "bg-emerald-500/15 border-emerald-500/40 text-emerald-300" },
-              ].map((s, i) => (
-                <div key={i}>
-                  <div className={`border rounded-xl px-4 py-3 ${s.c}`}>
-                    <div className="text-[11px] font-medium uppercase tracking-wide">{s.t}</div>
-                    <div className="text-[10px] opacity-70">{s.d}</div>
+        <div className="mt-14 grid gap-px bg-white/10 md:grid-cols-3">
+          {pieces.map((p, i) => (
+            <FadeIn key={p.tag} delay={i * 0.07} className="bg-ink">
+              <div className="h-full p-8">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2 text-sm text-white/45">
+                    <Dot /> {p.tag}
                   </div>
-                  {i < 4 && <div className="w-px h-3 bg-white/15 mx-auto" />}
+                  <span className="text-xs uppercase tracking-widest text-white/35">{p.meta}</span>
                 </div>
-              ))}
-            </div>
-            <p className="text-xs text-white/40 mt-5 leading-relaxed">Multi-step automations that recover lost sales and run 24/7 — built once, optimised continuously.</p>
-          </div>
-
-          {/* SIGN-UP FORM MOCKUP */}
-          <div className={`${inView ? "fade-up" : "opacity-0"} bg-white/[0.03] border border-white/10 rounded-3xl p-6`} style={{ animationDelay: "0.36s" }}>
-            <div className="flex items-center justify-between mb-5">
-              <span className="text-xs uppercase tracking-widest text-emerald-400">Sign-up form</span>
-              <span className="text-[10px] text-white/30">Pop-up</span>
-            </div>
-            <div className="bg-white rounded-2xl p-5 shadow-2xl">
-              <div className="text-center space-y-3">
-                <div className="text-[#0a0a0a] text-lg font-medium leading-tight">Get 10% off<br />your first order</div>
-                <div className="h-2 w-4/5 bg-neutral-200 rounded-full mx-auto" />
-                <div className="border border-neutral-300 rounded-lg h-8 flex items-center px-3">
-                  <span className="text-neutral-400 text-[10px]">you@email.com</span>
-                </div>
-                <div className="h-9 bg-[#0a0a0a] rounded-lg flex items-center justify-center">
-                  <span className="text-white text-[10px] uppercase tracking-widest">Unlock 10% off</span>
-                </div>
-                <div className="text-neutral-400 text-[8px]">No thanks, I'll pay full price</div>
+                <p className="mt-8 text-sm leading-relaxed text-white/60">{p.body}</p>
               </div>
-            </div>
-            <div className="grid grid-cols-3 gap-2 mt-4">
-              <div className="bg-white/5 rounded-lg py-2 text-center">
-                <div className="text-emerald-400 text-sm font-medium">+8%</div>
-                <div className="text-white/30 text-[8px] uppercase">Opt-in</div>
-              </div>
-              <div className="bg-white/5 rounded-lg py-2 text-center">
-                <div className="text-emerald-400 text-sm font-medium">2-step</div>
-                <div className="text-white/30 text-[8px] uppercase">Flow</div>
-              </div>
-              <div className="bg-white/5 rounded-lg py-2 text-center">
-                <div className="text-emerald-400 text-sm font-medium">Exit</div>
-                <div className="text-white/30 text-[8px] uppercase">Intent</div>
-              </div>
-            </div>
-            <p className="text-xs text-white/40 mt-5 leading-relaxed">High-converting pop-ups and exit-intent forms that grow your list with buyers, not browsers.</p>
-          </div>
+            </FadeIn>
+          ))}
         </div>
       </div>
     </section>
   );
 }
 
+/* ── Pricing ──────────────────────────────────────────────────────────── */
+
 function Pricing() {
-  const [ref, inView] = useInView();
   const breakdown = [
     { label: "Setup / onboarding fee", value: "Free", strike: "£500" },
     { label: "Email automation flows (5+)", value: "Included" },
@@ -303,67 +296,170 @@ function Pricing() {
     { label: "Monthly performance report", value: "Included" },
     { label: "Hidden fees / extra charges", value: "None. Ever." },
   ];
+  const included = [
+    "Klaviyo or Mailchimp",
+    "All flows built from scratch",
+    "4 weekly campaigns / month",
+    "Smart list segmentation",
+    "Branded email design",
+    "A/B testing built in",
+    "Monthly results report",
+    "Direct WhatsApp support",
+  ];
+
   return (
-    <section ref={ref} className="bg-[#f5f3ee] text-[#0a0a0a] py-24 md:py-32 px-6 md:px-10">
-      <div className="max-w-3xl mx-auto">
-        <div className={`${inView ? "fade-up" : "opacity-0"} text-xs uppercase tracking-[0.2em] text-neutral-500 mb-6 text-center`}>Pricing</div>
-        <h2 className={`${inView ? "fade-up" : "opacity-0"} text-[8vw] md:text-[4vw] font-medium leading-[0.95] tracking-tight text-center mb-3`} style={{ animationDelay: "0.1s" }}>
-          Simple. Transparent. <span className="serif italic">No fluff.</span>
-        </h2>
-        <p className={`${inView ? "fade-up" : "opacity-0"} text-center text-neutral-600 max-w-md mx-auto mb-14`} style={{ animationDelay: "0.15s" }}>
-          One flat fee. We manage your entire email channel. You count the revenue.
-        </p>
+    <section className="border-t border-white/10 px-6 md:px-10 py-24 md:py-32">
+      <div className="mx-auto max-w-3xl">
+        <FadeIn>
+          <Marker>Pricing</Marker>
+          <h2 className="mt-6 font-display tracking-display text-4xl md:text-5xl text-white">
+            Simple. Transparent. No fluff<span className="text-volt">.</span>
+          </h2>
+          <p className="mt-6 max-w-md text-white/55">
+            One flat fee. We manage your entire email channel. You count the revenue.
+          </p>
+        </FadeIn>
 
-        <div className={`${inView ? "fade-up" : "opacity-0"} bg-[#0a0a0a] text-white rounded-[32px] p-10 md:p-14 relative overflow-hidden`} style={{ animationDelay: "0.2s" }}>
-          <div className="absolute inset-0 grain pointer-events-none" />
-          <div className="relative">
-            <div className="text-xs uppercase tracking-widest text-emerald-400 mb-2">Done-for-you email marketing</div>
-            <div className="flex items-end gap-2 mb-6">
-              <span className="text-7xl md:text-8xl font-medium tracking-tight">£490</span>
-              <span className="text-white/50 text-lg mb-3">/ month</span>
+        <FadeIn delay={0.1}>
+          <div className="mt-12 rounded-2xl border border-white/10 bg-carbon p-9 md:p-12">
+            <div className="text-xs uppercase tracking-widest text-white/45">
+              Done-for-you email marketing
             </div>
-            <p className="text-white/60 mb-8 max-w-md">Full Klaviyo or Mailchimp management. Flows, campaigns, segmentation, design, reporting — all done.</p>
+            <div className="mt-3 flex items-end gap-2">
+              <span className="font-display tracking-display text-6xl md:text-7xl text-white">
+                £490
+              </span>
+              <span className="mb-3 text-lg text-white/45">/ month</span>
+            </div>
+            <p className="mt-6 max-w-md text-white/55">
+              Full Klaviyo or Mailchimp management. Flows, campaigns, segmentation,
+              design, reporting — all done.
+            </p>
 
-            <div className="border-t border-white/10 pt-6 space-y-3 mb-8">
+            <div className="mt-8 space-y-3 border-t border-white/10 pt-6">
               {breakdown.map((row) => (
                 <div key={row.label} className="flex items-center justify-between gap-4 text-sm">
-                  <span className="text-white/70">{row.label}</span>
+                  <span className="text-white/60">{row.label}</span>
                   <span className="flex items-center gap-2">
-                    {row.strike && <span className="line-through text-white/30">{row.strike}</span>}
-                    <span className={row.value === "None. Ever." ? "text-emerald-400" : "text-white"}>{row.value}</span>
+                    {row.strike && <span className="text-white/30 line-through">{row.strike}</span>}
+                    <span className={row.value === "None. Ever." ? "text-volt" : "text-white"}>
+                      {row.value}
+                    </span>
                   </span>
                 </div>
               ))}
             </div>
 
-            <div className="grid sm:grid-cols-2 gap-3 mb-8">
-              {[
-                "Klaviyo or Mailchimp",
-                "All flows built from scratch",
-                "4 weekly campaigns / month",
-                "Smart list segmentation",
-                "Branded email design",
-                "A/B testing built in",
-                "Monthly results report",
-                "Direct WhatsApp support",
-              ].map((f) => (
-                <div key={f} className="flex items-start gap-2 text-sm text-white/80">
-                  <Check className="w-4 h-4 text-emerald-400 mt-0.5 shrink-0" />
+            <div className="mt-8 grid gap-3 sm:grid-cols-2">
+              {included.map((f) => (
+                <div key={f} className="flex items-start gap-2 text-sm text-white/70">
+                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-white/40" />
                   {f}
                 </div>
               ))}
             </div>
 
-            <a href={CALENDLY} target="_blank" rel="noopener noreferrer" onClick={() => trackLead("email")}
-               className="bg-white text-black rounded-full px-6 py-4 text-base hover:bg-neutral-200 transition-colors inline-flex items-center gap-3 group w-full justify-center">
-              <Calendar className="w-5 h-5" />
+            <a
+              href={CALENDLY}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackLead(OFFER)}
+              className="group mt-9 inline-flex w-full items-center justify-center gap-2 rounded-full bg-volt px-7 py-3.5 font-medium text-black transition-colors hover:bg-[#a8e600]"
+            >
               Book your free strategy call
-              <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-transform" />
+              <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </a>
-            <div className="mt-4 text-center text-xs text-white/40 uppercase tracking-widest">No contract · Cancel any time · Live in 7 days</div>
-            <div className="mt-2 text-center text-xs text-emerald-400/80">First month not happy? Cancel and pay nothing further — no lock-in, no risk.</div>
+            <div className="mt-4 text-center text-xs uppercase tracking-widest text-white/40">
+              No contract · Cancel any time · Live in 7 days
+            </div>
+            <div className="mt-2 text-center text-xs text-volt">
+              First month not happy? Cancel and pay nothing further — no lock-in, no risk.
+            </div>
           </div>
+        </FadeIn>
+      </div>
+    </section>
+  );
+}
+
+/* ── Reviews ──────────────────────────────────────────────────────────── */
+
+function Reviews() {
+  const t = [
+    { q: "Our email list went from a dead afterthought to 30% of our monthly revenue. Asaf rebuilt every flow from scratch and the difference is night and day.", a: "Emma R.", r: "Skincare brand owner, London" },
+    { q: "We finally have a proper welcome flow, abandoned cart, and weekly campaigns running. Email now does the work of an extra salesperson — without the salary.", a: "Marcus T.", r: "E-commerce founder, Manchester" },
+    { q: "I was paying another agency £2k a month for email and getting nothing. Asaf charges less and we 3x'd email revenue in two months. Real, transparent, fast.", a: "Olivia W.", r: "Fashion brand owner, Bristol" },
+  ];
+
+  return (
+    <section className="border-t border-white/10 px-6 md:px-10 py-24 md:py-32">
+      <div className="mx-auto max-w-6xl">
+        <FadeIn>
+          <Marker>What email clients say</Marker>
+        </FadeIn>
+        <div className="mt-14 grid gap-6 md:grid-cols-3">
+          {t.map((x, i) => (
+            <FadeIn key={x.a} delay={i * 0.07}>
+              <div className="h-full rounded-2xl border border-white/10 bg-carbon p-8">
+                <p className="leading-snug text-white/85">{x.q}</p>
+                <div className="mt-8 flex items-center gap-2 border-t border-white/10 pt-6 text-sm">
+                  <Dot />
+                  <span className="text-white">{x.a}</span>
+                  <span className="text-white/45">· {x.r}</span>
+                </div>
+              </div>
+            </FadeIn>
+          ))}
         </div>
+      </div>
+    </section>
+  );
+}
+
+/* ── Closing CTA ──────────────────────────────────────────────────────── */
+
+function ClosingCTA() {
+  return (
+    <section className="border-t border-white/10 px-6 md:px-10 py-24 md:py-32">
+      <div className="mx-auto max-w-6xl">
+        <FadeIn>
+          <h2 className="max-w-3xl font-display tracking-display text-5xl md:text-6xl text-white">
+            Let's turn your list into revenue<span className="text-volt">.</span>
+          </h2>
+          <p className="mt-6 max-w-md text-white/55">
+            30-minute strategy call. Asaf will audit your current email setup, your
+            list, and tell you straight what's possible.
+          </p>
+          <a
+            href={CALENDLY}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => trackLead(OFFER)}
+            className="group mt-9 inline-flex items-center gap-2 rounded-full bg-volt px-7 py-3.5 font-medium text-black transition-colors hover:bg-[#a8e600]"
+          >
+            Book a call
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+          </a>
+        </FadeIn>
+      </div>
+    </section>
+  );
+}
+
+/* ── Disclaimer ───────────────────────────────────────────────────────── */
+
+function Disclaimer() {
+  return (
+    <section className="border-t border-white/10 px-6 md:px-10 pb-16 pt-10">
+      <div className="mx-auto max-w-3xl text-[11px] leading-relaxed text-white/30">
+        <p>
+          Results disclaimer: Figures shown are from real client accounts managed
+          by Eralean over the stated periods. These results are not typical or
+          guaranteed. Email marketing performance depends on many factors unique to
+          each business — including existing list size, product, pricing, traffic,
+          and market. Eralean does not promise or guarantee specific revenue, ROI,
+          or financial outcomes. Your results will vary.
+        </p>
       </div>
     </section>
   );
