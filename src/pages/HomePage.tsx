@@ -8,7 +8,6 @@ import { Nav } from "../components/Nav";
 import { Footer } from "../components/Footer";
 import { FloatingWhatsApp } from "../components/FloatingWhatsApp";
 import { FadeIn } from "../components/motion/FadeIn";
-import { ScaleOnScroll } from "../components/motion/ScaleOnScroll";
 import { Dot } from "../components/brand/Dot";
 
 export const meta = () => [
@@ -38,7 +37,7 @@ export default function HomePage() {
         <Hero />
         <AudienceSplit />
         <Offers />
-        <Proof />
+        <WorkStrip />
         <AuditForm variant="embed" offer="general" />
         <ClosingCTA />
       </main>
@@ -243,43 +242,79 @@ function Offers() {
   );
 }
 
-/* ── Proof (placeholder metric slots) ─────────────────────────────────── */
+/* ── Work strip (horizontally scrollable case studies) ────────────────── */
 
-function Proof() {
-  const cases = [
-    { tag: "Aesthetic clinic", metric: "—", label: "Increase in booked consultations" },
-    { tag: "Ecommerce brand", metric: "—", label: "Return on ad spend" },
-    { tag: "Professional services", metric: "—", label: "Cost per qualified lead" },
+function WorkStrip() {
+  const work = [
+    {
+      slug: "metro-gold-buyers",
+      client: "Metro Gold Buyers",
+      line: "Live gold trading platform — real-time spot API, price calculator, PIN-protected admin panel",
+    },
+    {
+      slug: "regent-estates-global",
+      client: "Regent Estates Global",
+      line: "Bilingual property portal (EN/TR) — custom CMS, drag-and-drop listings, image management",
+    },
+    {
+      slug: "abov-interiors",
+      client: "ABOV Interiors",
+      line: "Premium renovation brand — custom admin panel, project portfolio, enquiry system",
+    },
+    {
+      slug: "bedable",
+      client: "Bedable",
+      line: "Shopify ecommerce — premium bedding brand, full store build, email marketing",
+    },
   ];
 
   return (
-    <section className="border-t border-white/10 px-6 md:px-10 py-24 md:py-32">
-      <div className="mx-auto max-w-6xl">
+    <section className="border-t border-white/10 py-24 md:py-32">
+      <div className="mx-auto max-w-6xl px-6 md:px-10">
         <FadeIn>
-          <Marker>Proof</Marker>
-          <p className="mt-6 max-w-xl text-white/50">
-            Live client results are landing here next — real metrics, named
-            engagements. These slots are placeholders.
-          </p>
+          <Marker>Selected work</Marker>
+          <h2 className="mt-6 max-w-2xl font-display tracking-display text-4xl md:text-5xl text-white">
+            Real builds, shipped<span className="text-volt">.</span>
+          </h2>
         </FadeIn>
+      </div>
 
-        <div className="mt-14 grid md:grid-cols-3 gap-6">
-          {cases.map((c, i) => (
-            <FadeIn key={c.tag} delay={i * 0.07}>
-              <ScaleOnScroll>
-                <div className="h-full rounded-2xl border border-white/10 bg-carbon p-8">
-                  <div className="flex items-center gap-2 text-sm text-white/45">
-                    <Dot /> {c.tag}
-                  </div>
-                  <div className="mt-10 font-display tracking-display text-6xl text-white/25">
-                    {c.metric}
-                  </div>
-                  <div className="mt-4 text-sm text-white/50">{c.label}</div>
-                </div>
-              </ScaleOnScroll>
-            </FadeIn>
+      <FadeIn>
+        <div className="mt-14 flex snap-x snap-mandatory gap-6 overflow-x-auto px-6 pb-4 md:px-10 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          {work.map((w) => (
+            <Link
+              key={w.slug}
+              to={`/work/${w.slug}`}
+              className="group flex w-[78vw] shrink-0 snap-start flex-col rounded-2xl border border-white/10 bg-carbon p-7 transition-colors hover:border-white/20 sm:w-[58vw] md:w-[38%]"
+            >
+              <div
+                aria-hidden="true"
+                className="aspect-[16/10] w-full rounded-xl border border-white/10 bg-ink bg-[linear-gradient(to_right,rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[size:28px_28px]"
+              />
+              <div className="mt-7 flex items-start justify-between gap-4">
+                <h3 className="font-display tracking-display text-2xl text-white">
+                  {w.client}
+                </h3>
+                <ArrowUpRight className="mt-1 h-4 w-4 shrink-0 text-white/30 transition-all group-hover:text-volt" />
+              </div>
+              <p className="mt-3 font-sans font-light text-sm leading-relaxed text-ash">
+                {w.line}
+              </p>
+            </Link>
           ))}
         </div>
+      </FadeIn>
+
+      <div className="mx-auto max-w-6xl px-6 md:px-10">
+        <FadeIn>
+          <Link
+            to="/work"
+            className="group mt-8 inline-flex items-center gap-2 text-sm text-white/60 transition-colors hover:text-white"
+          >
+            View all work
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+          </Link>
+        </FadeIn>
       </div>
     </section>
   );

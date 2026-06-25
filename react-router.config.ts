@@ -13,5 +13,6 @@ export default {
     "/services/website",
     "/services/ads",
     "/services/email-marketing",
+    "/work",
   ],
 } satisfies Config;

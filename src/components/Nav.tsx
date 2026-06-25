@@ -11,6 +11,7 @@ type NavProps = {
 };
 
 const NAV_LINKS = [
+  { to: "/work", label: "Work" },
   { to: "/services/website", label: "Website" },
   { to: "/services/ads", label: "Ads" },
   { to: "/services/email-marketing", label: "Email" },
