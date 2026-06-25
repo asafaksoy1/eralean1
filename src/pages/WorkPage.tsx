@@ -146,11 +146,11 @@ function ProjectModal({
         <h2 className="mt-8 font-display tracking-display text-[2rem] font-semibold text-white">
           {project.client}
         </h2>
-        <p className="mt-2 font-sans font-light text-ash">{project.line}</p>
+        <p className="mt-2 font-sans font-light text-white/55">{project.line}</p>
 
         <div className="mt-7 hairline" />
 
-        <div className="mt-7 flex items-center gap-2.5 text-[11px] font-medium uppercase tracking-[0.24em] text-ash">
+        <div className="mt-7 flex items-center gap-2.5 text-[11px] font-medium uppercase tracking-[0.24em] text-white/45">
           <Dot />
           The build
         </div>
@@ -225,7 +225,7 @@ export default function WorkPage() {
                     <h2 className="mt-8 font-display tracking-display text-3xl md:text-4xl text-white">
                       {p.client}
                     </h2>
-                    <div className="mt-2 text-sm text-ash">{p.url}</div>
+                    <div className="mt-2 text-sm text-white/45">{p.url}</div>
                     <p className="mt-5 font-sans font-light leading-relaxed text-white/70">
                       {p.line}
                     </p>

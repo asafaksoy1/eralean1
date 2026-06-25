@@ -267,7 +267,7 @@ function WorkStrip() {
     {
       slug: "bedable",
       client: "Bedable",
-      img: "/work/bedable1.jpg",
+      img: "/work/bedable.jpg",
       line: "Shopify ecommerce — premium bedding brand, full store build, email marketing",
     },
   ];
@@ -304,7 +304,7 @@ function WorkStrip() {
                 </h3>
                 <ArrowUpRight className="mt-1 h-4 w-4 shrink-0 text-white/30 transition-all group-hover:text-volt" />
               </div>
-              <p className="mt-3 font-sans font-light text-sm leading-relaxed text-ash">
+              <p className="mt-3 font-sans font-light text-sm leading-relaxed text-white/55">
                 {w.line}
               </p>
             </Link>

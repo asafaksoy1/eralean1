@@ -97,7 +97,7 @@ export function AuditForm({ offer, variant, onSuccess }: AuditFormProps) {
   const heading = (
     <>
       {copy.eyebrow && (
-        <div className="text-[11px] font-medium uppercase tracking-[0.22em] text-[#BDFF00] mb-4">
+        <div className="text-[11px] font-medium uppercase tracking-[0.22em] text-volt mb-4">
           {copy.eyebrow}
         </div>
       )}
@@ -112,8 +112,8 @@ export function AuditForm({ offer, variant, onSuccess }: AuditFormProps) {
     status === "success" ? (
       <div>
         {heading}
-        <div className="mt-8 flex items-start gap-3 rounded-2xl border border-[#BDFF00]/30 bg-[#BDFF00]/10 p-5">
-          <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#BDFF00] text-black">
+        <div className="mt-8 flex items-start gap-3 rounded-2xl border border-volt/30 bg-volt/10 p-5">
+          <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-volt text-black">
             <Check className="h-4 w-4" strokeWidth={3} />
           </span>
           <p className="text-white/90 leading-relaxed">{SUCCESS_MESSAGE}</p>
@@ -133,7 +133,7 @@ export function AuditForm({ offer, variant, onSuccess }: AuditFormProps) {
             placeholder="you@business.com"
             aria-label="Email address"
             aria-invalid={status === "error" ? true : undefined}
-            className="w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3.5 text-white placeholder-white/40 outline-none transition-colors focus:border-[#BDFF00]"
+            className="w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3.5 text-white placeholder-white/40 outline-none transition-colors focus:border-volt"
           />
           <input
             type="url"
@@ -142,12 +142,12 @@ export function AuditForm({ offer, variant, onSuccess }: AuditFormProps) {
             onChange={(e) => setWebsite(e.target.value)}
             placeholder="yourwebsite.com (optional)"
             aria-label="Website URL (optional)"
-            className="w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3.5 text-white placeholder-white/40 outline-none transition-colors focus:border-[#BDFF00]"
+            className="w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3.5 text-white placeholder-white/40 outline-none transition-colors focus:border-volt"
           />
           <button
             type="submit"
             disabled={status === "submitting"}
-            className="group flex w-full items-center justify-center gap-2 rounded-xl bg-[#BDFF00] px-6 py-3.5 font-medium text-black transition-all hover:bg-[#a8e600] disabled:cursor-not-allowed disabled:opacity-60"
+            className="group flex w-full items-center justify-center gap-2 rounded-xl bg-volt px-6 py-3.5 font-medium text-black transition-all hover:bg-[#a8e600] disabled:cursor-not-allowed disabled:opacity-60"
           >
             {status === "submitting" ? "Sending…" : copy.button}
             {status !== "submitting" && (

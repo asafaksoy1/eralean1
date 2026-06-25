@@ -13,7 +13,4 @@ export const SERVICES: ServiceLink[] = [
   { label: "Website", description: "High-converting site, fully managed.", to: "/services/website" },
   { label: "Ads", description: "Meta + Google ads, end-to-end.", to: "/services/ads" },
   { label: "Email Marketing", description: "Klaviyo flows + campaigns, done for you.", to: "/services/email-marketing" },
-  { label: "Social Media", description: "20+ posts/month, AI creative, multi-platform.", to: "/services/social-media" },
-  { label: "AI", description: "Automations and AI agents for ops.", to: "/services/ai" },
-  { label: "Acquisition Systems", description: "The full bundle — site, ads, AI, follow-up.", to: "/services/acquisition-systems" },
 ];
