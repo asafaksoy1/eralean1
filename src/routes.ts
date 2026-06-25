@@ -9,5 +9,6 @@ export default [
   route("services/ads", "pages/AdsPage.tsx"),
   route("services/email-marketing", "pages/EmailMarketingPage.tsx"),
   route("work", "pages/WorkPage.tsx"),
+  route("lp/email", "pages/lp/EmailLp.tsx"),
   route("*", "pages/NotFound.tsx"),
 ] satisfies RouteConfig;
