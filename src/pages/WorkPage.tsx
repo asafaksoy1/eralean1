@@ -69,7 +69,7 @@ const PROJECTS: Project[] = [
     slug: "bedable",
     client: "Bedable",
     url: "bedable.com",
-    img: "/work/bedable1.jpg",
+    img: "/work/bedable.jpg",
     line: "Shopify ecommerce — premium bedding brand, full store build, email marketing",
     features: [
       "Full Shopify store build",
