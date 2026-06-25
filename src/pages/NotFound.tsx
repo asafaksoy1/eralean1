@@ -1,59 +1,25 @@
 import { Link } from "react-router";
 
+export const meta = () => [
+  { title: "Page not found — EraLean" },
+  { name: "description", content: "The page you're after doesn't exist or has moved." },
+];
+
 // Minimal on-brand 404. Replaces the old "* -> HomePage" catch-all.
 export default function NotFound() {
   return (
-    <main
-      style={{
-        minHeight: "100svh",
-        background: "#0B0B0C",
-        color: "#FFFFFF",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        gap: "1.25rem",
-        fontFamily: "Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif",
-        textAlign: "center",
-        padding: "2rem",
-      }}
-    >
-      <p
-        style={{
-          fontSize: "0.72rem",
-          letterSpacing: "0.22em",
-          textTransform: "uppercase",
-          color: "#8C8C93",
-        }}
-      >
-        Error 404
-      </p>
-      <h1
-        style={{
-          fontSize: "clamp(2.5rem, 8vw, 5rem)",
-          fontWeight: 600,
-          letterSpacing: "-0.04em",
-          lineHeight: 0.95,
-          margin: 0,
-        }}
-      >
+    <main className="flex min-h-[100svh] flex-col items-center justify-center gap-5 bg-ink px-8 text-center text-white">
+      <p className="text-[11px] uppercase tracking-[0.22em] text-white/45">Error 404</p>
+      <h1 className="font-display tracking-display text-5xl font-semibold leading-[0.95] sm:text-6xl md:text-7xl">
         Page not found
-        <span style={{ color: "#BDFF00" }}>.</span>
+        <span className="text-volt">.</span>
       </h1>
-      <p style={{ color: "#8C8C93", maxWidth: "40ch", lineHeight: 1.6 }}>
+      <p className="max-w-[40ch] text-white/55">
         The page you're after doesn't exist or has moved.
       </p>
       <Link
         to="/"
-        style={{
-          background: "#BDFF00",
-          color: "#0B0B0C",
-          fontWeight: 600,
-          fontSize: "0.85rem",
-          padding: "11px 20px",
-          borderRadius: "8px",
-          textDecoration: "none",
-        }}
+        className="rounded-lg bg-volt px-5 py-2.5 text-sm font-semibold text-ink transition-colors hover:bg-[#a8e600]"
       >
         Back to home
       </Link>

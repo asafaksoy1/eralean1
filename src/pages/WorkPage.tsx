@@ -1,5 +1,6 @@
-import type { ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { useNavigate } from "react-router";
+import { X } from "lucide-react";
 import { trackLead } from "../lib/analytics";
 import { AuditForm } from "../components/AuditForm";
 import { Nav } from "../components/Nav";
@@ -31,12 +32,14 @@ const PROJECTS: Project[] = [
     client: "Metro Gold Buyers",
     url: "metrogoldbuyers.co.uk",
     img: "/work/metro-gold.jpg",
-    line: "Live gold trading platform — real-time spot API, price calculator, PIN-protected admin panel",
+    line: "London's gold trading platform",
     features: [
-      "Real-time spot price API integration",
-      "Instant gold price calculator",
-      "PIN-protected admin panel",
-      "Live trading dashboard",
+      "Live spot-linked gold & silver prices updated every minute",
+      "Interactive price calculator all purities 9K–24K",
+      "PIN-protected admin panel for rate management",
+      "Dual buy/sell enquiry system",
+      "Real-time XAU/GBP market chart",
+      "Inventory management with stock display",
     ],
   },
   {
@@ -44,12 +47,14 @@ const PROJECTS: Project[] = [
     client: "Regent Estates Global",
     url: "regentestatesglobal.com",
     img: "/work/regent-estates.jpg",
-    line: "Bilingual property portal (EN/TR) — custom CMS, drag-and-drop listings, image management",
+    line: "Bilingual UK–Turkey property portal",
     features: [
-      "Bilingual experience (EN / TR)",
-      "Custom content management system",
-      "Drag-and-drop property listings",
-      "Image management and galleries",
+      "Full EN/TR bilingual interface",
+      "Custom CMS drag-and-drop listing management",
+      "Image upload and gallery management",
+      "Property search and filter system",
+      "Admin panel with data tracking",
+      "Hash-based routing for SPA performance",
     ],
   },
   {
@@ -57,12 +62,14 @@ const PROJECTS: Project[] = [
     client: "ABOV Interiors",
     url: "abov-tvow.vercel.app",
     img: "/work/abov-interiors.jpg",
-    line: "Premium renovation brand — custom admin panel, project portfolio, enquiry system",
+    line: "Premium renovation & interiors brand",
     features: [
-      "Custom admin panel",
-      "Project portfolio showcase",
-      "Enquiry capture system",
-      "Premium brand presentation",
+      "Custom admin panel for project management",
+      "Portfolio gallery with image upload",
+      "Service area pages for local SEO",
+      "Lead capture and enquiry system",
+      "Mobile-first responsive design",
+      "Supabase backend",
     ],
   },
   {
@@ -70,15 +77,108 @@ const PROJECTS: Project[] = [
     client: "Bedable",
     url: "bedable.com",
     img: "/work/bedable.jpg",
-    line: "Shopify ecommerce — premium bedding brand, full store build, email marketing",
+    line: "Premium 100% natural cotton bedding brand",
     features: [
       "Full Shopify store build",
-      "Premium bedding brand design",
-      "Conversion-focused product pages",
-      "Lifecycle email marketing",
+      "Premium product pages with compare-at pricing",
+      "Collection pages optimised for conversion",
+      "Email marketing integration",
+      "Mobile-optimised checkout flow",
+      "Brand-consistent design system",
     ],
   },
 ];
+
+function prefersReducedMotion(): boolean {
+  return (
+    typeof window !== "undefined" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  );
+}
+
+function ProjectModal({
+  project,
+  onClose,
+}: {
+  project: Project;
+  onClose: () => void;
+}) {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    function onKey(e: KeyboardEvent) {
+      if (e.key === "Escape") onClose();
+    }
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [onClose]);
+
+  const animate = !prefersReducedMotion();
+
+  return (
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-label={project.client}
+      onClick={onClose}
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-ink/95 p-4"
+      style={animate ? { animation: "el-fade 0.2s ease-out" } : undefined}
+    >
+      <div
+        onClick={(e) => e.stopPropagation()}
+        className="relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl border border-white/10 bg-carbon p-8 md:p-10"
+      >
+        <button
+          type="button"
+          onClick={onClose}
+          aria-label="Close"
+          className="absolute right-5 top-5 text-white/50 transition-colors hover:text-white"
+        >
+          <X className="h-5 w-5" />
+        </button>
+
+        <img
+          src={project.img}
+          alt={project.client}
+          className="w-full max-h-72 rounded-lg object-cover"
+        />
+
+        <h2 className="mt-8 font-display tracking-display text-[2rem] font-semibold text-white">
+          {project.client}
+        </h2>
+        <p className="mt-2 font-sans font-light text-ash">{project.line}</p>
+
+        <div className="mt-7 hairline" />
+
+        <div className="mt-7 flex items-center gap-2.5 text-[11px] font-medium uppercase tracking-[0.24em] text-ash">
+          <Dot />
+          The build
+        </div>
+
+        <ul className="mt-5 space-y-3">
+          {project.features.map((f) => (
+            <li key={f} className="flex items-start gap-3 text-sm text-white/70">
+              <Dot className="mt-1.5" />
+              <span className="font-light">{f}</span>
+            </li>
+          ))}
+        </ul>
+
+        <button
+          type="button"
+          onClick={() => {
+            trackLead("website");
+            onClose();
+            navigate("/#audit");
+          }}
+          className="mt-9 w-full rounded-full bg-volt px-6 py-4 font-display tracking-display text-sm font-semibold text-ink transition-opacity hover:opacity-90"
+        >
+          Build something like this →
+        </button>
+      </div>
+    </div>
+  );
+}
 
 // Small caps section marker — the brand dot + a label.
 function Marker({ children }: { children: ReactNode }) {
@@ -91,7 +191,7 @@ function Marker({ children }: { children: ReactNode }) {
 }
 
 export default function WorkPage() {
-  const navigate = useNavigate();
+  const [activeProject, setActiveProject] = useState<Project | null>(null);
 
   return (
     <div className="bg-ink text-white">
@@ -141,13 +241,10 @@ export default function WorkPage() {
 
                     <button
                       type="button"
-                      onClick={() => {
-                        trackLead("website");
-                        navigate("/#audit");
-                      }}
+                      onClick={() => setActiveProject(p)}
                       className="mt-9 inline-flex w-fit items-center gap-2 rounded-full border border-white px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-volt hover:text-ink"
                     >
-                      Build something like this →
+                      View project →
                     </button>
                   </div>
                 </FadeIn>
@@ -161,6 +258,13 @@ export default function WorkPage() {
       </main>
       <Footer />
       <FloatingWhatsApp offer="general" />
+
+      {activeProject && (
+        <ProjectModal
+          project={activeProject}
+          onClose={() => setActiveProject(null)}
+        />
+      )}
     </div>
   );
 }

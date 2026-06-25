@@ -36,6 +36,7 @@ export default function AdsPage() {
       <main>
         <Hero />
         <Included />
+        <KeyResults />
         <Results />
         <Pricing />
         <Reviews />
@@ -168,6 +169,109 @@ function Included() {
             </FadeIn>
           ))}
         </div>
+      </div>
+    </section>
+  );
+}
+
+/* ── Key results ───────────────────────────────────────────────────────── */
+
+function KeyResults() {
+  const metrics = [
+    {
+      metric: "£13.32",
+      label: "Cost per lead",
+      context: "Google Search — electrical services, UK",
+    },
+    {
+      metric: "4.2×",
+      label: "ROAS on Meta",
+      context: "Ecommerce brand — Meta performance campaign",
+    },
+    {
+      metric: "3.2×",
+      label: "ROAS, £90 AOV",
+      context: "Ecommerce brand — Meta, anonymous",
+    },
+    {
+      metric: "£0.05",
+      label: "Cost per profile visit",
+      context: "Meta awareness — Aya Nights events brand, vs £0.12 benchmark",
+    },
+  ];
+
+  const platforms = [
+    {
+      title: "Google Ads",
+      points: [
+        "Search, Shopping & Performance Max campaigns built around buyer intent",
+        "Keyword and audience targeting matched to real search demand",
+        "Conversion and call tracking wired in from day one",
+        "Daily optimisation — budget shifts to what's converting",
+      ],
+    },
+    {
+      title: "Meta Ads",
+      points: [
+        "Facebook and Instagram campaigns built for scroll-stopping creative",
+        "Lookalike and custom audiences sourced from your existing customers",
+        "Retargeting that brings back warm visitors and past buyers",
+        "Pixel and Conversions API tracking for accurate attribution",
+      ],
+    },
+  ];
+
+  return (
+    <section className="border-t border-white/10 px-6 md:px-10 py-24 md:py-32">
+      <div className="mx-auto max-w-6xl">
+        <FadeIn>
+          <Marker>Results</Marker>
+        </FadeIn>
+
+        <div className="mt-14 grid grid-cols-1 gap-px bg-white/10 md:grid-cols-2">
+          {metrics.map((m, i) => (
+            <FadeIn key={m.metric} delay={(i % 2) * 0.06} className="bg-carbon">
+              <div className="h-full p-8 md:p-9">
+                <div className="font-display tracking-display text-volt text-5xl md:text-6xl">
+                  {m.metric}
+                </div>
+                <div className="mt-5 font-sans font-light text-white">
+                  {m.label}
+                </div>
+                <div className="mt-2 font-sans font-light text-sm text-[#8C8C93]">
+                  {m.context}
+                </div>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+
+        <div className="mt-6 grid gap-6 md:grid-cols-2">
+          {platforms.map((p, i) => (
+            <FadeIn key={p.title} delay={i * 0.07}>
+              <div className="h-full rounded-2xl border hairline bg-carbon p-8">
+                <h3 className="font-display tracking-display text-xl text-white">
+                  {p.title}
+                </h3>
+                <div className="mt-6 space-y-3 border-t border-white/10 pt-6">
+                  {p.points.map((point) => (
+                    <div key={point} className="flex items-start gap-2.5 text-sm text-white/70">
+                      <Dot />
+                      {point}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+
+        <FadeIn delay={0.1}>
+          <p className="mt-10 font-sans font-light text-xs text-[#8C8C93]">
+            Results shown are from live campaigns. Your results will depend on
+            budget, market, and offer.
+          </p>
+        </FadeIn>
       </div>
     </section>
   );
