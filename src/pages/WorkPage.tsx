@@ -1,5 +1,7 @@
 import type { ReactNode } from "react";
-import { ArrowUpRight } from "lucide-react";
+import { useNavigate } from "react-router";
+import { trackLead } from "../lib/analytics";
+import { AuditForm } from "../components/AuditForm";
 import { Nav } from "../components/Nav";
 import { Footer } from "../components/Footer";
 import { FloatingWhatsApp } from "../components/FloatingWhatsApp";
@@ -18,6 +20,7 @@ type Project = {
   slug: string;
   client: string;
   url: string;
+  img: string;
   line: string;
   features: string[];
 };
@@ -27,6 +30,7 @@ const PROJECTS: Project[] = [
     slug: "metro-gold-buyers",
     client: "Metro Gold Buyers",
     url: "metrogoldbuyers.co.uk",
+    img: "/work/metro-gold.jpg",
     line: "Live gold trading platform — real-time spot API, price calculator, PIN-protected admin panel",
     features: [
       "Real-time spot price API integration",
@@ -39,6 +43,7 @@ const PROJECTS: Project[] = [
     slug: "regent-estates-global",
     client: "Regent Estates Global",
     url: "regentestatesglobal.com",
+    img: "/work/regent-estates.jpg",
     line: "Bilingual property portal (EN/TR) — custom CMS, drag-and-drop listings, image management",
     features: [
       "Bilingual experience (EN / TR)",
@@ -51,6 +56,7 @@ const PROJECTS: Project[] = [
     slug: "abov-interiors",
     client: "ABOV Interiors",
     url: "abov-tvow.vercel.app",
+    img: "/work/abov-interiors.jpg",
     line: "Premium renovation brand — custom admin panel, project portfolio, enquiry system",
     features: [
       "Custom admin panel",
@@ -63,6 +69,7 @@ const PROJECTS: Project[] = [
     slug: "bedable",
     client: "Bedable",
     url: "bedable.com",
+    img: "/work/bedable1.jpg",
     line: "Shopify ecommerce — premium bedding brand, full store build, email marketing",
     features: [
       "Full Shopify store build",
@@ -84,6 +91,8 @@ function Marker({ children }: { children: ReactNode }) {
 }
 
 export default function WorkPage() {
+  const navigate = useNavigate();
+
   return (
     <div className="bg-ink text-white">
       <Nav variant="solid" offer="general" />
@@ -105,10 +114,13 @@ export default function WorkPage() {
               {PROJECTS.map((p, i) => (
                 <FadeIn key={p.slug} delay={(i % 2) * 0.08}>
                   <div className="flex h-full flex-col rounded-2xl border border-white/10 bg-carbon p-8 md:p-10">
-                    <div
-                      aria-hidden="true"
-                      className="aspect-[16/9] w-full rounded-xl border border-white/10 bg-ink bg-[linear-gradient(to_right,rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[size:28px_28px]"
-                    />
+                    <div className="aspect-[16/9] w-full overflow-hidden rounded-xl border border-white/10 bg-ink">
+                      <img
+                        src={p.img}
+                        alt={p.client}
+                        className="w-full h-full object-cover rounded-lg"
+                      />
+                    </div>
 
                     <h2 className="mt-8 font-display tracking-display text-3xl md:text-4xl text-white">
                       {p.client}
@@ -127,21 +139,25 @@ export default function WorkPage() {
                       ))}
                     </ul>
 
-                    <a
-                      href={`https://${p.url}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group mt-9 inline-flex items-center gap-2 text-sm font-medium text-white transition-colors hover:text-volt"
+                    <button
+                      type="button"
+                      onClick={() => {
+                        trackLead("website");
+                        navigate("/#audit");
+                      }}
+                      className="mt-9 inline-flex w-fit items-center gap-2 rounded-full border border-white px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-volt hover:text-ink"
                     >
-                      Visit site
-                      <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                    </a>
+                      Build something like this →
+                    </button>
                   </div>
                 </FadeIn>
               ))}
             </div>
           </div>
         </section>
+
+        <div id="audit" />
+        <AuditForm variant="embed" offer="website" />
       </main>
       <Footer />
       <FloatingWhatsApp offer="general" />

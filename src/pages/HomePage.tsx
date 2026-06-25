@@ -249,21 +249,25 @@ function WorkStrip() {
     {
       slug: "metro-gold-buyers",
       client: "Metro Gold Buyers",
+      img: "/work/metro-gold.jpg",
       line: "Live gold trading platform — real-time spot API, price calculator, PIN-protected admin panel",
     },
     {
       slug: "regent-estates-global",
       client: "Regent Estates Global",
+      img: "/work/regent-estates.jpg",
       line: "Bilingual property portal (EN/TR) — custom CMS, drag-and-drop listings, image management",
     },
     {
       slug: "abov-interiors",
       client: "ABOV Interiors",
+      img: "/work/abov-interiors.jpg",
       line: "Premium renovation brand — custom admin panel, project portfolio, enquiry system",
     },
     {
       slug: "bedable",
       client: "Bedable",
+      img: "/work/bedable1.jpg",
       line: "Shopify ecommerce — premium bedding brand, full store build, email marketing",
     },
   ];
@@ -287,10 +291,13 @@ function WorkStrip() {
               to={`/work/${w.slug}`}
               className="group flex w-[78vw] shrink-0 snap-start flex-col rounded-2xl border border-white/10 bg-carbon p-7 transition-colors hover:border-white/20 sm:w-[58vw] md:w-[38%]"
             >
-              <div
-                aria-hidden="true"
-                className="aspect-[16/10] w-full rounded-xl border border-white/10 bg-ink bg-[linear-gradient(to_right,rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[size:28px_28px]"
-              />
+              <div className="aspect-[16/10] w-full overflow-hidden rounded-xl border border-white/10 bg-ink">
+                <img
+                  src={w.img}
+                  alt={w.client}
+                  className="w-full h-full object-cover rounded-lg"
+                />
+              </div>
               <div className="mt-7 flex items-start justify-between gap-4">
                 <h3 className="font-display tracking-display text-2xl text-white">
                   {w.client}
