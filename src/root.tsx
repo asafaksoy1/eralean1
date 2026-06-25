@@ -10,6 +10,8 @@ import {
 } from "react-router";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import { AuditPopup } from "./components/AuditPopup";
+import { SmoothScroll } from "./components/SmoothScroll";
+import "lenis/dist/lenis.css";
 import "./index.css";
 
 // In framework mode the app's HTML document lives here, not in index.html.
@@ -82,13 +84,26 @@ export function Layout({ children }: { children: ReactNode }) {
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        {/* Brand type: Inter Tight (display), Inter (body), Newsreader (italic pull-quotes). */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=Inter:wght@300;400;500&family=Newsreader:ital,opsz,wght@1,6..72,400;1,6..72,500&display=swap"
+        />
         <Meta />
         <Links />
         {import.meta.env.PROD && <TrackingScripts />}
       </head>
       <body>
-        {children}
-        <AuditPopup />
+        <SmoothScroll>
+          {children}
+          <AuditPopup />
+        </SmoothScroll>
         <ScrollRestoration />
         <Scripts />
         <SpeedInsights />

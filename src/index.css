@@ -2,6 +2,58 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --ink: #0b0b0c;
+  --carbon: #161618;
+  --volt: #bdff00;
+  --volt-deep: #9ac700;
+}
+
+@layer base {
+  html {
+    background: var(--ink);
+  }
+
+  body {
+    background: var(--ink);
+    color: #ffffff;
+    font-family: "Inter", system-ui, sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Display type: Inter Tight, tight tracking, weight 600. */
+  .font-display {
+    letter-spacing: -0.03em;
+  }
+}
+
+@layer components {
+  /* Hairline 1px divider. */
+  .hairline {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* Brand "now running" status dot pulse — transform/opacity only. */
+@keyframes el-dot-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.45;
+    transform: scale(0.82);
+  }
+}
+
+.el-dot-pulse {
+  animation: el-dot-pulse 2.2s ease-in-out infinite;
+}
+
 /* Exit-intent audit popup entrance (skipped when prefers-reduced-motion). */
 @keyframes el-fade {
   from {
@@ -20,5 +72,18 @@
   to {
     opacity: 1;
     transform: none;
+  }
+}
+
+/* Honour reduced-motion globally: kill CSS animation + native smooth scroll.
+   (Lenis + motion/react primitives disable themselves separately in JS.) */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
   }
 }
