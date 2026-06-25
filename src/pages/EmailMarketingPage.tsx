@@ -37,6 +37,7 @@ export default function EmailMarketingPage() {
         <Hero />
         <Included />
         <Results />
+        <BuildSystem />
         <Showcase />
         <Pricing />
         <Reviews />
@@ -176,47 +177,46 @@ function Included() {
   );
 }
 
-/* ── Real results ─────────────────────────────────────────────────────── */
+/* ── Results ──────────────────────────────────────────────────────────── */
 
 function Results() {
-  const cases = [
-    { tag: "Welcome flow", industry: "Added to list", spent: "23,039", primary: "£50,733", primaryLabel: "Revenue", roas: "£2.20", reach: "+23%" },
-    { tag: "Abandoned checkout", industry: "Checkout started", spent: "3,445", primary: "£17,434", primaryLabel: "Revenue", roas: "£5.06", reach: "+48%" },
-    { tag: "Abandoned cart", industry: "Added to cart", spent: "2,758", primary: "£14,697", primaryLabel: "Revenue", roas: "£5.33", reach: "+23%" },
-    { tag: "Browse abandonment", industry: "Viewed product", spent: "18,097", primary: "£11,336", primaryLabel: "Revenue", roas: "£0.63", reach: "Live" },
-    { tag: "Collection flow", industry: "Viewed collection", spent: "3,360", primary: "£3,170", primaryLabel: "Revenue", roas: "£0.94", reach: "+117%" },
-    { tag: "All flows combined", industry: "Nov–Dec 2025", spent: "—", primary: "£97,372", primaryLabel: "Flow revenue", roas: "75.5%", reach: "of email" },
+  const metrics = [
+    {
+      metric: "£262K",
+      label: "Revenue from one welcome flow",
+      context: "Klaviyo — ecommerce brand, UK",
+    },
+    {
+      metric: "38.7%",
+      label: "Average open rate",
+      context: "Welcome flow — 71,059 emails delivered",
+    },
+    {
+      metric: "4.1%",
+      label: "Click rate",
+      context: "2,893 clicks — well above industry average",
+    },
   ];
 
   return (
     <section className="border-t border-white/10 px-6 md:px-10 py-24 md:py-32">
       <div className="mx-auto max-w-6xl">
         <FadeIn>
-          <Marker>Real results · live account</Marker>
-          <h2 className="mt-6 max-w-2xl font-display tracking-display text-4xl md:text-5xl text-white">
-            £128,979 from email. In 60 days<span className="text-volt">.</span>
-          </h2>
-          <p className="mt-6 max-w-xl text-white/55">
-            A real Klaviyo account managed by Asaf, Nov–Dec 2025: 20.4% of total
-            revenue driven by email, with flows alone bringing in £97,372. Every
-            flow below was rebuilt and optimised from scratch. Real screenshots
-            shared on your call.
-          </p>
+          <Marker>Results</Marker>
         </FadeIn>
 
-        <div className="mt-14 grid gap-px bg-white/10 md:grid-cols-2 lg:grid-cols-3">
-          {cases.map((c, i) => (
-            <FadeIn key={c.tag + i} delay={(i % 3) * 0.06} className="bg-ink">
-              <div className="h-full p-8">
-                <div className="flex items-center gap-2 text-sm text-white/45">
-                  <Dot /> {c.tag}
+        <div className="mt-14 grid grid-cols-1 gap-px bg-white/10 md:grid-cols-3">
+          {metrics.map((m, i) => (
+            <FadeIn key={m.metric} delay={(i % 3) * 0.06} className="bg-carbon">
+              <div className="h-full p-8 md:p-9">
+                <div className="font-display tracking-display text-volt text-5xl md:text-6xl">
+                  {m.metric}
                 </div>
-                <div className="mt-1 text-sm text-white/55">{c.industry}</div>
-                <div className="mt-6 grid grid-cols-2 gap-x-6 gap-y-5 border-t border-white/10 pt-6">
-                  <Metric label="Deliveries" value={c.spent} />
-                  <Metric label={c.primaryLabel} value={c.primary} accent />
-                  <Metric label="Per recipient" value={c.roas} />
-                  <Metric label="Change" value={c.reach} />
+                <div className="mt-5 font-sans font-light text-white">
+                  {m.label}
+                </div>
+                <div className="mt-2 font-sans font-light text-sm text-[#8C8C93]">
+                  {m.context}
                 </div>
               </div>
             </FadeIn>
@@ -227,14 +227,82 @@ function Results() {
   );
 }
 
-function Metric({ label, value, accent = false }: { label: string; value: string; accent?: boolean }) {
+/* ── How we build it ──────────────────────────────────────────────────── */
+
+function BuildSystem() {
+  const flows = [
+    {
+      title: "Welcome flow",
+      eyebrow: "Day 0",
+      description:
+        "First impression, first purchase. Conditional split — new vs returning buyer. 3-email sequence with offer escalation.",
+      stats: ["38.7% open rate", "£262K attributed revenue"],
+    },
+    {
+      title: "Abandoned checkout",
+      eyebrow: "Day 1–3",
+      description:
+        "Four variants based on buyer history. First-time buyers get a discount ladder. Returning buyers get a softer nudge.",
+      stats: ["30.6% open rate", "Split by purchase history"],
+    },
+    {
+      title: "Post-purchase",
+      eyebrow: "Day 7+",
+      description:
+        "Review request, cross-sell, loyalty sequence. Turns one-time buyers into repeat customers.",
+      stats: ["Fully automated", "Compounds over time"],
+    },
+  ];
+
   return (
-    <div>
-      <div className="text-[10px] uppercase tracking-widest text-white/40">{label}</div>
-      <div className={`mt-1 font-display tracking-display text-xl ${accent ? "text-white" : "text-white/75"}`}>
-        {value}
+    <section className="border-t border-white/10 bg-carbon px-6 md:px-10 py-24 md:py-32">
+      <div className="mx-auto max-w-6xl">
+        <FadeIn>
+          <Marker>How we build it</Marker>
+          <h2 className="mt-6 max-w-2xl font-display tracking-display text-4xl md:text-5xl text-white">
+            A system, not just emails<span className="text-volt">.</span>
+          </h2>
+          <p className="mt-6 max-w-xl font-sans font-light text-[#8C8C93]">
+            Every flow is segmented, sequenced, and built to compound.
+          </p>
+        </FadeIn>
+
+        <div className="mt-14 grid gap-6 md:grid-cols-3">
+          {flows.map((f, i) => (
+            <FadeIn key={f.title} delay={i * 0.07}>
+              <div className="h-full rounded-2xl border border-white/10 bg-ink p-8">
+                <div className="text-xs uppercase tracking-widest text-[#8C8C93]">
+                  {f.eyebrow}
+                </div>
+                <h3 className="mt-3 font-display tracking-display text-xl text-white">
+                  {f.title}
+                </h3>
+                <p className="mt-4 font-sans font-light text-sm leading-relaxed text-white/60">
+                  {f.description}
+                </p>
+                <div className="mt-6 space-y-2.5 border-t border-white/10 pt-6">
+                  {f.stats.map((s) => (
+                    <div
+                      key={s}
+                      className="flex items-center gap-2.5 text-sm text-white/75"
+                    >
+                      <Dot /> {s}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+
+        <FadeIn delay={0.1}>
+          <p className="mt-10 font-sans font-light text-xs text-[#8C8C93]">
+            Results shown are from live client flows. Your results will vary
+            based on list size, product, and market.
+          </p>
+        </FadeIn>
       </div>
-    </div>
+    </section>
   );
 }
 
