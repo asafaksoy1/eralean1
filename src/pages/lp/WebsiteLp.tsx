@@ -134,12 +134,19 @@ function WhatsIncluded() {
     <section className="bg-ink px-6 py-24 md:px-10 md:py-32">
       <div className="mx-auto max-w-3xl">
         <FadeIn>
-          <h2 className="font-display tracking-display text-3xl text-white md:text-4xl">
+          <div className="flex items-center gap-2.5 text-[11px] font-medium uppercase tracking-[0.24em] text-white/45">
+            <Dot />
+            What's included for £99/month
+          </div>
+        </FadeIn>
+
+        <FadeIn delay={0.06}>
+          <h2 className="mt-5 font-display tracking-display text-3xl text-white md:text-4xl">
             Everything. Genuinely everything<span className="text-volt">.</span>
           </h2>
         </FadeIn>
 
-        <FadeIn delay={0.06}>
+        <FadeIn delay={0.12}>
           <ul className="mt-10 grid gap-3 sm:grid-cols-2">
             {items.map((item) => (
               <li

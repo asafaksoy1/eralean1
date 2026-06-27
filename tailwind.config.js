@@ -7,6 +7,10 @@ export default {
         // EraLean brand system — Volt is the ONE accent (use sparingly).
         ink: "#0B0B0C", // page background
         carbon: "#161618", // raised surfaces
+        slate: "#26262A", // hairline dividers on dark
+        ash: "#8C8C93", // muted / secondary text
+        mist: "#E4E4E6", // dividers on light
+        paper: "#FAFAF9", // light section background
         volt: "#BDFF00", // the single accent
         "volt-deep": "#9AC700", // Volt text on light surfaces
       },
