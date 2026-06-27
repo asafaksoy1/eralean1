@@ -3,8 +3,7 @@ import { trackLead } from "../../lib/analytics";
 import { FadeIn } from "../../components/motion/FadeIn";
 import { Dot } from "../../components/brand/Dot";
 
-// Placeholder — swap for the real Calendly link before this page goes live behind ad spend.
-const CALENDLY_PLACEHOLDER = "https://calendly.com";
+const CALENDLY_PLACEHOLDER = "https://calendar.app.google/2mmmEqFVPaLvZ6dy7";
 const OFFER = "email";
 
 export const meta = () => [
@@ -14,6 +13,7 @@ export const meta = () => [
     content:
       "Klaviyo email management for ecommerce brands. Flows, campaigns, and deliverability — £490/month, 3 spots available.",
   },
+  { name: "robots", content: "noindex, nofollow" },
 ];
 
 function onCtaClick() {
