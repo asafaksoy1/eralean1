@@ -1,6 +1,7 @@
 import { ArrowRight, ChevronDown } from "lucide-react";
 import { trackLead } from "../../lib/analytics";
 import { FadeIn } from "../../components/motion/FadeIn";
+import { ScaleOnScroll } from "../../components/motion/ScaleOnScroll";
 import { Dot } from "../../components/brand/Dot";
 
 const BOOKING_LINK = "https://calendar.app.google/2mmmEqFVPaLvZ6dy7";
@@ -36,7 +37,7 @@ function Header() {
 
 function Hero() {
   return (
-    <section className="flex min-h-screen items-center px-6 py-20 md:px-10">
+    <section className="px-6 pt-2 pb-16 md:px-10 md:pt-4 md:pb-24">
       <div className="mx-auto w-full max-w-3xl text-center">
         <FadeIn>
           <div className="inline-flex items-center gap-2.5 text-[11px] font-medium uppercase tracking-[0.24em] text-white/45">
@@ -85,7 +86,7 @@ function Hero() {
 
 function PriceAnchor() {
   return (
-    <section className="bg-carbon px-6 py-20 md:px-10 md:py-28">
+    <section className="border-t hairline bg-carbon px-6 py-20 md:px-10 md:py-28">
       <FadeIn>
         <div className="mx-auto flex max-w-3xl flex-col items-center gap-10 text-center sm:flex-row sm:justify-center sm:gap-16">
           <div>
@@ -131,7 +132,7 @@ function WhatsIncluded() {
   ];
 
   return (
-    <section className="bg-ink px-6 py-24 md:px-10 md:py-32">
+    <section className="border-t hairline bg-ink px-6 py-24 md:px-10 md:py-32">
       <div className="mx-auto max-w-3xl">
         <FadeIn>
           <div className="flex items-center gap-2.5 text-[11px] font-medium uppercase tracking-[0.24em] text-white/45">
@@ -183,7 +184,7 @@ function WhySubscription() {
   ];
 
   return (
-    <section className="bg-carbon px-6 py-24 md:px-10 md:py-32">
+    <section className="border-t hairline bg-carbon px-6 py-24 md:px-10 md:py-32">
       <div className="mx-auto max-w-3xl">
         <FadeIn>
           <div className="flex items-center gap-2.5 text-[11px] font-medium uppercase tracking-[0.24em] text-white/45">
@@ -222,24 +223,31 @@ function Projects() {
       name: "CallFix Electrical",
       line: "Lead-generating site for an electrical services business",
       items: ["Custom build", "Google-ready", "Generating leads at £13.32 each"],
+      img: null,
     },
     {
       name: "Regent Estates Global",
       line: "Bilingual property portal",
       items: ["Custom CMS", "EN/TR", "Drag-and-drop listings"],
+      img: "/work/regent-estates.jpg",
     },
     {
       name: "ABOV Interiors",
       line: "Premium renovation brand",
       items: ["Custom admin panel", "Portfolio gallery", "Lead capture"],
+      img: "/work/abov-interiors.jpg",
     },
   ];
 
   return (
-    <section className="bg-ink px-6 py-24 md:px-10 md:py-32">
+    <section className="border-t hairline bg-ink px-6 py-24 md:px-10 md:py-32">
       <div className="mx-auto max-w-6xl">
         <FadeIn>
-          <h2 className="font-display tracking-display text-3xl text-white md:text-4xl">
+          <div className="flex items-center gap-2.5 text-[11px] font-medium uppercase tracking-[0.24em] text-white/45">
+            <Dot />
+            Proof
+          </div>
+          <h2 className="mt-5 font-display tracking-display text-3xl text-white md:text-4xl">
             Real businesses we build for<span className="text-volt">.</span>
           </h2>
         </FadeIn>
@@ -247,24 +255,44 @@ function Projects() {
         <div className="mt-12 grid gap-6 md:grid-cols-3">
           {projects.map((p, i) => (
             <FadeIn key={p.name} delay={i * 0.07}>
-              <div className="h-full rounded-2xl border border-slate bg-carbon p-8">
-                <h3 className="font-display tracking-display text-xl text-white">
-                  {p.name}
-                </h3>
-                <p className="mt-3 font-sans font-light text-white/70">
-                  {p.line}
-                </p>
-                <ul className="mt-6 space-y-3 border-t border-slate pt-6">
-                  {p.items.map((item) => (
-                    <li
-                      key={item}
-                      className="flex items-start gap-3 text-sm text-white/70"
-                    >
-                      <Dot className="mt-1.5" />
-                      <span className="font-light">{item}</span>
-                    </li>
-                  ))}
-                </ul>
+              <div className="h-full overflow-hidden rounded-2xl border border-slate bg-carbon">
+                <ScaleOnScroll className="aspect-[16/10] w-full overflow-hidden border-b border-slate bg-ink">
+                  {p.img ? (
+                    <img
+                      src={p.img}
+                      alt={p.name}
+                      className="h-full w-full rounded-lg object-cover"
+                    />
+                  ) : (
+                    <div
+                      className="h-full w-full rounded-lg"
+                      style={{
+                        backgroundImage:
+                          "linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px)",
+                        backgroundSize: "24px 24px",
+                      }}
+                    />
+                  )}
+                </ScaleOnScroll>
+                <div className="p-8">
+                  <h3 className="font-display tracking-display text-xl text-white">
+                    {p.name}
+                  </h3>
+                  <p className="mt-3 font-sans font-light text-white/70">
+                    {p.line}
+                  </p>
+                  <ul className="mt-6 space-y-3 border-t border-slate pt-6">
+                    {p.items.map((item) => (
+                      <li
+                        key={item}
+                        className="flex items-start gap-3 text-sm text-white/70"
+                      >
+                        <Dot className="mt-1.5" />
+                        <span className="font-light">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             </FadeIn>
           ))}
@@ -301,10 +329,14 @@ function Faq() {
   ];
 
   return (
-    <section className="bg-ink px-6 py-24 md:px-10 md:py-32">
+    <section className="border-t hairline bg-ink px-6 py-24 md:px-10 md:py-32">
       <div className="mx-auto max-w-3xl">
         <FadeIn>
-          <h2 className="font-display tracking-display text-3xl text-white md:text-4xl">
+          <div className="flex items-center gap-2.5 text-[11px] font-medium uppercase tracking-[0.24em] text-white/45">
+            <Dot />
+            FAQ
+          </div>
+          <h2 className="mt-5 font-display tracking-display text-3xl text-white md:text-4xl">
             Questions<span className="text-volt">.</span>
           </h2>
         </FadeIn>

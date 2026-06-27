@@ -36,7 +36,7 @@ function Header() {
 
 function Hero() {
   return (
-    <section className="flex min-h-screen items-center px-6 py-20 md:px-10">
+    <section className="px-6 pt-2 pb-16 md:px-10 md:pt-4 md:pb-24">
       <div className="mx-auto w-full max-w-3xl text-center">
         <FadeIn>
           <div className="inline-flex items-center gap-2.5 text-[11px] font-medium uppercase tracking-[0.24em] text-white/45">
@@ -91,7 +91,7 @@ function ProofBar() {
   ];
 
   return (
-    <section className="bg-carbon px-6 py-16 md:px-10 md:py-20">
+    <section className="border-t border-white/10 bg-carbon px-6 py-16 md:px-10 md:py-20">
       <FadeIn>
         <div className="mx-auto grid max-w-5xl grid-cols-1 gap-px bg-white/10 md:grid-cols-3">
           {stats.map((s) => (
@@ -126,7 +126,7 @@ function Problems() {
   ];
 
   return (
-    <section className="bg-ink px-6 py-24 md:px-10 md:py-32">
+    <section className="border-t border-white/10 bg-ink px-6 py-24 md:px-10 md:py-32">
       <div className="mx-auto max-w-3xl">
         <FadeIn>
           <div className="flex items-center gap-2.5 text-[11px] font-medium uppercase tracking-[0.24em] text-white/45">
@@ -194,9 +194,16 @@ function Services() {
   ];
 
   return (
-    <section className="bg-carbon px-6 py-24 md:px-10 md:py-32">
+    <section className="border-t border-white/10 bg-carbon px-6 py-24 md:px-10 md:py-32">
       <div className="mx-auto max-w-6xl">
-        <div className="grid gap-6 md:grid-cols-3">
+        <FadeIn>
+          <div className="flex items-center gap-2.5 text-[11px] font-medium uppercase tracking-[0.24em] text-white/45">
+            <Dot />
+            What we do
+          </div>
+        </FadeIn>
+
+        <div className="mt-12 grid gap-6 md:grid-cols-3">
           {cards.map((c, i) => (
             <FadeIn key={c.title} delay={i * 0.07}>
               <div className="h-full rounded-2xl border border-white/10 bg-ink p-8">
@@ -233,10 +240,14 @@ function WhatYouGet() {
   ];
 
   return (
-    <section className="bg-ink px-6 py-24 md:px-10 md:py-32">
+    <section className="border-t border-white/10 bg-ink px-6 py-24 md:px-10 md:py-32">
       <div className="mx-auto max-w-3xl">
         <FadeIn>
-          <h2 className="font-display tracking-display text-3xl text-white md:text-4xl">
+          <div className="flex items-center gap-2.5 text-[11px] font-medium uppercase tracking-[0.24em] text-white/45">
+            <Dot />
+            What you get
+          </div>
+          <h2 className="mt-5 font-display tracking-display text-3xl text-white md:text-4xl">
             Everything. No hidden extras<span className="text-volt">.</span>
           </h2>
         </FadeIn>
@@ -283,10 +294,14 @@ function Results() {
   ];
 
   return (
-    <section className="bg-carbon px-6 py-24 md:px-10 md:py-32">
+    <section className="border-t border-white/10 bg-carbon px-6 py-24 md:px-10 md:py-32">
       <div className="mx-auto max-w-4xl">
         <FadeIn>
-          <h2 className="font-display tracking-display text-3xl text-white md:text-4xl">
+          <div className="flex items-center gap-2.5 text-[11px] font-medium uppercase tracking-[0.24em] text-white/45">
+            <Dot />
+            Results
+          </div>
+          <h2 className="mt-5 font-display tracking-display text-3xl text-white md:text-4xl">
             Real flows, real numbers<span className="text-volt">.</span>
           </h2>
         </FadeIn>
@@ -341,10 +356,14 @@ function Faq() {
   ];
 
   return (
-    <section className="bg-ink px-6 py-24 md:px-10 md:py-32">
+    <section className="border-t border-white/10 bg-ink px-6 py-24 md:px-10 md:py-32">
       <div className="mx-auto max-w-3xl">
         <FadeIn>
-          <h2 className="font-display tracking-display text-3xl text-white md:text-4xl">
+          <div className="flex items-center gap-2.5 text-[11px] font-medium uppercase tracking-[0.24em] text-white/45">
+            <Dot />
+            FAQ
+          </div>
+          <h2 className="mt-5 font-display tracking-display text-3xl text-white md:text-4xl">
             Questions<span className="text-volt">.</span>
           </h2>
         </FadeIn>
