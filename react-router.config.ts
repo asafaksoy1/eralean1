@@ -15,5 +15,6 @@ export default {
     "/services/email-marketing",
     "/work",
     "/lp/email",
+    "/lp/website",
   ],
 } satisfies Config;

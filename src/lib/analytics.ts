@@ -2,7 +2,7 @@
 // It's the part after the slash in the conversion's "send to" value:
 //   AW-18269973238/<CONVERSION_LABEL>
 // Left empty for now; while empty, the Google Ads conversion event is skipped.
-export const CONVERSION_LABEL = "";
+export const CONVERSION_LABEL = "qTywCIqf0sYcEPbV5odE";
 
 const GOOGLE_ADS_ID = "AW-18269973238";
 

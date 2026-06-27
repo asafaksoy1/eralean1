@@ -174,7 +174,7 @@ function Services() {
     {
       title: "Monthly campaigns",
       items: [
-        "4–8 campaigns/month",
+        "10–14 campaigns/month",
         "Segmented by behaviour",
         "A/B subject line testing",
         "Send-time optimisation",
