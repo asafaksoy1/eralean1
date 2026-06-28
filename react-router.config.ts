@@ -8,6 +8,8 @@ export default {
   ssr: false,
   // The trimmed, real structure — AI / Social / Acquisition routes are gone.
   // Add new offer pages or SEO pages to this array as you build them.
+  // Indexable additions/removals here must also be mirrored in
+  // public/sitemap.xml (skip /lp/* — those stay noindex).
   prerender: [
     "/",
     "/services/website",
@@ -16,5 +18,8 @@ export default {
     "/work",
     "/lp/email",
     "/lp/website",
+    "/learn/what-is-klaviyo",
+    "/learn/welcome-email-series",
+    "/learn/abandoned-cart-email",
   ],
 } satisfies Config;

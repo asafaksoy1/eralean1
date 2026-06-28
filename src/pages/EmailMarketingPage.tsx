@@ -8,6 +8,7 @@ import { Footer } from "../components/Footer";
 import { FloatingWhatsApp } from "../components/FloatingWhatsApp";
 import { FadeIn } from "../components/motion/FadeIn";
 import { Dot } from "../components/brand/Dot";
+import { learnArticles } from "../lib/learnArticles";
 
 const OFFER = "email";
 
@@ -42,6 +43,7 @@ export default function EmailMarketingPage() {
         <Pricing />
         <Reviews />
         <AuditForm variant="embed" offer={OFFER} />
+        <Learn />
         <ClosingCTA />
         <Disclaimer />
       </main>
@@ -476,6 +478,41 @@ function Reviews() {
                   <span className="text-white/45">· {x.r}</span>
                 </div>
               </div>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ── Learn ────────────────────────────────────────────────────────────── */
+
+function Learn() {
+  return (
+    <section className="border-t border-white/10 px-6 md:px-10 py-24 md:py-32">
+      <div className="mx-auto max-w-6xl">
+        <FadeIn>
+          <Marker>Learn</Marker>
+          <h2 className="mt-6 max-w-2xl font-display tracking-display text-4xl md:text-5xl text-white">
+            Email marketing, explained<span className="text-volt">.</span>
+          </h2>
+        </FadeIn>
+
+        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {learnArticles.map((article, i) => (
+            <FadeIn key={article.slug} delay={(i % 3) * 0.06}>
+              <a
+                href={`/learn/${article.slug}`}
+                className="group block h-full rounded-2xl border border-white/10 bg-carbon p-8 transition-colors hover:border-white/20"
+              >
+                <h3 className="font-display tracking-display text-lg text-white">
+                  {article.title}
+                </h3>
+                <p className="mt-3 font-sans font-light text-sm leading-relaxed text-ash">
+                  {article.description}
+                </p>
+              </a>
             </FadeIn>
           ))}
         </div>
