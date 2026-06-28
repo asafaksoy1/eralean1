@@ -1,5 +1,5 @@
 import { ArrowRight, ChevronDown } from "lucide-react";
-import { trackLead } from "../../lib/analytics";
+import { trackLead, trackEmailLeadFormSubmit } from "../../lib/analytics";
 import { FadeIn } from "../../components/motion/FadeIn";
 import { Dot } from "../../components/brand/Dot";
 
@@ -18,6 +18,7 @@ export const meta = () => [
 
 function onCtaClick() {
   trackLead(OFFER);
+  trackEmailLeadFormSubmit();
 }
 
 /* ── Header ───────────────────────────────────────────────────────────── */
