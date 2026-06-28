@@ -9,16 +9,35 @@ import { FloatingWhatsApp } from "../components/FloatingWhatsApp";
 import { FadeIn } from "../components/motion/FadeIn";
 import { Dot } from "../components/brand/Dot";
 import { learnArticles } from "../lib/learnArticles";
+import { pageMeta, serviceSchema, breadcrumbSchema } from "../lib/seo";
+
+// Only articles that actually have a prerendered route (see src/routes.ts) —
+// learnArticles.ts lists more slugs than routes exist for; linking the rest
+// would 404.
+const PUBLISHED_LEARN_SLUGS = new Set([
+  "what-is-klaviyo",
+  "welcome-email-series",
+  "abandoned-cart-email",
+]);
+const publishedLearnArticles = learnArticles.filter((a) =>
+  PUBLISHED_LEARN_SLUGS.has(a.slug)
+);
 
 const OFFER = "email";
+const TITLE = "Ecommerce Email Marketing — EraLean";
+const DESCRIPTION =
+  "Done-for-you ecommerce email marketing — Klaviyo flows and campaigns that turn subscribers into repeat customers and recover revenue on autopilot.";
+const PATH = "/services/email-marketing";
 
 export const meta = () => [
-  { title: "Ecommerce Email Marketing — EraLean" },
-  {
-    name: "description",
-    content:
-      "Done-for-you ecommerce email marketing — Klaviyo flows and campaigns that turn subscribers into repeat customers and recover revenue on autopilot.",
-  },
+  { title: TITLE },
+  { name: "description", content: DESCRIPTION },
+  ...pageMeta({ title: TITLE, description: DESCRIPTION, path: PATH }),
+  serviceSchema({ name: "Ecommerce Email Marketing", description: DESCRIPTION, path: PATH }),
+  breadcrumbSchema([
+    { name: "Home", path: "/" },
+    { name: "Email Marketing", path: PATH },
+  ]),
 ];
 
 function Marker({ children }: { children: ReactNode }) {
@@ -500,7 +519,7 @@ function Learn() {
         </FadeIn>
 
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {learnArticles.map((article, i) => (
+          {publishedLearnArticles.map((article, i) => (
             <FadeIn key={article.slug} delay={(i % 3) * 0.06}>
               <a
                 href={`/learn/${article.slug}`}

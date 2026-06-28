@@ -8,16 +8,23 @@ import { Footer } from "../components/Footer";
 import { FloatingWhatsApp } from "../components/FloatingWhatsApp";
 import { FadeIn } from "../components/motion/FadeIn";
 import { Dot } from "../components/brand/Dot";
+import { pageMeta, serviceSchema, breadcrumbSchema } from "../lib/seo";
 
 const OFFER = "website";
+const TITLE = "Website Design & Build — EraLean";
+const DESCRIPTION =
+  "High-converting websites designed and built around bookings, not vanity metrics — fast, mobile-first, and fully managed so every visitor turns into a lead.";
+const PATH = "/services/website";
 
 export const meta = () => [
-  { title: "Website Design & Build — EraLean" },
-  {
-    name: "description",
-    content:
-      "High-converting websites designed and built around bookings, not vanity metrics — fast, mobile-first, and fully managed so every visitor turns into a lead.",
-  },
+  { title: TITLE },
+  { name: "description", content: DESCRIPTION },
+  ...pageMeta({ title: TITLE, description: DESCRIPTION, path: PATH }),
+  serviceSchema({ name: "Website Design & Build", description: DESCRIPTION, path: PATH }),
+  breadcrumbSchema([
+    { name: "Home", path: "/" },
+    { name: "Website", path: PATH },
+  ]),
 ];
 
 // Small caps section marker — the brand dot + a label.

@@ -4,10 +4,10 @@ import type { MetaDescriptor } from "react-router";
 import { ArrowRight } from "lucide-react";
 import { EMAIL } from "../../lib/constants";
 import { trackLead } from "../../lib/analytics";
+import { pageMeta, breadcrumbSchema, SITE_URL } from "../../lib/seo";
 import { FadeIn } from "../motion/FadeIn";
 import { Dot } from "../brand/Dot";
 
-const SITE_URL = "https://www.eralean.com";
 const BOOKING_URL = "https://calendar.app.google/2mmmEqFVPaLvZ6dy7";
 
 export type RelatedArticle = {
@@ -21,16 +21,19 @@ type ArticleMetaInput = {
   slug: string;
 };
 
-// Per-article <title>/description, canonical link, and Article JSON-LD.
-// Call from a learn article page's own `meta` export, e.g.:
+// Per-article <title>/description, canonical link, OG/Twitter tags, and
+// Article + Breadcrumb JSON-LD. Call from a learn article page's own `meta`
+// export, e.g.:
 //   export const meta = () => getArticleMeta({ title, description, slug });
 export function getArticleMeta({ title, description, slug }: ArticleMetaInput): MetaDescriptor[] {
-  const url = `${SITE_URL}/learn/${slug}`;
+  const path = `/learn/${slug}`;
+  const url = `${SITE_URL}${path}`;
+  const fullTitle = `${title} — EraLean`;
 
   return [
-    { title: `${title} — EraLean` },
+    { title: fullTitle },
     { name: "description", content: description },
-    { tagName: "link", rel: "canonical", href: url },
+    ...pageMeta({ title: fullTitle, description, path, type: "article" }),
     {
       "script:ld+json": {
         "@context": "https://schema.org",
@@ -43,6 +46,11 @@ export function getArticleMeta({ title, description, slug }: ArticleMetaInput): 
         publisher: { "@type": "Organization", name: "EraLean" },
       },
     },
+    breadcrumbSchema([
+      { name: "Home", path: "/" },
+      { name: "Learn", path: "/services/email-marketing" },
+      { name: title, path },
+    ]),
   ];
 }
 

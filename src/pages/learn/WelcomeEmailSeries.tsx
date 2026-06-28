@@ -17,12 +17,10 @@ const SLUG = "welcome-email-series";
 export const meta = () =>
   getArticleMeta({ title: TITLE, description: DESCRIPTION, slug: SLUG });
 
+// Only articles with a real prerendered route — see src/routes.ts.
 const RELATED = [
   { slug: "abandoned-cart-email", title: "Abandoned cart emails: setup and best practices" },
-  { slug: "post-purchase-email", title: "Post-purchase email flows that drive repeat sales" },
   { slug: "what-is-klaviyo", title: "What is Klaviyo and why ecommerce brands use it" },
-  { slug: "email-segmentation", title: "Email segmentation strategies for ecommerce" },
-  { slug: "email-subject-lines", title: "How to write email subject lines that get opened" },
 ];
 
 const SECTIONS = [
@@ -192,8 +190,7 @@ export default function WelcomeEmailSeriesPage() {
       </ArticleList>
       <p>
         Anyone who buys partway through the series should exit it
-        automatically and move into your{" "}
-        <a href="/learn/post-purchase-email">post-purchase flow</a> instead —
+        automatically and move into your post-purchase flow instead —
         nothing kills trust faster than getting a "still thinking it over?"
         email after you've already bought.
       </p>
@@ -298,9 +295,7 @@ export default function WelcomeEmailSeriesPage() {
       <ArticleH3>Ignoring mobile rendering</ArticleH3>
       <p>
         The majority of welcome emails are opened on a phone. Test every
-        email on mobile before it goes live — see our{" "}
-        <a href="/learn/email-design-best-practices">email design guide</a>{" "}
-        for specifics.
+        email on mobile before it goes live.
       </p>
 
       <div id="faq">

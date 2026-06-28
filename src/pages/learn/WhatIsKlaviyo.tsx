@@ -17,12 +17,10 @@ const SLUG = "what-is-klaviyo";
 export const meta = () =>
   getArticleMeta({ title: TITLE, description: DESCRIPTION, slug: SLUG });
 
+// Only articles with a real prerendered route — see src/routes.ts.
 const RELATED = [
-  { slug: "how-to-setup-klaviyo", title: "How to set up Klaviyo: a step-by-step guide" },
-  { slug: "klaviyo-vs-mailchimp", title: "Klaviyo vs Mailchimp: which is better for ecommerce" },
-  { slug: "best-klaviyo-flows", title: "The best Klaviyo flows every store should have" },
-  { slug: "shopify-email-marketing", title: "Shopify email marketing: the complete guide" },
   { slug: "welcome-email-series", title: "How to build a welcome email series that converts" },
+  { slug: "abandoned-cart-email", title: "Abandoned cart emails: setup and best practices" },
 ];
 
 const SECTIONS = [
@@ -263,7 +261,7 @@ export default function WhatIsKlaviyoPage() {
       </ArticleList>
       <p>
         We cover the full process in detail in our{" "}
-        <a href="/learn/how-to-setup-klaviyo">step-by-step Klaviyo setup guide</a>.
+        <a href="/learn/welcome-email-series">welcome flow setup guide</a>.
       </p>
 
       <div id="agency-vs-diy">
@@ -334,9 +332,7 @@ export default function WhatIsKlaviyoPage() {
       <p>
         Yes. Klaviyo has built-in migration tools for contacts, and most
         flow logic needs to be rebuilt natively rather than imported, since
-        automation structures don't transfer cleanly between platforms. See
-        our <a href="/learn/klaviyo-vs-mailchimp">Klaviyo vs Mailchimp comparison</a>{" "}
-        for a fuller breakdown.
+        automation structures don't transfer cleanly between platforms.
       </p>
       <ArticleH3>Do I need a developer to set it up?</ArticleH3>
       <p>

@@ -9,14 +9,16 @@ import { Footer } from "../components/Footer";
 import { FloatingWhatsApp } from "../components/FloatingWhatsApp";
 import { FadeIn } from "../components/motion/FadeIn";
 import { Dot } from "../components/brand/Dot";
+import { pageMeta } from "../lib/seo";
+
+const TITLE = "EraLean — Growth systems for modern brands";
+const DESCRIPTION =
+  "EraLean builds and runs done-for-you growth systems — website, ads, and email marketing — so modern brands win more customers while you focus on the business.";
 
 export const meta = () => [
-  { title: "EraLean — Growth systems for modern brands" },
-  {
-    name: "description",
-    content:
-      "EraLean builds and runs done-for-you growth systems — website, ads, and email marketing — so modern brands win more customers while you focus on the business.",
-  },
+  { title: TITLE },
+  { name: "description", content: DESCRIPTION },
+  ...pageMeta({ title: TITLE, description: DESCRIPTION, path: "/" }),
 ];
 
 // Small caps section marker — the brand dot + a label.
@@ -288,13 +290,14 @@ function WorkStrip() {
           {work.map((w) => (
             <Link
               key={w.slug}
-              to={`/work/${w.slug}`}
+              to="/work"
               className="group flex w-[78vw] shrink-0 snap-start flex-col rounded-2xl border border-white/10 bg-carbon p-7 transition-colors hover:border-white/20 sm:w-[58vw] md:w-[38%]"
             >
               <div className="aspect-[16/10] w-full overflow-hidden rounded-xl border border-white/10 bg-ink">
                 <img
                   src={w.img}
                   alt={w.client}
+                  loading="lazy"
                   className="w-full h-full object-cover rounded-lg"
                 />
               </div>

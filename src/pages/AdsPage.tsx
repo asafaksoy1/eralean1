@@ -8,16 +8,23 @@ import { Footer } from "../components/Footer";
 import { FloatingWhatsApp } from "../components/FloatingWhatsApp";
 import { FadeIn } from "../components/motion/FadeIn";
 import { Dot } from "../components/brand/Dot";
+import { pageMeta, serviceSchema, breadcrumbSchema } from "../lib/seo";
 
 const OFFER = "ads";
+const TITLE = "Google & Meta Ads Management — EraLean";
+const DESCRIPTION =
+  "End-to-end Google and Meta ads management — creative, copy, audiences, and daily optimisation — engineered to bring you qualified leads at a profitable cost.";
+const PATH = "/services/ads";
 
 export const meta = () => [
-  { title: "Google & Meta Ads Management — EraLean" },
-  {
-    name: "description",
-    content:
-      "End-to-end Google and Meta ads management — creative, copy, audiences, and daily optimisation — engineered to bring you qualified leads at a profitable cost.",
-  },
+  { title: TITLE },
+  { name: "description", content: DESCRIPTION },
+  ...pageMeta({ title: TITLE, description: DESCRIPTION, path: PATH }),
+  serviceSchema({ name: "Google & Meta Ads Management", description: DESCRIPTION, path: PATH }),
+  breadcrumbSchema([
+    { name: "Home", path: "/" },
+    { name: "Ads", path: PATH },
+  ]),
 ];
 
 function Marker({ children }: { children: ReactNode }) {

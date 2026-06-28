@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import {
   Links,
   Meta,
@@ -11,6 +11,9 @@ import {
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import { AuditPopup } from "./components/AuditPopup";
 import { SmoothScroll } from "./components/SmoothScroll";
+import { ConsentBanner } from "./components/ConsentBanner";
+import { getConsent, setConsent, type ConsentStatus } from "./lib/consent";
+import { pageMeta, SITE_URL, SITE_NAME } from "./lib/seo";
 import "lenis/dist/lenis.css";
 import "./index.css";
 
@@ -26,7 +29,33 @@ export const meta = () => [
     content:
       "EraLean builds and runs done-for-you growth systems — website, ads, and email marketing — for modern brands.",
   },
+  ...pageMeta({
+    title: "EraLean — Growth systems for modern brands",
+    description:
+      "EraLean builds and runs done-for-you growth systems — website, ads, and email marketing — for modern brands.",
+    path: "/",
+  }),
 ];
+
+// Organization + WebSite JSON-LD — rendered once, sitewide, so every page
+// (including ones without their own schema) carries baseline brand entity
+// data for Google.
+const ORG_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: SITE_NAME,
+  url: SITE_URL,
+  logo: `${SITE_URL}/og-image.png`,
+  email: "asaf@eralean.com",
+  address: { "@type": "PostalAddress", addressLocality: "Aylesbury", addressCountry: "GB" },
+};
+
+const WEBSITE_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: SITE_NAME,
+  url: SITE_URL,
+};
 
 // GA4 + Google Ads (shared gtag.js loader) and Meta Pixel base tags. Rendered
 // only in production builds (see the import.meta.env.PROD guard in <head>), so
@@ -78,12 +107,35 @@ function TrackingScripts() {
 }
 
 export function Layout({ children }: { children: ReactNode }) {
+  // null = not yet decided (no cookie read on the server / before hydration).
+  // Tracking scripts only render once consent is explicitly "granted", so the
+  // prerendered HTML and first paint never include them by default.
+  const [consent, setConsentState] = useState<ConsentStatus | null>(null);
+
+  useEffect(() => {
+    setConsentState(getConsent());
+  }, []);
+
+  function handleAccept() {
+    setConsent("granted");
+    setConsentState("granted");
+  }
+
+  function handleReject() {
+    setConsent("denied");
+    setConsentState("denied");
+  }
+
   return (
     <html lang="en">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <meta name="theme-color" content="#0B0B0C" />
         {/* Brand type: Inter Tight (display), Inter (body), Newsreader (italic pull-quotes). */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
@@ -97,13 +149,24 @@ export function Layout({ children }: { children: ReactNode }) {
         />
         <Meta />
         <Links />
-        {import.meta.env.PROD && <TrackingScripts />}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(ORG_SCHEMA) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(WEBSITE_SCHEMA) }}
+        />
+        {import.meta.env.PROD && consent === "granted" && <TrackingScripts />}
       </head>
       <body>
         <SmoothScroll>
           {children}
           <AuditPopup />
         </SmoothScroll>
+        {consent === null && (
+          <ConsentBanner onAccept={handleAccept} onReject={handleReject} />
+        )}
         <ScrollRestoration />
         <Scripts />
         <SpeedInsights />

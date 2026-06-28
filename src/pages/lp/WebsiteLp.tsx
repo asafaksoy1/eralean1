@@ -261,6 +261,7 @@ function Projects() {
                     <img
                       src={p.img}
                       alt={p.name}
+                      loading="lazy"
                       className="h-full w-full rounded-lg object-cover"
                     />
                   ) : (

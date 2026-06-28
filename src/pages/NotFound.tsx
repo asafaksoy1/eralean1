@@ -3,6 +3,9 @@ import { Link } from "react-router";
 export const meta = () => [
   { title: "Page not found — EraLean" },
   { name: "description", content: "The page you're after doesn't exist or has moved." },
+  // No canonical/OG here — this catch-all serves every unmatched URL, so
+  // there's no single canonical page to point to. Keep it out of the index.
+  { name: "robots", content: "noindex" },
 ];
 
 // Minimal on-brand 404. Replaces the old "* -> HomePage" catch-all.

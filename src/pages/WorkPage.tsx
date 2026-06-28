@@ -8,13 +8,20 @@ import { Footer } from "../components/Footer";
 import { FloatingWhatsApp } from "../components/FloatingWhatsApp";
 import { FadeIn } from "../components/motion/FadeIn";
 import { Dot } from "../components/brand/Dot";
+import { pageMeta, breadcrumbSchema } from "../lib/seo";
+
+const TITLE = "Our Work — EraLean";
+const DESCRIPTION = "Custom websites and digital systems built by EraLean.";
+const PATH = "/work";
 
 export const meta = () => [
-  { title: "Our Work — EraLean" },
-  {
-    name: "description",
-    content: "Custom websites and digital systems built by EraLean.",
-  },
+  { title: TITLE },
+  { name: "description", content: DESCRIPTION },
+  ...pageMeta({ title: TITLE, description: DESCRIPTION, path: PATH }),
+  breadcrumbSchema([
+    { name: "Home", path: "/" },
+    { name: "Work", path: PATH },
+  ]),
 ];
 
 type Project = {
@@ -218,6 +225,7 @@ export default function WorkPage() {
                       <img
                         src={p.img}
                         alt={p.client}
+                        loading="lazy"
                         className="w-full h-full object-cover rounded-lg"
                       />
                     </div>

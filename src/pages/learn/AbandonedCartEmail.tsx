@@ -17,12 +17,10 @@ const SLUG = "abandoned-cart-email";
 export const meta = () =>
   getArticleMeta({ title: TITLE, description: DESCRIPTION, slug: SLUG });
 
+// Only articles with a real prerendered route — see src/routes.ts.
 const RELATED = [
   { slug: "welcome-email-series", title: "How to build a welcome email series that converts" },
-  { slug: "browse-abandonment-email", title: "Browse abandonment emails explained" },
-  { slug: "best-klaviyo-flows", title: "The best Klaviyo flows every store should have" },
-  { slug: "email-deliverability", title: "Email deliverability: how to land in the inbox" },
-  { slug: "shopify-email-marketing", title: "Shopify email marketing: the complete guide" },
+  { slug: "what-is-klaviyo", title: "What is Klaviyo and why ecommerce brands use it" },
 ];
 
 const SECTIONS = [
@@ -92,9 +90,8 @@ export default function AbandonedCartEmailPage() {
         finish.
       </p>
       <p>
-        It's distinct from a{" "}
-        <a href="/learn/browse-abandonment-email">browse abandonment email</a>,
-        which targets people who viewed products but never actually added
+        It's distinct from a browse abandonment email, which targets people
+        who viewed products but never actually added
         anything to a cart. Cart abandonment is further down the funnel and
         typically converts at a noticeably higher rate, since intent is
         stronger.
@@ -183,9 +180,7 @@ export default function AbandonedCartEmailPage() {
         Direct framing tends to outperform cute or vague subject lines for
         this flow — something like "you left this behind" or naming the
         product directly. People recognise the context instantly, which
-        drives the open. See our{" "}
-        <a href="/learn/email-subject-lines">guide to subject lines</a> for
-        more on this.
+        drives the open.
       </p>
       <ArticleH3>Building trust in the second email</ArticleH3>
       <p>
@@ -313,16 +308,14 @@ export default function AbandonedCartEmailPage() {
       <ArticleH3>Does this work the same way for browse abandonment?</ArticleH3>
       <p>
         The mechanics are similar, but intent is lower since no item was
-        added to cart — see our{" "}
-        <a href="/learn/browse-abandonment-email">browse abandonment guide</a>{" "}
-        for the differences in approach.
+        added to cart, so the messaging needs to work harder to re-establish
+        interest.
       </p>
       <ArticleH3>What if my emails aren't landing in the inbox?</ArticleH3>
       <p>
         Recovery flows are only as good as their deliverability. If opens
         are unexpectedly low across the board, check your sender
-        authentication first — see our{" "}
-        <a href="/learn/email-deliverability">deliverability guide</a>.
+        authentication (SPF, DKIM, DMARC) first.
       </p>
 
       <ArticleH2>Conclusion</ArticleH2>
