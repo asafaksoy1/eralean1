@@ -223,7 +223,7 @@ function Projects() {
       name: "CallFix Electrical",
       line: "Lead-generating site for an electrical services business",
       items: ["Custom build", "Google-ready", "Generating leads at £13.32 each"],
-      img: null,
+      img: "/work/callfix.jpg",
     },
     {
       name: "Regent Estates Global",
@@ -236,6 +236,12 @@ function Projects() {
       line: "Premium renovation brand",
       items: ["Custom admin panel", "Portfolio gallery", "Lead capture"],
       img: "/work/abov-interiors.jpg",
+    },
+    {
+      name: "Metro Gold Buyers",
+      line: "London's gold trading platform",
+      items: ["Live spot-price integration", "Admin panel & inventory management", "Dual buy/sell enquiry system"],
+      img: "/work/metro-gold.jpg",
     },
   ];
 
@@ -252,7 +258,7 @@ function Projects() {
           </h2>
         </FadeIn>
 
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
+        <div className="mt-12 grid gap-6 sm:grid-cols-2">
           {projects.map((p, i) => (
             <FadeIn key={p.name} delay={i * 0.07}>
               <div className="h-full overflow-hidden rounded-2xl border border-slate bg-carbon">
