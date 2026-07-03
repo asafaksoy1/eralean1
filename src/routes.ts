@@ -15,5 +15,6 @@ export default [
   route("learn/welcome-email-series", "pages/learn/WelcomeEmailSeries.tsx"),
   route("learn/abandoned-cart-email", "pages/learn/AbandonedCartEmail.tsx"),
   route("learn/klaviyo-back-in-stock-flow-setup-uk", "pages/learn/KlaviyoBackInStockFlowSetupUk.tsx"),
+  route("learn/klaviyo-winback-flow-lapsed-customers-uk", "pages/learn/KlaviyoWinbackFlowLapsedCustomersUk.tsx"),
   route("*", "pages/NotFound.tsx"),
 ] satisfies RouteConfig;
