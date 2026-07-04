@@ -22,5 +22,6 @@ export default {
     "/learn/welcome-email-series",
     "/learn/abandoned-cart-email",
     "/learn/klaviyo-back-in-stock-flow-setup-uk",
+    "/learn/klaviyo-winback-flow-timing-uk",
   ],
 } satisfies Config;
