@@ -11,6 +11,7 @@ export default [
   route("work", "pages/WorkPage.tsx"),
   route("lp/email", "pages/lp/EmailLp.tsx"),
   route("lp/website", "pages/lp/WebsiteLp.tsx"),
+  route("learn", "pages/LearnListingPage.tsx"),
   route("learn/what-is-klaviyo", "pages/learn/WhatIsKlaviyo.tsx"),
   route("learn/welcome-email-series", "pages/learn/WelcomeEmailSeries.tsx"),
   route("learn/abandoned-cart-email", "pages/learn/AbandonedCartEmail.tsx"),

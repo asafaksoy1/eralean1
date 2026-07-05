@@ -7,6 +7,7 @@ const FOOTER_LINKS = [
   { label: "Ads", to: "/services/ads" },
   { label: "Email", to: "/services/email-marketing" },
   { label: "Work", to: "/work" },
+  { label: "Learn", to: "/learn" },
 ];
 
 export function Footer() {
