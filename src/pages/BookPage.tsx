@@ -1,6 +1,5 @@
-import { useEffect } from "react";
 import type { ReactNode } from "react";
-import { CALENDLY, WHATSAPP, WHATSAPP_DISPLAY, EMAIL } from "../lib/constants";
+import { BOOKING_EMBED, WHATSAPP, WHATSAPP_DISPLAY, EMAIL } from "../lib/constants";
 import { trackLead } from "../lib/analytics";
 import { Nav } from "../components/Nav";
 import { Footer } from "../components/Footer";
@@ -8,17 +7,10 @@ import { FadeIn } from "../components/motion/FadeIn";
 import { Dot } from "../components/brand/Dot";
 import { pageMeta, breadcrumbSchema } from "../lib/seo";
 
-const OFFER = "general";
 const TITLE = "Book a call — EraLean";
 const DESCRIPTION =
   "Book a free 30-minute strategy call. We map where your customers come from, find the biggest leak in your funnel, and tell you straight what it would take to fix it.";
 const PATH = "/book";
-
-// Calendly inline embed, styled to the brand (carbon background, volt accent).
-// CALENDLY itself carries no query string — the embed params are added here.
-const CALENDLY_EMBED =
-  CALENDLY +
-  "?hide_gdpr_banner=1&background_color=161618&text_color=ffffff&primary_color=bdff00&embed_domain=www.eralean.com&embed_type=Inline";
 
 export const meta = () => [
   { title: TITLE },
@@ -41,31 +33,13 @@ function Marker({ children }: { children: ReactNode }) {
 
 // No FloatingWhatsApp here — this page IS the conversion point, and the
 // scheduler should hold full attention. WhatsApp/email live inline instead.
+// Unlike the old Calendly embed, Google's appointment embed emits no
+// booking-completed postMessage, so there is no scheduled-event conversion
+// signal to listen for here — bookings are tracked in Google Calendar itself.
 export default function BookPage() {
-  // Booking-completed conversion. Calendly's inline embed posts a message to
-  // the parent window when an event is scheduled — this is the only reliable
-  // signal that a booking actually happened (clicks alone aren't bookings).
-  // Everything window-related stays inside useEffect: the site is statically
-  // prerendered in Node, where window doesn't exist at module scope.
-  useEffect(() => {
-    function onMessage(e: MessageEvent) {
-      if (e.origin !== "https://calendly.com") return;
-      if (e.data?.event !== "calendly.event_scheduled") return;
-
-      window.gtag?.("event", "conversion", {
-        send_to: "AW-18269973238/lO91CLbpj8ccEPbV5odE",
-      });
-      window.gtag?.("event", "book_call_scheduled");
-      window.fbq?.("track", "Schedule");
-    }
-
-    window.addEventListener("message", onMessage);
-    return () => window.removeEventListener("message", onMessage);
-  }, []);
-
   return (
     <div className="bg-ink text-white">
-      <Nav variant="solid" offer={OFFER} />
+      <Nav variant="solid" offer="general" />
       <main>
         <BookSection />
       </main>
@@ -150,9 +124,9 @@ function BookSection() {
             <FadeIn delay={0.1}>
               <div className="rounded-2xl border border-white/10 bg-carbon overflow-hidden">
                 <iframe
-                  src={CALENDLY_EMBED}
+                  src={BOOKING_EMBED}
                   title="Book a call with EraLean"
-                  className="h-[700px] w-full"
+                  className="h-[700px] w-full bg-white"
                   loading="lazy"
                 />
               </div>

@@ -1,9 +1,9 @@
 import { ArrowRight, ChevronDown } from "lucide-react";
+import { BOOKING_URL } from "../../lib/constants";
 import { trackLead, trackEmailLeadFormSubmit } from "../../lib/analytics";
 import { FadeIn } from "../../components/motion/FadeIn";
 import { Dot } from "../../components/brand/Dot";
 
-const CALENDLY_PLACEHOLDER = "https://calendar.app.google/2mmmEqFVPaLvZ6dy7";
 const OFFER = "email";
 
 export const meta = () => [
@@ -63,7 +63,7 @@ function Hero() {
         <FadeIn delay={0.18}>
           <div className="mt-9 flex flex-col items-center">
             <a
-              href={CALENDLY_PLACEHOLDER}
+              href={BOOKING_URL}
               target="_blank"
               rel="noopener noreferrer"
               onClick={onCtaClick}
@@ -404,7 +404,7 @@ function FinalCta() {
             see if your brand is a fit.
           </p>
           <a
-            href={CALENDLY_PLACEHOLDER}
+            href={BOOKING_URL}
             target="_blank"
             rel="noopener noreferrer"
             onClick={onCtaClick}

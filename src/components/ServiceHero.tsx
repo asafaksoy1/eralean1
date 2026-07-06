@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { ArrowUpRight, Calendar } from "lucide-react";
-import { CALENDLY, WHATSAPP } from "../lib/constants";
+import { BOOKING_URL, WHATSAPP } from "../lib/constants";
 import { trackLead, type Offer } from "../lib/analytics";
 
 type ServiceHeroProps = {
@@ -33,7 +33,7 @@ export function ServiceHero({ eyebrow, title, description, stats, offer = "gener
           {description}
         </p>
         <div className="fade-up flex flex-col sm:flex-row gap-4 mb-16" style={{ animationDelay: "0.3s" }}>
-          <a href={CALENDLY} target="_blank" rel="noopener noreferrer" onClick={() => trackLead(offer)}
+          <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" onClick={() => trackLead(offer)}
              className="bg-white text-black rounded-full px-7 py-4 text-base hover:bg-neutral-200 transition-colors inline-flex items-center gap-3 group">
             <Calendar className="w-5 h-5" />
             Book your free strategy call

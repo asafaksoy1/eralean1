@@ -45,7 +45,21 @@ const TOPICS_FILE = join(__dirname, "published-topics.json");
 const ROUTES_FILE = join(ROOT, "src", "routes.ts");
 const CONFIG_FILE = join(ROOT, "react-router.config.ts");
 const SITEMAP_FILE = join(ROOT, "public", "sitemap.xml");
+const LEARN_FILE = join(ROOT, "src", "lib", "learnArticles.ts");
 const ARTICLES_DIR = join(ROOT, "src", "pages", "learn");
+
+// Categories the /learn listing page renders (its CATEGORIES array). An entry
+// with any other category would be silently filtered off the page.
+const LEARN_CATEGORIES = [
+  "Basics",
+  "Klaviyo",
+  "Shopify",
+  "Flows",
+  "Strategy",
+  "Technical",
+  "Copywriting",
+  "Growth",
+];
 
 // Hardcoded titles for the three articles that existed before this pipeline.
 // Used to populate the RELATED array in generated articles.
@@ -356,6 +370,33 @@ function updateSitemap(slug) {
   console.log("  Updated  : public/sitemap.xml");
 }
 
+function updateLearnArticles(topic) {
+  let content = readFileSync(LEARN_FILE, "utf8");
+
+  if (content.includes(`"${topic.slug}"`)) {
+    console.log("  learnArticles.ts: already contains this slug — skipping.");
+    return;
+  }
+
+  const category = LEARN_CATEGORIES.includes(topic.category)
+    ? topic.category
+    : "Klaviyo";
+
+  const entry =
+    `  {\n` +
+    `    slug: ${JSON.stringify(topic.slug)},\n` +
+    `    title: ${JSON.stringify(topic.title)},\n` +
+    `    description: ${JSON.stringify(topic.description)},\n` +
+    `    category: ${JSON.stringify(category)},\n` +
+    `  },\n`;
+
+  // Insert before the closing `];` of the learnArticles array.
+  content = content.replace(/^\];$/m, `${entry}];`);
+
+  writeFileSync(LEARN_FILE, content);
+  console.log("  Updated  : src/lib/learnArticles.ts");
+}
+
 // ── Typecheck ─────────────────────────────────────────────────────────────────
 
 function runTypecheck() {
@@ -417,6 +458,7 @@ async function main() {
   updateRoutes(topic.slug, filename);
   updateConfig(topic.slug);
   updateSitemap(topic.slug);
+  updateLearnArticles(topic);
 
   // ── Validate ──────────────────────────────────────────────────────────────
   runTypecheck();

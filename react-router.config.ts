@@ -12,6 +12,10 @@ export default {
   // public/sitemap.xml (skip /lp/* — those stay noindex).
   prerender: [
     "/",
+    // Matches the "*" catch-all, rendering NotFound. The build command copies
+    // the output to build/client/404.html, which Vercel serves (with a real
+    // 404 status) for any URL that has no prerendered page.
+    "/404",
     "/services/website",
     "/services/ads",
     "/services/email-marketing",

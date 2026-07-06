@@ -2,13 +2,11 @@ import type { ReactNode } from "react";
 import { Link } from "react-router";
 import type { MetaDescriptor } from "react-router";
 import { ArrowRight } from "lucide-react";
-import { EMAIL } from "../../lib/constants";
+import { BOOKING_URL, EMAIL } from "../../lib/constants";
 import { trackLead } from "../../lib/analytics";
 import { pageMeta, breadcrumbSchema, SITE_URL } from "../../lib/seo";
 import { FadeIn } from "../motion/FadeIn";
 import { Dot } from "../brand/Dot";
-
-const BOOKING_URL = "https://calendar.app.google/2mmmEqFVPaLvZ6dy7";
 
 export type RelatedArticle = {
   slug: string;

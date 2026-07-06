@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { ArrowRight, ArrowUpRight, Check } from "lucide-react";
-import { CALENDLY, WHATSAPP } from "../lib/constants";
+import { BOOKING_URL, WHATSAPP } from "../lib/constants";
 import { trackLead } from "../lib/analytics";
 import { AuditForm } from "../components/AuditForm";
 import { Nav } from "../components/Nav";
@@ -83,14 +83,14 @@ function Hero() {
           <p className="mt-7 max-w-2xl text-lg text-white/60">
             Facebook, Instagram, and Google ad campaigns fully managed for your
             business. Real ROAS, real reporting, no contracts. We've delivered
-            4.69M+ reach and up to 6× ROAS for UK service businesses.
+            4.69M+ reach and a 4.09× average ROAS across 50+ managed campaigns.
           </p>
         </FadeIn>
 
         <FadeIn delay={0.18}>
           <div className="mt-9 flex flex-wrap items-center gap-4">
             <a
-              href={CALENDLY}
+              href={BOOKING_URL}
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => trackLead(OFFER)}
@@ -455,7 +455,7 @@ function Pricing() {
                 </div>
 
                 <a
-                  href={CALENDLY}
+                  href={BOOKING_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => trackLead(OFFER)}
@@ -532,7 +532,7 @@ function ClosingCTA() {
             offer, and tell you straight what's possible.
           </p>
           <a
-            href={CALENDLY}
+            href={BOOKING_URL}
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => trackLead(OFFER)}

@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { ArrowRight, ArrowUpRight, Check } from "lucide-react";
-import { CALENDLY, WHATSAPP } from "../lib/constants";
+import { BOOKING_URL, WHATSAPP } from "../lib/constants";
 import { trackLead } from "../lib/analytics";
 import { AuditForm } from "../components/AuditForm";
 import { Nav } from "../components/Nav";
@@ -90,7 +90,7 @@ function Hero() {
         <FadeIn delay={0.18}>
           <div className="mt-9 flex flex-wrap items-center gap-4">
             <a
-              href={CALENDLY}
+              href={BOOKING_URL}
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => trackLead(OFFER)}
@@ -258,7 +258,7 @@ function Pricing() {
             </div>
 
             <a
-              href={CALENDLY}
+              href={BOOKING_URL}
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => trackLead(OFFER)}
@@ -364,7 +364,7 @@ function ClosingCTA() {
             it costs. No pitch, no pressure.
           </p>
           <a
-            href={CALENDLY}
+            href={BOOKING_URL}
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => trackLead(OFFER)}

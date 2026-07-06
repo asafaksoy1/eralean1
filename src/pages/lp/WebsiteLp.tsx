@@ -1,10 +1,10 @@
 import { ArrowRight, ChevronDown } from "lucide-react";
+import { BOOKING_URL } from "../../lib/constants";
 import { trackLead } from "../../lib/analytics";
 import { FadeIn } from "../../components/motion/FadeIn";
 import { ScaleOnScroll } from "../../components/motion/ScaleOnScroll";
 import { Dot } from "../../components/brand/Dot";
 
-const BOOKING_LINK = "https://calendar.app.google/2mmmEqFVPaLvZ6dy7";
 const OFFER = "website";
 
 export const meta = () => [
@@ -63,7 +63,7 @@ function Hero() {
         <FadeIn delay={0.18}>
           <div className="mt-9 flex flex-col items-center">
             <a
-              href={BOOKING_LINK}
+              href={BOOKING_URL}
               target="_blank"
               rel="noopener noreferrer"
               onClick={onCtaClick}
@@ -385,7 +385,7 @@ function FinalCta() {
             site could look like.
           </p>
           <a
-            href={BOOKING_LINK}
+            href={BOOKING_URL}
             target="_blank"
             rel="noopener noreferrer"
             onClick={onCtaClick}

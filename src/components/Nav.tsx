@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router";
 import { ArrowUpRight, Menu, X } from "lucide-react";
-import { CALENDLY } from "../lib/constants";
+import { BOOKING_URL } from "../lib/constants";
 import { trackLead, type Offer } from "../lib/analytics";
 import { Dot } from "./brand/Dot";
 
@@ -78,7 +78,7 @@ export function Nav({ variant = "solid", offer = "general" }: NavProps) {
             </div>
 
             <a
-              href={CALENDLY}
+              href={BOOKING_URL}
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => trackLead(offer)}
@@ -137,7 +137,7 @@ export function Nav({ variant = "solid", offer = "general" }: NavProps) {
           </div>
 
           <a
-            href={CALENDLY}
+            href={BOOKING_URL}
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => trackLead(offer)}

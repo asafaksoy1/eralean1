@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
-import { CALENDLY } from "../lib/constants";
+import { BOOKING_URL } from "../lib/constants";
 import { trackLead } from "../lib/analytics";
 import { AuditForm } from "../components/AuditForm";
 import { Nav } from "../components/Nav";
@@ -135,7 +135,7 @@ function Hero() {
           <FadeIn delay={0.18}>
             <div className="mt-9 flex flex-wrap items-center gap-4">
               <a
-                href={CALENDLY}
+                href={BOOKING_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => trackLead("general")}
@@ -359,7 +359,7 @@ function ClosingCTA() {
             straight what it would take. No pitch.
           </p>
           <a
-            href={CALENDLY}
+            href={BOOKING_URL}
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => trackLead("general")}

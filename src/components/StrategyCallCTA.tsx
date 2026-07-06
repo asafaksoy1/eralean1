@@ -1,5 +1,5 @@
 import { ArrowUpRight, Calendar, Check } from "lucide-react";
-import { CALENDLY, WHATSAPP } from "../lib/constants";
+import { BOOKING_URL, WHATSAPP } from "../lib/constants";
 import { useInView } from "../lib/useInView";
 import { trackLead, type Offer } from "../lib/analytics";
 
@@ -43,7 +43,7 @@ export function StrategyCallCTA({
           {sub}
         </p>
         <div className={`${inView ? "fade-up" : "opacity-0"} flex flex-col sm:flex-row gap-4 justify-center items-center`} style={{ animationDelay: "0.3s" }}>
-          <a href={CALENDLY} target="_blank" rel="noopener noreferrer" onClick={() => trackLead(offer)}
+          <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" onClick={() => trackLead(offer)}
              className="bg-white text-black rounded-full px-8 py-4 text-base hover:bg-neutral-200 transition-colors flex items-center gap-3 group">
             <Calendar className="w-5 h-5" />
             Book your free strategy call

@@ -1,4 +1,23 @@
 {
-  "buildCommand": "react-router build",
-  "outputDirectory": "build/client"
+  "buildCommand": "react-router build && cp build/client/404/index.html build/client/404.html",
+  "outputDirectory": "build/client",
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "eralean.com" }],
+      "destination": "https://www.eralean.com/:path*",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" }
+      ]
+    }
+  ]
 }

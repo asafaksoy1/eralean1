@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { ArrowRight, ArrowUpRight, Check } from "lucide-react";
-import { CALENDLY, WHATSAPP } from "../lib/constants";
+import { BOOKING_URL, WHATSAPP } from "../lib/constants";
 import { trackLead } from "../lib/analytics";
 import { AuditForm } from "../components/AuditForm";
 import { Nav } from "../components/Nav";
@@ -107,7 +107,7 @@ function Hero() {
         <FadeIn delay={0.18}>
           <div className="mt-9 flex flex-wrap items-center gap-4">
             <a
-              href={CALENDLY}
+              href={BOOKING_URL}
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => trackLead(OFFER)}
@@ -204,7 +204,7 @@ function Results() {
   const metrics = [
     {
       metric: "£262K",
-      label: "Revenue from one welcome flow",
+      label: "Lifetime revenue, one welcome flow",
       context: "Klaviyo — ecommerce brand, UK",
     },
     {
@@ -257,7 +257,7 @@ function BuildSystem() {
       eyebrow: "Day 0",
       description:
         "First impression, first purchase. Conditional split — new vs returning buyer. 3-email sequence with offer escalation.",
-      stats: ["38.7% open rate", "£262K attributed revenue"],
+      stats: ["38.7% open rate", "£262K lifetime revenue"],
     },
     {
       title: "Abandoned checkout",
@@ -449,7 +449,7 @@ function Pricing() {
             </div>
 
             <a
-              href={CALENDLY}
+              href={BOOKING_URL}
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => trackLead(OFFER)}
@@ -555,7 +555,7 @@ function ClosingCTA() {
             list, and tell you straight what's possible.
           </p>
           <a
-            href={CALENDLY}
+            href={BOOKING_URL}
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => trackLead(OFFER)}
