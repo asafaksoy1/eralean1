@@ -9,6 +9,13 @@ import { Footer } from "../components/Footer";
 import { FloatingWhatsApp } from "../components/FloatingWhatsApp";
 import { FadeIn } from "../components/motion/FadeIn";
 import { Dot } from "../components/brand/Dot";
+import { ClientStrip } from "../components/home/ClientStrip";
+import { Process } from "../components/home/Process";
+import { FounderNote } from "../components/home/FounderNote";
+import { Testimonials } from "../components/home/Testimonials";
+import { ToolsStrip } from "../components/home/ToolsStrip";
+import { Insights } from "../components/home/Insights";
+import { FAQ } from "../components/home/FAQ";
 import { pageMeta } from "../lib/seo";
 
 const TITLE = "EraLean — Growth systems for modern brands";
@@ -37,9 +44,16 @@ export default function HomePage() {
       <Nav variant="solid" offer="general" />
       <main>
         <Hero />
+        <ClientStrip />
         <AudienceSplit />
         <Offers />
         <WorkStrip />
+        <Process />
+        <FounderNote />
+        <Testimonials />
+        <ToolsStrip />
+        <Insights />
+        <FAQ />
         <AuditForm variant="embed" offer="general" />
         <ClosingCTA />
       </main>
