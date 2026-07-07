@@ -42,4 +42,10 @@ export const learnArticles: LearnArticle[] = [
       "Re-engage lapsed customers with timing rules, discount escalation and UK benchmarks.",
     category: "Klaviyo",
   },
+  {
+    slug: "klaviyo-post-purchase-flow-setup-uk",
+    title: "How to Set Up a Klaviyo Post-Purchase Flow for UK Ecommerce Brands",
+    description: "A step-by-step guide to building a Klaviyo post-purchase flow that drives repeat orders, reviews and loyalty for UK ecommerce brands.",
+    category: "Klaviyo",
+  },
 ];
