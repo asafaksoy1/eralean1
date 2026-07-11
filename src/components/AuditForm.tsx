@@ -31,7 +31,8 @@ const COPY: Record<
   },
 };
 
-const SUCCESS_MESSAGE = "On its way. Check your inbox in the next few minutes.";
+const SUCCESS_MESSAGE =
+  "Got it. I'll send your three fixes to your inbox within one business day.";
 
 // Basic format check — server re-validates before hitting MailerLite.
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

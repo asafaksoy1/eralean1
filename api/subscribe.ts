@@ -25,7 +25,10 @@ export default async function handler(req: Req, res: Res) {
   }
 
   const token = process.env.MAILERLITE_API_TOKEN;
-  const groupId = process.env.MAILERLITE_GROUP_ID;
+  // Fallback to the 'Eralean' group so audit leads are never captured
+  // groupless (and thus unfindable by the fulfilment routine) if the env var
+  // is unset in Vercel. An explicit env var still wins.
+  const groupId = process.env.MAILERLITE_GROUP_ID || "189195315233949270";
   if (!token) {
     // Misconfiguration, not the visitor's fault — don't leak which var.
     return res
