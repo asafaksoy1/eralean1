@@ -12,7 +12,6 @@ import { Dot } from "../components/brand/Dot";
 import { ClientStrip } from "../components/home/ClientStrip";
 import { Process } from "../components/home/Process";
 import { FounderNote } from "../components/home/FounderNote";
-import { Testimonials } from "../components/home/Testimonials";
 import { ToolsStrip } from "../components/home/ToolsStrip";
 import { Insights } from "../components/home/Insights";
 import { FAQ } from "../components/home/FAQ";
@@ -50,7 +49,6 @@ export default function HomePage() {
         <WorkStrip />
         <Process />
         <FounderNote />
-        <Testimonials />
         <ToolsStrip />
         <Insights />
         <FAQ />

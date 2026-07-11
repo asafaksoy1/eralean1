@@ -46,7 +46,6 @@ export default function AdsPage() {
         <KeyResults />
         <Results />
         <Pricing />
-        <Reviews />
         <AuditForm variant="embed" offer={OFFER} />
         <ClosingCTA />
       </main>
@@ -478,40 +477,6 @@ function Pricing() {
             Every plan includes free setup (worth £500) · No contract · Cancel any time
           </div>
         </FadeIn>
-      </div>
-    </section>
-  );
-}
-
-/* ── Reviews ──────────────────────────────────────────────────────────── */
-
-function Reviews() {
-  const t = [
-    { q: "We were wasting money on ads for months with another agency. Asaf completely restructured our campaigns and within 3 weeks we were seeing a 5× return. Absolutely incredible.", a: "Kemal M.", r: "E-commerce store owner, Istanbul" },
-    { q: "The results speak for themselves — 6× ROAS in the first month. I finally understand where every penny of my ad budget is going, and it's working harder than ever.", a: "Sarah P.", r: "Beauty brand owner, London" },
-    { q: "Our cost per lead dropped from £34 to £9.70 after Asaf took over. We're now getting more qualified enquiries than we can handle. Genuinely changed our business.", a: "James H.", r: "Property developer, Birmingham" },
-  ];
-
-  return (
-    <section className="border-t border-white/10 px-6 md:px-10 py-24 md:py-32">
-      <div className="mx-auto max-w-6xl">
-        <FadeIn>
-          <Marker>What ad clients say</Marker>
-        </FadeIn>
-        <div className="mt-14 grid gap-6 md:grid-cols-3">
-          {t.map((x, i) => (
-            <FadeIn key={x.a} delay={i * 0.07}>
-              <div className="h-full rounded-2xl border border-white/10 bg-carbon p-8">
-                <p className="leading-snug text-white/85">{x.q}</p>
-                <div className="mt-8 flex items-center gap-2 border-t border-white/10 pt-6 text-sm">
-                  <Dot />
-                  <span className="text-white">{x.a}</span>
-                  <span className="text-white/45">· {x.r}</span>
-                </div>
-              </div>
-            </FadeIn>
-          ))}
-        </div>
       </div>
     </section>
   );

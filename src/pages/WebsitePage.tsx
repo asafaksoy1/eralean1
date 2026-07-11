@@ -46,7 +46,6 @@ export default function WebsitePage() {
         <Included />
         <Pricing />
         <Process />
-        <Reviews />
         <AuditForm variant="embed" offer={OFFER} />
         <ClosingCTA />
       </main>
@@ -305,41 +304,6 @@ function Process() {
                 <div className="text-sm text-white/45">{s.n}</div>
                 <h3 className="mt-6 font-display tracking-display text-lg text-white">{s.t}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-white/55">{s.d}</p>
-              </div>
-            </FadeIn>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ── Reviews ──────────────────────────────────────────────────────────── */
-
-function Reviews() {
-  const t = [
-    { q: "Honestly couldn't believe the quality for £99 a month. The website looks absolutely premium — several customers have commented on it. Best investment I've made for my business.", a: "Sarah K.", r: "Beauty salon owner, London" },
-    { q: "Was paying £1,200 upfront to another agency and still waiting for updates weeks later. Switched to Asaf and my site was live in 5 days. The ongoing support is incredible.", a: "Mohammed R.", r: "Restaurant owner, Manchester" },
-    { q: "They added a custom booking system for my gym within days of asking. Zero extra charge — exactly as promised. I've recommended Eralean to every small business owner I know.", a: "James T.", r: "Personal trainer & gym owner" },
-    { q: "Finally a service that actually does what it says — domain, hosting, design, updates, all in one place. I don't have to think about my website at all.", a: "Lisa P.", r: "Freelance accountant, Birmingham" },
-  ];
-
-  return (
-    <section className="border-t border-white/10 px-6 md:px-10 py-24 md:py-32">
-      <div className="mx-auto max-w-6xl">
-        <FadeIn>
-          <Marker>What clients say</Marker>
-        </FadeIn>
-        <div className="mt-14 grid gap-6 md:grid-cols-2">
-          {t.map((x, i) => (
-            <FadeIn key={x.a} delay={(i % 2) * 0.07}>
-              <div className="h-full rounded-2xl border border-white/10 bg-carbon p-8">
-                <p className="text-lg leading-snug text-white/85">{x.q}</p>
-                <div className="mt-8 flex items-center gap-2 border-t border-white/10 pt-6 text-sm">
-                  <Dot />
-                  <span className="text-white">{x.a}</span>
-                  <span className="text-white/45">· {x.r}</span>
-                </div>
               </div>
             </FadeIn>
           ))}

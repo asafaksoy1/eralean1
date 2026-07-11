@@ -60,7 +60,6 @@ export default function EmailMarketingPage() {
         <BuildSystem />
         <Showcase />
         <Pricing />
-        <Reviews />
         <AuditForm variant="embed" offer={OFFER} />
         <Learn />
         <ClosingCTA />
@@ -466,40 +465,6 @@ function Pricing() {
             </div>
           </div>
         </FadeIn>
-      </div>
-    </section>
-  );
-}
-
-/* ── Reviews ──────────────────────────────────────────────────────────── */
-
-function Reviews() {
-  const t = [
-    { q: "Our email list went from a dead afterthought to 30% of our monthly revenue. Asaf rebuilt every flow from scratch and the difference is night and day.", a: "Emma R.", r: "Skincare brand owner, London" },
-    { q: "We finally have a proper welcome flow, abandoned cart, and weekly campaigns running. Email now does the work of an extra salesperson — without the salary.", a: "Marcus T.", r: "E-commerce founder, Manchester" },
-    { q: "I was paying another agency £2k a month for email and getting nothing. Asaf charges less and we 3x'd email revenue in two months. Real, transparent, fast.", a: "Olivia W.", r: "Fashion brand owner, Bristol" },
-  ];
-
-  return (
-    <section className="border-t border-white/10 px-6 md:px-10 py-24 md:py-32">
-      <div className="mx-auto max-w-6xl">
-        <FadeIn>
-          <Marker>What email clients say</Marker>
-        </FadeIn>
-        <div className="mt-14 grid gap-6 md:grid-cols-3">
-          {t.map((x, i) => (
-            <FadeIn key={x.a} delay={i * 0.07}>
-              <div className="h-full rounded-2xl border border-white/10 bg-carbon p-8">
-                <p className="leading-snug text-white/85">{x.q}</p>
-                <div className="mt-8 flex items-center gap-2 border-t border-white/10 pt-6 text-sm">
-                  <Dot />
-                  <span className="text-white">{x.a}</span>
-                  <span className="text-white/45">· {x.r}</span>
-                </div>
-              </div>
-            </FadeIn>
-          ))}
-        </div>
       </div>
     </section>
   );
