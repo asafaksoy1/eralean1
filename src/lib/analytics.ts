@@ -39,7 +39,7 @@ export function trackEmailLeadFormSubmit() {
   if (typeof window !== 'undefined' && typeof (window as any).gtag === 'function') {
     (window as any).gtag('event', 'conversion', {
       send_to: 'AW-18269973238/lO91CLbpj8ccEPbV5odE',
-      value: 490,
+      value: 1400,
       currency: 'GBP',
     });
   }

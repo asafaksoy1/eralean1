@@ -24,16 +24,16 @@ const publishedLearnArticles = learnArticles.filter((a) =>
 );
 
 const OFFER = "email";
-const TITLE = "Ecommerce Email Marketing — EraLean";
+const TITLE = "Skincare Email Marketing — EraLean";
 const DESCRIPTION =
-  "Done-for-you ecommerce email marketing — Klaviyo flows and campaigns that turn subscribers into repeat customers and recover revenue on autopilot.";
+  "Done-for-you Klaviyo email for UK skincare & beauty brands. We get email to 20% of your revenue within 90 days — or your next month is free. £1,400/month.";
 const PATH = "/services/email-marketing";
 
 export const meta = () => [
   { title: TITLE },
   { name: "description", content: DESCRIPTION },
   ...pageMeta({ title: TITLE, description: DESCRIPTION, path: PATH }),
-  serviceSchema({ name: "Ecommerce Email Marketing", description: DESCRIPTION, path: PATH }),
+  serviceSchema({ name: "Skincare Email Marketing", description: DESCRIPTION, path: PATH }),
   breadcrumbSchema([
     { name: "Home", path: "/" },
     { name: "Email Marketing", path: PATH },
@@ -85,21 +85,20 @@ function Hero() {
     <section className="px-6 md:px-10 pt-28 md:pt-36 pb-24 md:pb-32">
       <div className="mx-auto max-w-6xl">
         <FadeIn>
-          <Marker>Service · Email Marketing</Marker>
+          <Marker>Skincare & beauty · Email marketing</Marker>
         </FadeIn>
 
         <FadeIn delay={0.06}>
           <h1 className="mt-7 max-w-4xl font-display tracking-display font-semibold text-white text-[12vw] leading-[0.95] sm:text-6xl md:text-[5rem]">
-            Email that actually prints money<span className="text-volt">.</span>
+            Skincare email that does 20% of revenue<span className="text-volt">.</span>
           </h1>
         </FadeIn>
 
         <FadeIn delay={0.12}>
           <p className="mt-7 max-w-2xl text-lg text-white/60">
-            Already on Klaviyo or Mailchimp but it's not pulling its weight? I
-            rebuild your flows, campaigns, and segmentation from scratch and run
-            the whole channel for you — so email becomes your highest-ROI revenue
-            source, not an afterthought.
+            Done-for-you Klaviyo for UK skincare & beauty brands. We rebuild your
+            flows and run every campaign — and get email to 20% of your revenue
+            within 90 days, or your next month is free.
           </p>
         </FadeIn>
 
@@ -203,8 +202,8 @@ function Results() {
   const metrics = [
     {
       metric: "£262K",
-      label: "Lifetime revenue, one welcome flow",
-      context: "Klaviyo — ecommerce brand, UK",
+      label: "From one welcome flow",
+      context: "UK skincare brand · Klaviyo",
     },
     {
       metric: "38.7%",
@@ -382,7 +381,7 @@ function Pricing() {
     { label: "A/B testing", value: "Included" },
     { label: "Deliverability monitoring", value: "Included" },
     { label: "Monthly performance report", value: "Included" },
-    { label: "Hidden fees / extra charges", value: "None. Ever." },
+    { label: "20% of revenue in 90 days", value: "Guaranteed" },
   ];
   const included = [
     "Klaviyo or Mailchimp",
@@ -411,11 +410,11 @@ function Pricing() {
         <FadeIn delay={0.1}>
           <div className="mt-12 rounded-2xl border border-white/10 bg-carbon p-9 md:p-12">
             <div className="text-xs uppercase tracking-widest text-white/45">
-              Done-for-you email marketing
+              Done-for-you skincare email
             </div>
             <div className="mt-3 flex items-end gap-2">
               <span className="font-display tracking-display text-6xl md:text-7xl text-white">
-                £490
+                £1,400
               </span>
               <span className="mb-3 text-lg text-white/45">/ month</span>
             </div>
@@ -424,13 +423,20 @@ function Pricing() {
               design, reporting — all done.
             </p>
 
+            <div className="mt-6 rounded-xl border-l-2 border-volt bg-ink/60 p-5">
+              <p className="font-sans text-white/80">
+                <span className="text-volt">The guarantee:</span> email at 20% of
+                your revenue within 90 days — or your next month is free.
+              </p>
+            </div>
+
             <div className="mt-8 space-y-3 border-t border-white/10 pt-6">
               {breakdown.map((row) => (
                 <div key={row.label} className="flex items-center justify-between gap-4 text-sm">
                   <span className="text-white/60">{row.label}</span>
                   <span className="flex items-center gap-2">
                     {row.strike && <span className="text-white/30 line-through">{row.strike}</span>}
-                    <span className={row.value === "None. Ever." ? "text-volt" : "text-white"}>
+                    <span className={row.value === "Guaranteed" ? "text-volt" : "text-white"}>
                       {row.value}
                     </span>
                   </span>

@@ -124,8 +124,8 @@ function CtaPanel() {
           Want this done for you?
         </h2>
         <p className="mt-4 font-sans font-light leading-relaxed text-ash">
-          We manage Klaviyo for ecommerce brands — flows, campaigns,
-          deliverability. £490/month, 3 spots.
+          We run Klaviyo for UK skincare & beauty brands — flows, campaigns,
+          deliverability. £1,400/month, 3 spots.
         </p>
         <a
           href={BOOKING_URL}
