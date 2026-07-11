@@ -33,5 +33,6 @@ export default {
     "/learn/klaviyo-back-in-stock-flow-setup-uk",
     "/learn/klaviyo-winback-flow-timing-uk",
     "/learn/klaviyo-post-purchase-flow-setup-uk",
+    "/learn/klaviyo-sunset-flow-setup-uk",
   ],
 } satisfies Config;
