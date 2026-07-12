@@ -42,6 +42,7 @@ export default async function handler(req: Req, res: Res) {
   const email = typeof data.email === "string" ? data.email.trim() : "";
   const website = typeof data.website === "string" ? data.website.trim() : "";
   const offer = typeof data.offer === "string" ? data.offer : "general";
+  const revenue = typeof data.revenue === "string" ? data.revenue.trim() : "";
 
   if (!EMAIL_RE.test(email)) {
     return res.status(400).json({ error: "A valid email is required." });
@@ -52,6 +53,14 @@ export default async function handler(req: Req, res: Res) {
   // lead is still captured rather than dropped.
   const fields: Record<string, string> = { source_offer: offer };
   if (website) fields.website = website;
+  // Paid-ad LP sends a monthly-revenue band. Store it and derive a coarse
+  // lead_quality so the audit concierge + booked calls prioritise brands that
+  // can actually afford £1,400/mo (an 'ideal' brand is ~£600k+/yr, where a
+  // 20% email lift dwarfs the fee; 'low' brands are captured but deprioritised).
+  if (revenue) {
+    fields.revenue_band = revenue;
+    fields.lead_quality = leadQuality(revenue);
+  }
 
   const fullPayload: Record<string, unknown> = { email, fields };
   if (groupId) fullPayload.groups = [groupId];
@@ -76,6 +85,22 @@ export default async function handler(req: Req, res: Res) {
     return res
       .status(502)
       .json({ error: "Could not reach the subscriber service." });
+  }
+}
+
+// Map a monthly-revenue band slug (from AuditForm's REVENUE_OPTIONS) to a
+// coarse quality tier. Kept in sync with the form's option values.
+function leadQuality(revenue: string): string {
+  switch (revenue) {
+    case "200k-plus":
+    case "50k-200k":
+      return "ideal";
+    case "10k-50k":
+      return "mid";
+    case "under-10k":
+      return "low";
+    default:
+      return "unknown";
   }
 }
 

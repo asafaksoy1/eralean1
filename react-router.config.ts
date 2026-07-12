@@ -27,6 +27,7 @@ export default {
     "/learn",
     "/lp/email",
     "/lp/website",
+    "/lp/audit",
     "/learn/what-is-klaviyo",
     "/learn/welcome-email-series",
     "/learn/abandoned-cart-email",
