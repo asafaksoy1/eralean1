@@ -48,4 +48,10 @@ export const learnArticles: LearnArticle[] = [
     description: "A step-by-step guide to building a Klaviyo post-purchase flow that drives repeat orders, reviews and loyalty for UK ecommerce brands.",
     category: "Klaviyo",
   },
+  {
+    slug: "klaviyo-warm-up-new-sending-domain-uk",
+    title: "How to Warm Up a New Sending Domain in Klaviyo (UK Guide)",
+    description: "Step-by-step guide to warming a new Klaviyo sending domain: engaged segments, volume ramp, open-rate targets and the flows to switch on last.",
+    category: "Klaviyo",
+  },
 ];
