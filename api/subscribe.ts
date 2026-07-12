@@ -80,6 +80,11 @@ export default async function handler(req: Req, res: Res) {
         .json({ error: "Could not subscribe right now. Please try again." });
     }
 
+    // Fire an internal ping so Asaf can follow up fast. The lead is already
+    // saved above, so a webhook hiccup must never fail the request — swallow
+    // any error and still return 200.
+    await notifyNewLead({ email, website, revenue, offer }).catch(() => {});
+
     return res.status(200).json({ ok: true });
   } catch {
     return res
@@ -101,6 +106,60 @@ function leadQuality(revenue: string): string {
       return "low";
     default:
       return "unknown";
+  }
+}
+
+// Human-readable revenue band for the internal notification.
+function revenueLabel(revenue: string): string {
+  switch (revenue) {
+    case "under-10k":
+      return "Under £10k/mo";
+    case "10k-50k":
+      return "£10k–£50k/mo";
+    case "50k-200k":
+      return "£50k–£200k/mo";
+    case "200k-plus":
+      return "£200k+/mo";
+    default:
+      return "not given";
+  }
+}
+
+// Post a new-lead notice to a Slack/Discord incoming webhook so Asaf can follow
+// up within minutes. Sends both `text` (Slack) and `content` (Discord) so one
+// URL works for either. No-ops when LEAD_NOTIFY_WEBHOOK_URL is unset, so the
+// code is inert until the webhook is configured in Vercel. 3s timeout so a slow
+// webhook never holds the serverless function open.
+async function notifyNewLead(lead: {
+  email: string;
+  website: string;
+  revenue: string;
+  offer: string;
+}): Promise<void> {
+  const url = process.env.LEAD_NOTIFY_WEBHOOK_URL;
+  if (!url) return;
+
+  const quality = (lead.revenue ? leadQuality(lead.revenue) : "unknown").toUpperCase();
+  const text = [
+    "🔔 New EraLean audit lead",
+    `Quality: ${quality}`,
+    `Revenue: ${revenueLabel(lead.revenue)}`,
+    `Store: ${lead.website || "not given"}`,
+    `Email: ${lead.email}`,
+    `Offer: ${lead.offer}`,
+  ].join("\n");
+
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 3000);
+  try {
+    await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ text, content: text }),
+      signal: controller.signal,
+    });
+  } finally {
+    clearTimeout(timer);
   }
 }
 
