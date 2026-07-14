@@ -48,4 +48,10 @@ export const learnArticles: LearnArticle[] = [
     description: "A step-by-step guide to building a Klaviyo post-purchase flow that drives repeat orders, reviews and loyalty for UK ecommerce brands.",
     category: "Klaviyo",
   },
+  {
+    slug: "klaviyo-dmarc-branded-sending-domain-setup-uk",
+    title: "How to Set Up a Branded Sending Domain and DMARC in Klaviyo (UK Guide)",
+    description: "Step-by-step guide for UK ecommerce brands to configure a Klaviyo branded sending domain and DMARC to meet Gmail, Yahoo and Microsoft sender rules.",
+    category: "Klaviyo",
+  },
 ];
