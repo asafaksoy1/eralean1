@@ -48,4 +48,10 @@ export const learnArticles: LearnArticle[] = [
     description: "A step-by-step guide to building a Klaviyo post-purchase flow that drives repeat orders, reviews and loyalty for UK ecommerce brands.",
     category: "Klaviyo",
   },
+  {
+    slug: "klaviyo-emails-going-to-spam-uk",
+    title: "Why Your Klaviyo Emails Go to Spam and How to Fix Deliverability (UK Guide)",
+    description: "A practical UK guide to fixing Klaviyo deliverability: authentication, list hygiene, sunset flows, and the benchmarks that keep emails out of spam.",
+    category: "Klaviyo",
+  },
 ];
