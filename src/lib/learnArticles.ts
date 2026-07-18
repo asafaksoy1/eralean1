@@ -48,4 +48,10 @@ export const learnArticles: LearnArticle[] = [
     description: "A step-by-step guide to building a Klaviyo post-purchase flow that drives repeat orders, reviews and loyalty for UK ecommerce brands.",
     category: "Klaviyo",
   },
+  {
+    slug: "klaviyo-subject-line-ab-testing-uk",
+    title: "How to A/B Test Klaviyo Email Subject Lines for Higher Open Rates",
+    description: "A practical guide to A/B testing subject lines in Klaviyo, with UK ecommerce benchmarks, sample sizes and step-by-step setup for campaigns and flows.",
+    category: "Klaviyo",
+  },
 ];
