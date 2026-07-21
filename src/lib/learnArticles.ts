@@ -48,4 +48,10 @@ export const learnArticles: LearnArticle[] = [
     description: "A step-by-step guide to building a Klaviyo post-purchase flow that drives repeat orders, reviews and loyalty for UK ecommerce brands.",
     category: "Klaviyo",
   },
+  {
+    slug: "klaviyo-single-vs-double-opt-in-uk",
+    title: "Klaviyo Single vs Double Opt-In: What UK Ecommerce Brands Should Choose",
+    description: "How UK ecommerce brands should choose between Klaviyo single and double opt-in for PECR/GDPR compliance, list quality and deliverability.",
+    category: "Klaviyo",
+  },
 ];
