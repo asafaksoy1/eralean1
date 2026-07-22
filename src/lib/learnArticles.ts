@@ -48,4 +48,10 @@ export const learnArticles: LearnArticle[] = [
     description: "A step-by-step guide to building a Klaviyo post-purchase flow that drives repeat orders, reviews and loyalty for UK ecommerce brands.",
     category: "Klaviyo",
   },
+  {
+    slug: "klaviyo-replenishment-flow-expected-date-next-order-uk",
+    title: "How to Set Up a Klaviyo Replenishment Flow Using Expected Date of Next Order",
+    description: "Build a predictive Klaviyo replenishment flow using Expected Date of Next Order to boost repeat purchases for UK ecommerce brands.",
+    category: "Klaviyo",
+  },
 ];
