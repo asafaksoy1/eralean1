@@ -48,4 +48,10 @@ export const learnArticles: LearnArticle[] = [
     description: "A step-by-step guide to building a Klaviyo post-purchase flow that drives repeat orders, reviews and loyalty for UK ecommerce brands.",
     category: "Klaviyo",
   },
+  {
+    slug: "klaviyo-sunset-flow-setup-uk",
+    title: "How to Set Up a Klaviyo Sunset Flow to Clean Your List and Protect Deliverability (UK Guide)",
+    description: "Step-by-step guide to building a Klaviyo sunset flow that re-engages or suppresses inactive subscribers to protect UK ecommerce email deliverability.",
+    category: "Klaviyo",
+  },
 ];
