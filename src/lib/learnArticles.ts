@@ -48,4 +48,10 @@ export const learnArticles: LearnArticle[] = [
     description: "A step-by-step guide to building a Klaviyo post-purchase flow that drives repeat orders, reviews and loyalty for UK ecommerce brands.",
     category: "Klaviyo",
   },
+  {
+    slug: "klaviyo-predicted-clv-vip-segment-uk",
+    title: "How to Build a Klaviyo Predicted CLV VIP Segment for UK Ecommerce Brands",
+    description: "A practical UK guide to using Klaviyo's predicted CLV to identify future VIPs, meet the data requirements, and trigger high-value flows.",
+    category: "Klaviyo",
+  },
 ];
