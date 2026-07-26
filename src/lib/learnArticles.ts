@@ -48,4 +48,10 @@ export const learnArticles: LearnArticle[] = [
     description: "A step-by-step guide to building a Klaviyo post-purchase flow that drives repeat orders, reviews and loyalty for UK ecommerce brands.",
     category: "Klaviyo",
   },
+  {
+    slug: "klaviyo-engaged-segment-sending-frequency-uk",
+    title: "How to Segment Klaviyo by Engagement and Set Sending Frequency Tiers (UK Guide)",
+    description: "Learn how to build Klaviyo engagement segments and match sending frequency to subscriber activity to protect UK deliverability and revenue.",
+    category: "Klaviyo",
+  },
 ];
