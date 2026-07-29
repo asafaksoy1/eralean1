@@ -48,4 +48,10 @@ export const learnArticles: LearnArticle[] = [
     description: "A step-by-step guide to building a Klaviyo post-purchase flow that drives repeat orders, reviews and loyalty for UK ecommerce brands.",
     category: "Klaviyo",
   },
+  {
+    slug: "klaviyo-warm-up-new-sending-domain-uk",
+    title: "How to Warm Up a New Klaviyo Sending Domain (UK Guide)",
+    description: "A step-by-step UK guide to warming a new Klaviyo domain safely, hitting Gmail and Yahoo sender rules, and keeping emails out of spam.",
+    category: "Klaviyo",
+  },
 ];
