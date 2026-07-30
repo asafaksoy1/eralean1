@@ -54,4 +54,10 @@ export const learnArticles: LearnArticle[] = [
     description: "A step-by-step UK guide to warming a new Klaviyo domain safely, hitting Gmail and Yahoo sender rules, and keeping emails out of spam.",
     category: "Klaviyo",
   },
+  {
+    slug: "klaviyo-predicted-clv-segmentation-uk",
+    title: "How to Segment by Predicted CLV in Klaviyo (UK Guide)",
+    description: "A practical UK guide to building Klaviyo predicted CLV and churn-risk segments to target high-value customers and drive repeat purchases.",
+    category: "Klaviyo",
+  },
 ];
