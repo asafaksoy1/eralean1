@@ -54,4 +54,10 @@ export const learnArticles: LearnArticle[] = [
     description: "A step-by-step UK guide to warming a new Klaviyo domain safely, hitting Gmail and Yahoo sender rules, and keeping emails out of spam.",
     category: "Klaviyo",
   },
+  {
+    slug: "klaviyo-single-vs-double-opt-in-uk",
+    title: "Klaviyo Single vs Double Opt-In for UK Ecommerce Brands: PECR, Deliverability and List Growth",
+    description: "How UK ecommerce brands should choose between single and double opt-in in Klaviyo to balance PECR/GDPR consent, deliverability and list growth.",
+    category: "Klaviyo",
+  },
 ];

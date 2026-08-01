@@ -35,5 +35,6 @@ export default {
     "/learn/klaviyo-winback-flow-timing-uk",
     "/learn/klaviyo-post-purchase-flow-setup-uk",
     "/learn/klaviyo-warm-up-new-sending-domain-uk",
+    "/learn/klaviyo-single-vs-double-opt-in-uk",
   ],
 } satisfies Config;
