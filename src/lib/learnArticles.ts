@@ -54,4 +54,10 @@ export const learnArticles: LearnArticle[] = [
     description: "A step-by-step UK guide to warming a new Klaviyo domain safely, hitting Gmail and Yahoo sender rules, and keeping emails out of spam.",
     category: "Klaviyo",
   },
+  {
+    slug: "klaviyo-replenishment-flow-timing-uk",
+    title: "How To Set Up A Klaviyo Replenishment Flow With The Right Timing (UK Guide)",
+    description: "Learn how UK ecommerce brands can build a Klaviyo replenishment flow, time it to your reorder cycle, and use predictive analytics to drive repeat sales.",
+    category: "Klaviyo",
+  },
 ];
