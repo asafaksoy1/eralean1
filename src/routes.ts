@@ -24,5 +24,6 @@ export default [
   route("learn/klaviyo-winback-flow-timing-uk", "pages/learn/KlaviyoWinbackFlowTimingUk.tsx"),
   route("learn/klaviyo-post-purchase-flow-setup-uk", "pages/learn/KlaviyoPostPurchaseFlowSetupUk.tsx"),
   route("learn/klaviyo-warm-up-new-sending-domain-uk", "pages/learn/KlaviyoWarmUpNewSendingDomainUk.tsx"),
+  route("learn/klaviyo-rfm-segmentation-setup-uk", "pages/learn/KlaviyoRfmSegmentationSetupUk.tsx"),
   route("*", "pages/NotFound.tsx"),
 ] satisfies RouteConfig;

@@ -54,4 +54,10 @@ export const learnArticles: LearnArticle[] = [
     description: "A step-by-step UK guide to warming a new Klaviyo domain safely, hitting Gmail and Yahoo sender rules, and keeping emails out of spam.",
     category: "Klaviyo",
   },
+  {
+    slug: "klaviyo-rfm-segmentation-setup-uk",
+    title: "How to Set Up RFM Segmentation in Klaviyo for UK Ecommerce Brands",
+    description: "A practical guide to building RFM segments in Klaviyo, defining customer groups, and triggering retention flows to lift revenue and protect margins.",
+    category: "Klaviyo",
+  },
 ];
