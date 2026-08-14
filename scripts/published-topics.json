@@ -31,9 +31,49 @@
       "date": "2026-07-07"
     },
     {
+      "slug": "klaviyo-dmarc-branded-sending-domain-setup-uk",
+      "title": "How to Set Up a Branded Sending Domain and DMARC in Klaviyo (UK Guide)",
+      "date": "2026-07-14"
+    },
+    {
+      "slug": "klaviyo-emails-going-to-spam-uk",
+      "title": "Why Your Klaviyo Emails Go to Spam and How to Fix Deliverability (UK Guide)",
+      "date": "2026-07-16"
+    },
+    {
+      "slug": "klaviyo-subject-line-ab-testing-uk",
+      "title": "How to A/B Test Klaviyo Email Subject Lines for Higher Open Rates",
+      "date": "2026-07-18"
+    },
+    {
+      "slug": "klaviyo-sunset-flow-setup-uk",
+      "title": "How to Set Up a Klaviyo Sunset Flow to Clean Your List and Protect Deliverability (UK Guide)",
+      "date": "2026-07-23"
+    },
+    {
+      "slug": "klaviyo-engaged-segment-sending-strategy-uk",
+      "title": "How to Build a Klaviyo Engaged Segment and Sending Strategy for UK Ecommerce",
+      "date": "2026-07-27"
+    },
+    {
       "slug": "klaviyo-warm-up-new-sending-domain-uk",
       "title": "How to Warm Up a New Klaviyo Sending Domain (UK Guide)",
       "date": "2026-07-29"
+    },
+    {
+      "slug": "klaviyo-predicted-clv-segmentation-uk",
+      "title": "How to Segment by Predicted CLV in Klaviyo (UK Guide)",
+      "date": "2026-07-30"
+    },
+    {
+      "slug": "klaviyo-single-vs-double-opt-in-uk",
+      "title": "Klaviyo Single vs Double Opt-In for UK Ecommerce Brands: PECR, Deliverability and List Growth",
+      "date": "2026-08-01"
+    },
+    {
+      "slug": "klaviyo-replenishment-flow-timing-uk",
+      "title": "How To Set Up A Klaviyo Replenishment Flow With The Right Timing (UK Guide)",
+      "date": "2026-08-02"
     },
     {
       "slug": "klaviyo-rfm-segmentation-setup-uk",

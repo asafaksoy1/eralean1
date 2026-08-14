@@ -60,4 +60,52 @@ export const learnArticles: LearnArticle[] = [
     description: "A practical guide to building RFM segments in Klaviyo, defining customer groups, and triggering retention flows to lift revenue and protect margins.",
     category: "Klaviyo",
   },
+  {
+    slug: "klaviyo-dmarc-branded-sending-domain-setup-uk",
+    title: "How to Set Up a Branded Sending Domain and DMARC in Klaviyo (UK Guide)",
+    description: "Step-by-step guide for UK ecommerce brands to configure a Klaviyo branded sending domain and DMARC to meet Gmail, Yahoo and Microsoft sender rules.",
+    category: "Klaviyo",
+  },
+  {
+    slug: "klaviyo-emails-going-to-spam-uk",
+    title: "Why Your Klaviyo Emails Go to Spam and How to Fix Deliverability (UK Guide)",
+    description: "A practical UK guide to fixing Klaviyo deliverability: authentication, list hygiene, sunset flows, and the benchmarks that keep emails out of spam.",
+    category: "Klaviyo",
+  },
+  {
+    slug: "klaviyo-subject-line-ab-testing-uk",
+    title: "How to A/B Test Klaviyo Email Subject Lines for Higher Open Rates",
+    description: "A practical guide to A/B testing subject lines in Klaviyo, with UK ecommerce benchmarks, sample sizes and step-by-step setup for campaigns and flows.",
+    category: "Klaviyo",
+  },
+  {
+    slug: "klaviyo-sunset-flow-setup-uk",
+    title: "How to Set Up a Klaviyo Sunset Flow to Clean Your List and Protect Deliverability (UK Guide)",
+    description: "Step-by-step guide to building a Klaviyo sunset flow that re-engages or suppresses inactive subscribers to protect UK ecommerce email deliverability.",
+    category: "Klaviyo",
+  },
+  {
+    slug: "klaviyo-engaged-segment-sending-strategy-uk",
+    title: "How to Build a Klaviyo Engaged Segment and Sending Strategy for UK Ecommerce",
+    description: "Learn how to segment your Klaviyo list by email engagement, set send cadences by tier and protect UK deliverability with a sunset flow.",
+    category: "Klaviyo",
+  },
+  {
+    slug: "klaviyo-predicted-clv-segmentation-uk",
+    title: "How to Segment by Predicted CLV in Klaviyo (UK Guide)",
+    description: "A practical UK guide to building Klaviyo predicted CLV and churn-risk segments to target high-value customers and drive repeat purchases.",
+    category: "Klaviyo",
+  },
+  {
+    slug: "klaviyo-single-vs-double-opt-in-uk",
+    title: "Klaviyo Single vs Double Opt-In for UK Ecommerce Brands: PECR, Deliverability and List Growth",
+    description: "How UK ecommerce brands should choose between single and double opt-in in Klaviyo to balance PECR/GDPR consent, deliverability and list growth.",
+    category: "Klaviyo",
+  },
+  {
+    slug: "klaviyo-replenishment-flow-timing-uk",
+    title: "How To Set Up A Klaviyo Replenishment Flow With The Right Timing (UK Guide)",
+    description: "Learn how UK ecommerce brands can build a Klaviyo replenishment flow, time it to your reorder cycle, and use predictive analytics to drive repeat sales.",
+    category: "Klaviyo",
+  },
 ];

@@ -25,5 +25,13 @@ export default [
   route("learn/klaviyo-post-purchase-flow-setup-uk", "pages/learn/KlaviyoPostPurchaseFlowSetupUk.tsx"),
   route("learn/klaviyo-warm-up-new-sending-domain-uk", "pages/learn/KlaviyoWarmUpNewSendingDomainUk.tsx"),
   route("learn/klaviyo-rfm-segmentation-setup-uk", "pages/learn/KlaviyoRfmSegmentationSetupUk.tsx"),
+  route("learn/klaviyo-dmarc-branded-sending-domain-setup-uk", "pages/learn/KlaviyoDmarcBrandedSendingDomainSetupUk.tsx"),
+  route("learn/klaviyo-emails-going-to-spam-uk", "pages/learn/KlaviyoEmailsGoingToSpamUk.tsx"),
+  route("learn/klaviyo-subject-line-ab-testing-uk", "pages/learn/KlaviyoSubjectLineAbTestingUk.tsx"),
+  route("learn/klaviyo-sunset-flow-setup-uk", "pages/learn/KlaviyoSunsetFlowSetupUk.tsx"),
+  route("learn/klaviyo-engaged-segment-sending-strategy-uk", "pages/learn/KlaviyoEngagedSegmentSendingStrategyUk.tsx"),
+  route("learn/klaviyo-predicted-clv-segmentation-uk", "pages/learn/KlaviyoPredictedClvSegmentationUk.tsx"),
+  route("learn/klaviyo-single-vs-double-opt-in-uk", "pages/learn/KlaviyoSingleVsDoubleOptInUk.tsx"),
+  route("learn/klaviyo-replenishment-flow-timing-uk", "pages/learn/KlaviyoReplenishmentFlowTimingUk.tsx"),
   route("*", "pages/NotFound.tsx"),
 ] satisfies RouteConfig;

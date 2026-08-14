@@ -36,5 +36,13 @@ export default {
     "/learn/klaviyo-post-purchase-flow-setup-uk",
     "/learn/klaviyo-warm-up-new-sending-domain-uk",
     "/learn/klaviyo-rfm-segmentation-setup-uk",
+    "/learn/klaviyo-dmarc-branded-sending-domain-setup-uk",
+    "/learn/klaviyo-emails-going-to-spam-uk",
+    "/learn/klaviyo-subject-line-ab-testing-uk",
+    "/learn/klaviyo-sunset-flow-setup-uk",
+    "/learn/klaviyo-engaged-segment-sending-strategy-uk",
+    "/learn/klaviyo-predicted-clv-segmentation-uk",
+    "/learn/klaviyo-single-vs-double-opt-in-uk",
+    "/learn/klaviyo-replenishment-flow-timing-uk",
   ],
 } satisfies Config;
